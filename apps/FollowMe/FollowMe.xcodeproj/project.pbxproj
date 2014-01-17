@@ -36,6 +36,7 @@
 		689DB56017DA329E00751050 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 689DB55F17DA329E00751050 /* CFNetwork.framework */; };
 		689DB56217DA32BD00751050 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 689DB56117DA32BD00751050 /* SystemConfiguration.framework */; };
 		68DCE53D1767642C000DE093 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68DCE53C1767642C000DE093 /* AudioToolbox.framework */; };
+		8BB8CC691889976C00597A9E /* data in Resources */ = {isa = PBXBuildFile; fileRef = 8BB8CC681889976C00597A9E /* data */; };
 		8BE605C51885A7870051E3AF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE605C21885A7870051E3AF /* Default-568h@2x.png */; };
 		8BE605C61885A7870051E3AF /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE605C31885A7870051E3AF /* Default.png */; };
 		8BE605C71885A7870051E3AF /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE605C41885A7870051E3AF /* Default@2x.png */; };
@@ -101,6 +102,7 @@
 		8B0E030F183B955B00436A0D /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
 		8B0E0311183B968400436A0D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		8B0E0313183B968F00436A0D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		8BB8CC681889976C00597A9E /* data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = data; path = ../../libs/libAffdex/data; sourceTree = "<group>"; };
 		8BE605C21885A7870051E3AF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		8BE605C31885A7870051E3AF /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		8BE605C41885A7870051E3AF /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 		65920A6616D73F8700D89A4B = {
 			isa = PBXGroup;
 			children = (
+				8BB8CC681889976C00597A9E /* data */,
 				687AEE50187C7B740095180D /* media */,
 				65920A7A16D73F8700D89A4B /* FollowMe-Info.plist */,
 				65920A8016D73F8700D89A4B /* FollowMe-Prefix.pch */,
@@ -338,6 +341,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BB8CC691889976C00597A9E /* data in Resources */,
 				8BE605D61885A7B50051E3AF /* Face_Neutral.png in Resources */,
 				686EF7351769529B00626072 /* ViewController_iPad.xib in Resources */,
 				8BE605E01885A7CD0051E3AF /* LED-Green.png in Resources */,

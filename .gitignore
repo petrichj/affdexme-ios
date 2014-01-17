@@ -1,0 +1,9 @@
+.DS_Store
+
+xcuserdata/
+
+WorkspaceSettings.xcsettings
+
+build/
+
+Debug/

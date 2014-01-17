@@ -467,12 +467,13 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FollowMe-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../libs/libAffdex/Debug";
-				INFOPLIST_FILE = "FollowMe/FollowMe-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../../libs/libAffdex/Debug",
+				HEADER_SEARCH_PATHS = (
+					"<Multiple",
+					"values>",
+					"$(SRCROOT)/../../libs/libAffdex/",
 				);
+				INFOPLIST_FILE = "FollowMe/FollowMe-Info.plist";
+				LIBRARY_SEARCH_PATHS = " $(SRCROOT)/../../libs/libAffdex/";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -494,12 +495,13 @@
 				GCC_PREFIX_HEADER = "FollowMe-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../libs/libAffdex/Release";
-				INFOPLIST_FILE = "FollowMe/FollowMe-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../../libs/libAffdex/Release",
+				HEADER_SEARCH_PATHS = (
+					"<Multiple",
+					"values>",
+					"$(SRCROOT)/../../libs/libAffdex/",
 				);
+				INFOPLIST_FILE = "FollowMe/FollowMe-Info.plist";
+				LIBRARY_SEARCH_PATHS = " $(SRCROOT)/../../libs/libAffdex/";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";

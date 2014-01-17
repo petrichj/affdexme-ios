@@ -1,9 +1,14 @@
 .DS_Store
 
 xcuserdata/
+xcshareddata/
 
 WorkspaceSettings.xcsettings
+
+apps/FollowMe/FollowMe.xcodeproj/project.xcworkspace/xcshareddata/FollowMe.xccheckout
 
 build/
 
 Debug/
+
+libs/libAffdex/data/

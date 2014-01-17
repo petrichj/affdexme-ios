@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>7026ED0C-CE3B-4562-BE65-D3AA80672311</string>
+	<key>IDESourceControlProjectName</key>
+	<string>FollowMe</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>36E04233-37E9-4659-9425-A83B997A6C27</key>
+		<string>ssh://bitbucket.org/Affectiva/affdex-ios.git</string>
+		<key>E9C7D2F4-932F-4007-8198-831955A19C04</key>
+		<string>ssh://bitbucket.org/Affectiva/affdexface.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>apps/FollowMe/FollowMe.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>36E04233-37E9-4659-9425-A83B997A6C27</key>
+		<string>../../../..</string>
+		<key>E9C7D2F4-932F-4007-8198-831955A19C04</key>
+		<string>../../../../../affdexface</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://bitbucket.org/Affectiva/affdex-ios.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>36E04233-37E9-4659-9425-A83B997A6C27</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>36E04233-37E9-4659-9425-A83B997A6C27</string>
+			<key>IDESourceControlWCCName</key>
+			<string>affdex-ios</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E9C7D2F4-932F-4007-8198-831955A19C04</string>
+			<key>IDESourceControlWCCName</key>
+			<string>affdexface</string>
+		</dict>
+	</array>
+</dict>
+</plist>

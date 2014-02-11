@@ -12,3 +12,13 @@ build/
 Debug/
 
 libs/libAffdex/
+
+*.license
+*.License
+*.LICENSE
+*.lic
+*.LIC
+License*
+license*
+
+

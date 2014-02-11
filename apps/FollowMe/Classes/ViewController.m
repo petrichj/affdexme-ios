@@ -72,7 +72,7 @@
     
     // create our detector with our desired facial expresions, using the front facing camera
     self.detector = [[AFDXDetector alloc] initWithDelegate:self
-                                                      usingCamera:AFDX_CAMERA_FRONT];
+                                               usingCamera:AFDX_CAMERA_FRONT];
     
     // tell the detector which facial expressions we want to measure
     self.detector.smile = TRUE;
@@ -80,12 +80,21 @@
     self.detector.browFurrow = TRUE;
     self.detector.lipCornerDepressor = TRUE;
     self.detector.valence = TRUE;
+    self.detector.sendUnprocessedFrames = YES;
     
     self.dateOfLastFrame = nil;
     self.dateOfLastProcessedFrame = nil;
+    self.detector.licensePath = [[NSBundle mainBundle] pathForResource:@"sdk" ofType:@"license"];
     
     // let's start it up!
-    [self.detector start];
+    NSError *error = [self.detector start];
+    
+    if (nil != error)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Detector Error" message:[error localizedDescription] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        
+        [alert show];
+    }
 }
 
 - (void)dealloc;
@@ -132,10 +141,10 @@
     // some math to compute the frame rate.
     if (nil == metrics)
     {
+        [self.imageView setImage:image];
     }
     else
     {
-        [self.imageView setImage:image];
     }
     
     if (nil == metrics)
@@ -184,25 +193,25 @@
                 [self handleSmile:(AFDXSmileMetric *)metric];
             }
             else
-            if ([metric isKindOfClass:[AFDXBrowFurrowMetric class]])
-            {
-                [self handleBrowFurrow:(AFDXBrowFurrowMetric *)metric];
-            }
-            else
-            if ([metric isKindOfClass:[AFDXBrowRaiseMetric class]])
-            {
-                [self handleBrowRaise:(AFDXBrowRaiseMetric *)metric];
-            }
-            else
-            if ([metric isKindOfClass:[AFDXLipCornerDepressorMetric class]])
-            {
-                [self handleLipCornerDepressor:(AFDXLipCornerDepressorMetric *)metric];
-            }
-            else
-            if ([metric isKindOfClass:[AFDXValenceMetric class]])
-            {
-                [self handleValence:(AFDXValenceMetric *)metric];
-            }
+                if ([metric isKindOfClass:[AFDXBrowFurrowMetric class]])
+                {
+                    [self handleBrowFurrow:(AFDXBrowFurrowMetric *)metric];
+                }
+                else
+                    if ([metric isKindOfClass:[AFDXBrowRaiseMetric class]])
+                    {
+                        [self handleBrowRaise:(AFDXBrowRaiseMetric *)metric];
+                    }
+                    else
+                        if ([metric isKindOfClass:[AFDXLipCornerDepressorMetric class]])
+                        {
+                            [self handleLipCornerDepressor:(AFDXLipCornerDepressorMetric *)metric];
+                        }
+                        else
+                            if ([metric isKindOfClass:[AFDXValenceMetric class]])
+                            {
+                                [self handleValence:(AFDXValenceMetric *)metric];
+                            }
         }
     }
 }
@@ -229,14 +238,14 @@
         [self.smileView setImage:[UIImage imageNamed:@"Face_SmileHuge"] forState:UIControlStateSelected];
     }
     else
-    if (prob > 60.0)
-    {
-        [self.smileView setImage:[UIImage imageNamed:@"Face_Smile"] forState:UIControlStateSelected];
-    }
-    else
-    {
-        [self.smileView setImage:[UIImage imageNamed:@"Face_Neutral"] forState:UIControlStateSelected];
-    }
+        if (prob > 60.0)
+        {
+            [self.smileView setImage:[UIImage imageNamed:@"Face_Smile"] forState:UIControlStateSelected];
+        }
+        else
+        {
+            [self.smileView setImage:[UIImage imageNamed:@"Face_Neutral"] forState:UIControlStateSelected];
+        }
 }
 
 - (void)handleBrowFurrow:(AFDXBrowFurrowMetric *)metric;
@@ -348,20 +357,20 @@
     switch ([sender tag])
     {
         case 0: // Brow Raise
-        self.detector.smile = sender.selected;
-        break;
-        
+            self.detector.smile = sender.selected;
+            break;
+            
         case 1: // Brow Furrow
-        self.detector.browFurrow = sender.selected;
-        break;
-        
+            self.detector.browFurrow = sender.selected;
+            break;
+            
         case 2: // Smile
-        self.detector.smile = sender.selected;
-        break;
-        
+            self.detector.smile = sender.selected;
+            break;
+            
         case 3: // Lip Corner Depressor
-        self.detector.lipCornerDepressor = sender.selected;
-        break;
+            self.detector.lipCornerDepressor = sender.selected;
+            break;
     }
 }
 

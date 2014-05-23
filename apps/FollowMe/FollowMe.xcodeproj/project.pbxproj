@@ -35,6 +35,7 @@
 		689DB55E17DA2CAA00751050 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 689DB55D17DA2CAA00751050 /* Security.framework */; };
 		689DB56017DA329E00751050 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 689DB55F17DA329E00751050 /* CFNetwork.framework */; };
 		689DB56217DA32BD00751050 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 689DB56117DA32BD00751050 /* SystemConfiguration.framework */; };
+		68A9F818192FD689001C586E /* sdk.license in Resources */ = {isa = PBXBuildFile; fileRef = 68A9F817192FD689001C586E /* sdk.license */; };
 		68DCE53D1767642C000DE093 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68DCE53C1767642C000DE093 /* AudioToolbox.framework */; };
 		8BB8CC691889976C00597A9E /* data in Resources */ = {isa = PBXBuildFile; fileRef = 8BB8CC681889976C00597A9E /* data */; };
 		8BE605C51885A7870051E3AF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE605C21885A7870051E3AF /* Default-568h@2x.png */; };
@@ -85,10 +86,11 @@
 		683400F517B0389F00A63823 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		684E8A76177DDC0500E3C253 /* FollowMe Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FollowMe Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		686EF7341769529B00626072 /* ViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ViewController_iPad.xib; path = Classes/ViewController_iPad.xib; sourceTree = SOURCE_ROOT; };
-		689AE75E18881C450036F69F /* libAffdex.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAffdex.a; path = ../../libs/libAffdex/Release/libAffdex.a; sourceTree = "<group>"; };
+		689AE75E18881C450036F69F /* libAffdex.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAffdex.a; path = ../../libs/libAffdex/libAffdex.a; sourceTree = "<group>"; };
 		689DB55D17DA2CAA00751050 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		689DB55F17DA329E00751050 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		689DB56117DA32BD00751050 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		68A9F817192FD689001C586E /* sdk.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = sdk.license; path = "../../../../Downloads/affdex-ios-S.E.E/apps/FollowMe/sdk.license"; sourceTree = "<group>"; };
 		68DCE53C1767642C000DE093 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		8B0E02BB183AA56B00436A0D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		8B0E02BE183AA56C00436A0D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -179,6 +181,7 @@
 		65920A6616D73F8700D89A4B = {
 			isa = PBXGroup;
 			children = (
+				68A9F817192FD689001C586E /* sdk.license */,
 				8BB8CC681889976C00597A9E /* data */,
 				687AEE50187C7B740095180D /* media */,
 				65920A7A16D73F8700D89A4B /* FollowMe-Info.plist */,
@@ -343,6 +346,7 @@
 			files = (
 				8BB8CC691889976C00597A9E /* data in Resources */,
 				8BE605D61885A7B50051E3AF /* Face_Neutral.png in Resources */,
+				68A9F818192FD689001C586E /* sdk.license in Resources */,
 				686EF7351769529B00626072 /* ViewController_iPad.xib in Resources */,
 				8BE605E01885A7CD0051E3AF /* LED-Green.png in Resources */,
 				8BE605E11885A7CD0051E3AF /* LED-Red.png in Resources */,

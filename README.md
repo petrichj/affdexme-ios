@@ -9,7 +9,7 @@ FollowMe
 FollowMe is a simple app that uses the camera on your iOS device to view and mimic your facial expressions with icons.
 
 In order to use the project, you will need to:
-- Obtain the SDK from Affectiva (visit http://www.affdex.com/mobile-sdk).
+- Contact Affectiva at sales@affectiva.com to obtain the SDK.
 - Copy the SDK Zip file into the libs/libAffdex folder and unzip it there.
 - Add the license file that you receive from Affectiva to the project.
 

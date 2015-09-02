@@ -877,7 +877,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select up to 8 emotions and expressions." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IKm-tb-cXT">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2OV-qO-0Dd">
@@ -1097,7 +1097,7 @@
                                     </constraint>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="W2X-eq-UZ7">
-                                    <size key="itemSize" width="80" height="80"/>
+                                    <size key="itemSize" width="104" height="104"/>
                                     <size key="headerReferenceSize" width="50" height="35"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -1107,36 +1107,19 @@
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="104" height="104"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f7A-og-Yc4">
-                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="64" id="Nlv-Nb-iTl"/>
-                                                        <constraint firstAttribute="width" constant="64" id="dp0-a7-TDX"/>
-                                                    </constraints>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="Nlv-Nb-iTl"/>
-                                                            <exclude reference="dp0-a7-TDX"/>
-                                                        </mask>
-                                                    </variation>
-                                                    <variation key="widthClass=compact">
-                                                        <mask key="constraints">
-                                                            <include reference="Nlv-Nb-iTl"/>
-                                                            <include reference="dp0-a7-TDX"/>
-                                                        </mask>
-                                                    </variation>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vOn-Id-fYZ">
                                                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="13" id="JxI-Bb-Msg"/>
-                                                        <constraint firstAttribute="width" constant="80" id="e8b-AG-oVI"/>
+                                                        <constraint firstAttribute="width" constant="80" id="e8b-AG-oVI">
+                                                            <variation key="widthClass=compact" constant="104"/>
+                                                        </constraint>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="default">
                                                         <mask key="constraints">
@@ -1151,14 +1134,41 @@
                                                         </mask>
                                                     </variation>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f7A-og-Yc4">
+                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="64" id="Nlv-Nb-iTl">
+                                                            <variation key="widthClass=compact" constant="76"/>
+                                                        </constraint>
+                                                        <constraint firstAttribute="width" constant="64" id="dp0-a7-TDX">
+                                                            <variation key="widthClass=compact" constant="76"/>
+                                                        </constraint>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="Nlv-Nb-iTl"/>
+                                                            <exclude reference="dp0-a7-TDX"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="widthClass=compact">
+                                                        <mask key="constraints">
+                                                            <include reference="Nlv-Nb-iTl"/>
+                                                            <include reference="dp0-a7-TDX"/>
+                                                        </mask>
+                                                    </variation>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
                                             <constraint firstItem="f7A-og-Yc4" firstAttribute="centerX" secondItem="vOn-Id-fYZ" secondAttribute="centerX" id="07x-DD-Z6U"/>
                                             <constraint firstItem="f7A-og-Yc4" firstAttribute="bottom" secondItem="Mab-Ew-VXC" secondAttribute="bottomMargin" id="0Ih-tO-wlL"/>
-                                            <constraint firstAttribute="centerY" secondItem="f7A-og-Yc4" secondAttribute="centerY" id="0to-MK-Nmr"/>
-                                            <constraint firstAttribute="centerX" secondItem="vOn-Id-fYZ" secondAttribute="centerX" id="3tX-ao-ndx"/>
+                                            <constraint firstAttribute="centerY" secondItem="f7A-og-Yc4" secondAttribute="centerY" id="0to-MK-Nmr">
+                                                <variation key="widthClass=compact" constant="-6"/>
+                                            </constraint>
+                                            <constraint firstAttribute="centerX" secondItem="vOn-Id-fYZ" secondAttribute="centerX" id="3tX-ao-ndx">
+                                                <variation key="widthClass=compact" constant="0.0"/>
+                                            </constraint>
                                             <constraint firstItem="vOn-Id-fYZ" firstAttribute="top" secondItem="Mab-Ew-VXC" secondAttribute="top" id="J6j-qJ-1cI"/>
                                             <constraint firstItem="vOn-Id-fYZ" firstAttribute="leading" secondItem="Mab-Ew-VXC" secondAttribute="leading" id="K0n-PK-Rhu"/>
                                             <constraint firstItem="vOn-Id-fYZ" firstAttribute="top" secondItem="Mab-Ew-VXC" secondAttribute="topMargin" constant="-8" id="bKb-tt-Co6"/>
@@ -1170,8 +1180,8 @@
                                         </constraints>
                                         <variation key="default">
                                             <mask key="subviews">
-                                                <exclude reference="f7A-og-Yc4"/>
                                                 <exclude reference="vOn-Id-fYZ"/>
+                                                <exclude reference="f7A-og-Yc4"/>
                                             </mask>
                                             <mask key="constraints">
                                                 <exclude reference="3tX-ao-ndx"/>
@@ -1190,8 +1200,8 @@
                                         </variation>
                                         <variation key="widthClass=compact">
                                             <mask key="subviews">
-                                                <include reference="f7A-og-Yc4"/>
                                                 <include reference="vOn-Id-fYZ"/>
+                                                <include reference="f7A-og-Yc4"/>
                                             </mask>
                                             <mask key="constraints">
                                                 <include reference="3tX-ao-ndx"/>
@@ -1239,7 +1249,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailingMargin" secondItem="AMS-kn-Oav" secondAttribute="trailing" constant="79" id="LXx-cp-uf9">
-                                            <variation key="widthClass=compact" constant="80"/>
+                                            <variation key="widthClass=compact" constant="160"/>
                                         </constraint>
                                         <constraint firstItem="AMS-kn-Oav" firstAttribute="leading" secondItem="gld-w3-cVN" secondAttribute="leadingMargin" id="Pdd-9u-Sec"/>
                                         <constraint firstItem="AMS-kn-Oav" firstAttribute="top" secondItem="gld-w3-cVN" secondAttribute="topMargin" constant="-7" id="gEz-Io-mwr"/>

@@ -436,7 +436,7 @@
                              @{@"name" : @"Chin Raise", @"propertyName" : @"chinRaise", @"score": @"chinRaiseScore"},
                              @{@"name" : @"Eye Closure", @"propertyName" : @"eyeClosure", @"score": @"eyeClosureScore"},
                              @{@"name" : @"Inner Brow Raise", @"propertyName" : @"innerBrowRaise", @"score": @"innerBrowRaiseScore"},
-                             @{@"name" : @"Lip Depressor", @"propertyName" : @"lipDepressor", @"score": @"lipDepressorScore"},
+                             @{@"name" : @"Frown", @"propertyName" : @"lipCornerDepressor", @"score": @"lipCornerDepressorScore"},
                              @{@"name" : @"Lip Press", @"propertyName" : @"lipPress", @"score": @"lipPressScore"},
                              @{@"name" : @"Lip Pucker", @"propertyName" : @"lipPucker", @"score": @"lipPuckerScore"},
                              @{@"name" : @"Lip Suck", @"propertyName" : @"lipSuck", @"score": @"lipSuckScore"},
@@ -453,7 +453,7 @@
         self.selectedClassifiers = [[[NSUserDefaults standardUserDefaults] objectForKey:@"selectedClassifiers"] mutableCopy];
         if (self.selectedClassifiers == nil)
         {
-            self.selectedClassifiers = [NSMutableArray arrayWithObjects:@"Joy", @"Sadness", @"Anger", @"Contempt", @"Disgust", @"Fear", @"Surprise", @"Valence", nil];
+            self.selectedClassifiers = [NSMutableArray arrayWithObjects:@"Anger", @"Contempt", @"Disgust", @"Fear", @"Joy", @"Sadness", @"Surprise", @"Valence", nil];
         }
     }
     

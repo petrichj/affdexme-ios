@@ -36,7 +36,7 @@
 		686C75EF1B95EAC000483C1A /* Fear.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 686C75CD1B95EAC000483C1A /* Fear.jpg */; };
 		686C75F01B95EAC000483C1A /* Inner Brow Raise.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 686C75CE1B95EAC000483C1A /* Inner Brow Raise.jpg */; };
 		686C75F11B95EAC000483C1A /* Joy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 686C75CF1B95EAC000483C1A /* Joy.jpg */; };
-		686C75F21B95EAC000483C1A /* Lip Depressor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 686C75D01B95EAC000483C1A /* Lip Depressor.jpg */; };
+		686C75F21B95EAC000483C1A /* Frown.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 686C75D01B95EAC000483C1A /* Frown.jpg */; };
 		686C75F31B95EAC000483C1A /* Lip Press.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 686C75D11B95EAC000483C1A /* Lip Press.jpg */; };
 		686C75F41B95EAC000483C1A /* Lip Pucker.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 686C75D21B95EAC000483C1A /* Lip Pucker.jpg */; };
 		686C75F51B95EAC000483C1A /* Lip Suck.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 686C75D31B95EAC000483C1A /* Lip Suck.jpg */; };
@@ -121,7 +121,7 @@
 		686C75CD1B95EAC000483C1A /* Fear.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Fear.jpg; sourceTree = "<group>"; };
 		686C75CE1B95EAC000483C1A /* Inner Brow Raise.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Inner Brow Raise.jpg"; sourceTree = "<group>"; };
 		686C75CF1B95EAC000483C1A /* Joy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Joy.jpg; sourceTree = "<group>"; };
-		686C75D01B95EAC000483C1A /* Lip Depressor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Lip Depressor.jpg"; sourceTree = "<group>"; };
+		686C75D01B95EAC000483C1A /* Frown.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Frown.jpg; sourceTree = "<group>"; };
 		686C75D11B95EAC000483C1A /* Lip Press.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Lip Press.jpg"; sourceTree = "<group>"; };
 		686C75D21B95EAC000483C1A /* Lip Pucker.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Lip Pucker.jpg"; sourceTree = "<group>"; };
 		686C75D31B95EAC000483C1A /* Lip Suck.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Lip Suck.jpg"; sourceTree = "<group>"; };
@@ -322,7 +322,7 @@
 				686C75CD1B95EAC000483C1A /* Fear.jpg */,
 				686C75CE1B95EAC000483C1A /* Inner Brow Raise.jpg */,
 				686C75CF1B95EAC000483C1A /* Joy.jpg */,
-				686C75D01B95EAC000483C1A /* Lip Depressor.jpg */,
+				686C75D01B95EAC000483C1A /* Frown.jpg */,
 				686C75D11B95EAC000483C1A /* Lip Press.jpg */,
 				686C75D21B95EAC000483C1A /* Lip Pucker.jpg */,
 				686C75D31B95EAC000483C1A /* Lip Suck.jpg */,
@@ -431,7 +431,7 @@
 				686C75F61B95EAC000483C1A /* Mouth Open.jpg in Resources */,
 				686C75EA1B95EAC000483C1A /* Contempt.jpg in Resources */,
 				686C75EE1B95EAC000483C1A /* Eye Closure.jpg in Resources */,
-				686C75F21B95EAC000483C1A /* Lip Depressor.jpg in Resources */,
+				686C75F21B95EAC000483C1A /* Frown.jpg in Resources */,
 				686C75E51B95EAC000483C1A /* Anger.jpg in Resources */,
 				686C75FD1B95EAC000483C1A /* Upper Lip Raise.jpg in Resources */,
 				686C76001B95EAC000483C1A /* Whit.m4a in Resources */,
@@ -577,7 +577,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AffdexMe-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
-				INFOPLIST_FILE = "source/AffdexMe-Info.plist";
+				INFOPLIST_FILE = "AffdexMe-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@exectuable_path/Frameworks @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = /private/tmp;
 				PRODUCT_NAME = AffdexMe;
@@ -606,7 +606,7 @@
 				GCC_PREFIX_HEADER = "AffdexMe-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INFOPLIST_FILE = "source/AffdexMe-Info.plist";
+				INFOPLIST_FILE = "AffdexMe-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@exectuable_path/Frameworks @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = /private/tmp;
 				ONLY_ACTIVE_ARCH = NO;

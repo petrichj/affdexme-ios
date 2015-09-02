@@ -1,7 +1,0 @@
-Please unzip libAffdex.zip to this directory so that you have
-
-libs/
-    libAffdex/
-        libAffdex.a
-        data/
-        *.h

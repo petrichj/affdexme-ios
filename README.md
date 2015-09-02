@@ -3,13 +3,13 @@ Affdex Sample Code for the Affdex SDK for iOS
 
 Welcome to our repository on GitHub! Here you will find example code to get you started with our Affdex SDK for iOS and get you started emotion-enabling you own app!
 
-FollowMe
+AffdexMe
 --------
 
-FollowMe is a simple app that uses the camera on your iOS device to view and mimic your facial expressions with icons.
+AffdexMe is a simple app that uses the camera on your iOS device to view and mimic your facial expressions with icons.
 
 In order to use the project, you will need to:
-- Contact Affectiva at sales@affectiva.com to obtain the SDK.
-- Copy the SDK Zip file into the libs/libAffdex folder and unzip it there.
-- Add the license file that you receive from Affectiva to the project.
+- Obtain the Affdex SDK for iOS at http://www.affdex.com/sdk.
+- Copy the SDK archive file into the frameworks folder and dearchive it there.
+- Add the license file that you receive from Affectiva to the project as 'sdk.license'.
 

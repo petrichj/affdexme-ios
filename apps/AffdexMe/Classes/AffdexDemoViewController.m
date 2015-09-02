@@ -651,7 +651,7 @@
     } else if(status == AVAuthorizationStatusDenied){
         // denied
         [[[UIAlertView alloc] initWithTitle:@"Error!"
-                                    message:@"MeasureUp doesn't have permission to use camera, please change privacy settings"
+                                    message:@"AffdexMe doesn't have permission to use camera, please change privacy settings"
                                    delegate:self
                           cancelButtonTitle:@"OK"
                           otherButtonTitles:nil] show];
@@ -664,7 +664,7 @@
                 [self startDetector];
             } else {
                 [[[UIAlertView alloc] initWithTitle:@"Error!"
-                                            message:@"MeasureUp doesn't have permission to use camera, please change privacy settings"
+                                            message:@"AffdexMe doesn't have permission to use camera, please change privacy settings"
                                            delegate:self
                                   cancelButtonTitle:@"OK"
                                   otherButtonTitles:nil] show];

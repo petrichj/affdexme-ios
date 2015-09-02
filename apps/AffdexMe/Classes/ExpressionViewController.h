@@ -1,6 +1,6 @@
 //
 //  ExpressionViewController.h
-//  MeasureUp
+//  AffdexMe
 //
 //  Created by Boisy Pitre on 2/14/14.
 //  Copyright (c) 2014 Affectiva. All rights reserved.

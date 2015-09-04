@@ -738,6 +738,7 @@
     // tell the detector which facial expressions we want to measure
     [self.detector setDetectAllEmotions:NO];
     [self.detector setDetectAllExpressions:NO];
+    
     for (NSString *s in self.selectedClassifiers)
     {
         for (NSDictionary *d in self.availableClassifiers)
@@ -791,15 +792,6 @@
     return result;
 }
 
-- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
-{
-    UIInterfaceOrientation result;
-    
-    result = UIInterfaceOrientationPortrait;
-//    result = [UIApplication sharedApplication].statusBarOrientation;
-    
-    return result;
-}
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender;
 {
     EmotionPickerViewController *vc = segue.destinationViewController;

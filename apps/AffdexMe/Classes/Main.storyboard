@@ -1240,6 +1240,9 @@
                                                     <exclude reference="AXa-2T-Tps"/>
                                                 </mask>
                                             </variation>
+                                            <variation key="widthClass=compact" misplaced="YES">
+                                                <rect key="frame" x="8" y="1" width="144" height="33"/>
+                                            </variation>
                                             <variation key="widthClass=regular">
                                                 <mask key="constraints">
                                                     <include reference="AXa-2T-Tps"/>

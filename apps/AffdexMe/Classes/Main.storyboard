@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1Ft-RU-JxF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1Ft-RU-JxF">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -764,23 +765,23 @@
                             <constraint firstItem="HDR-sj-e7X" firstAttribute="leading" secondItem="gNX-hF-ygK" secondAttribute="leadingMargin" constant="-16" id="45H-cu-Wb5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="GpE-xu-wrT" secondAttribute="trailing" constant="-16" id="5lY-jX-b8H"/>
                             <constraint firstItem="mO8-Ka-BDU" firstAttribute="top" secondItem="gNX-hF-ygK" secondAttribute="topMargin" id="6ub-Nx-0dH"/>
-                            <constraint firstItem="mJQ-9V-5iv" firstAttribute="leading" secondItem="gNX-hF-ygK" secondAttribute="leadingMargin" id="Bbl-Mv-Ntg"/>
+                            <constraint firstItem="mJQ-9V-5iv" firstAttribute="leading" secondItem="gNX-hF-ygK" secondAttribute="leadingMargin" constant="-4" id="Bbl-Mv-Ntg"/>
                             <constraint firstItem="mO8-Ka-BDU" firstAttribute="leading" secondItem="1Za-bm-qkF" secondAttribute="leading" id="Bh5-E5-EW4"/>
                             <constraint firstItem="vnk-XW-LYC" firstAttribute="top" secondItem="pV2-va-AiG" secondAttribute="bottom" constant="8" id="DSC-Ng-KGe"/>
                             <constraint firstItem="HDR-sj-e7X" firstAttribute="top" secondItem="gNX-hF-ygK" secondAttribute="topMargin" id="THw-7W-AgM"/>
                             <constraint firstAttribute="trailingMargin" secondItem="HDR-sj-e7X" secondAttribute="trailing" constant="-16" id="Ym9-9v-hDL"/>
-                            <constraint firstItem="pV2-va-AiG" firstAttribute="leading" secondItem="gNX-hF-ygK" secondAttribute="leadingMargin" id="Z4r-EZ-QN1"/>
+                            <constraint firstItem="pV2-va-AiG" firstAttribute="leading" secondItem="gNX-hF-ygK" secondAttribute="leadingMargin" constant="-4" id="Z4r-EZ-QN1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="1Uc-IE-nMP" secondAttribute="trailing" constant="-16" id="con-Jw-z3U"/>
                             <constraint firstItem="1Za-bm-qkF" firstAttribute="top" secondItem="gNX-hF-ygK" secondAttribute="topMargin" id="dch-I6-BBe"/>
-                            <constraint firstItem="mJQ-9V-5iv" firstAttribute="trailing" secondItem="gNX-hF-ygK" secondAttribute="trailingMargin" id="feg-AZ-jX0"/>
+                            <constraint firstItem="mJQ-9V-5iv" firstAttribute="trailing" secondItem="gNX-hF-ygK" secondAttribute="trailingMargin" constant="4" id="feg-AZ-jX0"/>
                             <constraint firstItem="mO8-Ka-BDU" firstAttribute="trailing" secondItem="1Za-bm-qkF" secondAttribute="trailing" id="fuJ-gM-GOB"/>
                             <constraint firstItem="1Uc-IE-nMP" firstAttribute="leading" secondItem="gNX-hF-ygK" secondAttribute="leadingMargin" constant="-16" id="nDl-dc-MG1"/>
                             <constraint firstItem="GpE-xu-wrT" firstAttribute="top" secondItem="gNX-hF-ygK" secondAttribute="topMargin" id="pCJ-My-lBM"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="1Za-bm-qkF" secondAttribute="trailing" constant="-16" id="r30-oV-w1E"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1Za-bm-qkF" secondAttribute="trailing" constant="-20" id="r30-oV-w1E"/>
                             <constraint firstItem="vnk-XW-LYC" firstAttribute="top" secondItem="1Za-bm-qkF" secondAttribute="bottom" id="tb6-YM-fkN"/>
                             <constraint firstItem="mO8-Ka-BDU" firstAttribute="top" secondItem="1Za-bm-qkF" secondAttribute="top" id="u8z-Ed-wH9"/>
                             <constraint firstItem="1Uc-IE-nMP" firstAttribute="top" secondItem="gNX-hF-ygK" secondAttribute="topMargin" id="uJm-G7-jXj"/>
-                            <constraint firstItem="1Za-bm-qkF" firstAttribute="leading" secondItem="gNX-hF-ygK" secondAttribute="leadingMargin" constant="-16" id="vEA-aK-H94"/>
+                            <constraint firstItem="1Za-bm-qkF" firstAttribute="leading" secondItem="gNX-hF-ygK" secondAttribute="leadingMargin" constant="-20" id="vEA-aK-H94"/>
                             <constraint firstItem="vnk-XW-LYC" firstAttribute="top" secondItem="mJQ-9V-5iv" secondAttribute="bottom" constant="20" id="yvC-sZ-5ao"/>
                         </constraints>
                         <variation key="default">
@@ -944,7 +945,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8jP-6I-NI9">
@@ -1107,7 +1108,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="104" height="104"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vOn-Id-fYZ">

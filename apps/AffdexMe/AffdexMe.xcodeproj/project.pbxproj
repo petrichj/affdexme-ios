@@ -395,7 +395,7 @@
 		65920A6716D73F8700D89A4B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Affectiva;
 				TargetAttributes = {
 					65920A6E16D73F8700D89A4B = {
@@ -517,6 +517,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -570,6 +571,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/../../frameworks",
@@ -580,6 +582,7 @@
 				INFOPLIST_FILE = "AffdexMe-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@exectuable_path/Frameworks @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = /private/tmp;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.affectiva.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = AffdexMe;
 				PROVISIONING_PROFILE = "731c85d3-aaf3-4125-9c6d-fec8740de2fa";
 				STRIP_INSTALLED_PRODUCT = NO;
@@ -598,6 +601,7 @@
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/../../frameworks",
@@ -610,6 +614,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@exectuable_path/Frameworks @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = /private/tmp;
 				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.affectiva.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = AffdexMe;
 				PROVISIONING_PROFILE = "9706e733-d64e-4431-bd7f-80cb97588e94";
 				STRIP_INSTALLED_PRODUCT = NO;

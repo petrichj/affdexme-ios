@@ -783,7 +783,7 @@
     [self.imageView addSubview:highlightView];
 }
 
-- (NSUInteger)supportedInterfaceOrientations;
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations;
 {
     NSUInteger result;
     

@@ -21,6 +21,9 @@
 		682B8B73185F6D4F00DB10DE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 682B8B72185F6D4F00DB10DE /* main.m */; };
 		683400F417B0389800A63823 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 683400F317B0389800A63823 /* libc++.dylib */; };
 		683400F617B0389F00A63823 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 683400F517B0389F00A63823 /* libstdc++.dylib */; };
+		683CAD0A1BF53578004FE36C /* glasses_outline.png in Resources */ = {isa = PBXBuildFile; fileRef = 683CAD091BF53578004FE36C /* glasses_outline.png */; };
+		683CAD0C1BF5357E004FE36C /* gender_male_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 683CAD0B1BF5357E004FE36C /* gender_male_white.png */; };
+		683CAD0E1BF53583004FE36C /* gender_female_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 683CAD0D1BF53583004FE36C /* gender_female_white.png */; };
 		686C75E31B95EAC000483C1A /* Square.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 686C75C01B95EAC000483C1A /* Square.ttf */; };
 		686C75E41B95EAC000483C1A /* Affectiva_Logo Clear Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 686C75C21B95EAC000483C1A /* Affectiva_Logo Clear Background.png */; };
 		686C75E51B95EAC000483C1A /* Anger.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 686C75C31B95EAC000483C1A /* Anger.jpg */; };
@@ -61,6 +64,7 @@
 		689DB56217DA32BD00751050 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 689DB56117DA32BD00751050 /* SystemConfiguration.framework */; };
 		68CF76801B83AF500083B32E /* UIDeviceHardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CF767F1B83AF500083B32E /* UIDeviceHardware.m */; };
 		68CF76831B83B0B30083B32E /* EmotionPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CF76821B83B0B30083B32E /* EmotionPickerViewController.m */; };
+		68D0FD8E1BFE68BA00D430A2 /* camera-lens-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 68D0FD8D1BFE68BA00D430A2 /* camera-lens-icon.png */; };
 		68DCE53D1767642C000DE093 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68DCE53C1767642C000DE093 /* AudioToolbox.framework */; };
 		68DD4B68194784A70077ED24 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65920A7616D73F8700D89A4B /* CoreGraphics.framework */; };
 		68EC2EEF18A97F02006C9EC5 /* sdk.license in Resources */ = {isa = PBXBuildFile; fileRef = 68EC2EEE18A97F02006C9EC5 /* sdk.license */; };
@@ -106,6 +110,9 @@
 		682B8B72185F6D4F00DB10DE /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Classes/main.m; sourceTree = "<group>"; };
 		683400F317B0389800A63823 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		683400F517B0389F00A63823 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
+		683CAD091BF53578004FE36C /* glasses_outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = glasses_outline.png; path = images/glasses_outline.png; sourceTree = "<group>"; };
+		683CAD0B1BF5357E004FE36C /* gender_male_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gender_male_white.png; path = images/gender_male_white.png; sourceTree = "<group>"; };
+		683CAD0D1BF53583004FE36C /* gender_female_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gender_female_white.png; path = images/gender_female_white.png; sourceTree = "<group>"; };
 		686C75C01B95EAC000483C1A /* Square.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Square.ttf; sourceTree = "<group>"; };
 		686C75C21B95EAC000483C1A /* Affectiva_Logo Clear Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Affectiva_Logo Clear Background.png"; sourceTree = "<group>"; };
 		686C75C31B95EAC000483C1A /* Anger.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Anger.jpg; sourceTree = "<group>"; };
@@ -151,6 +158,7 @@
 		68CF767F1B83AF500083B32E /* UIDeviceHardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIDeviceHardware.m; sourceTree = "<group>"; };
 		68CF76811B83B0B30083B32E /* EmotionPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmotionPickerViewController.h; sourceTree = "<group>"; };
 		68CF76821B83B0B30083B32E /* EmotionPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmotionPickerViewController.m; sourceTree = "<group>"; };
+		68D0FD8D1BFE68BA00D430A2 /* camera-lens-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "camera-lens-icon.png"; path = "images/camera-lens-icon.png"; sourceTree = "<group>"; };
 		68DCE53C1767642C000DE093 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		68EC2EEE18A97F02006C9EC5 /* sdk.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sdk.license; sourceTree = "<group>"; };
 		68F4233018CD216D0032A50D /* ExpressionView_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpressionView_iPad.xib; sourceTree = "<group>"; };
@@ -288,6 +296,10 @@
 		686C75BE1B95EAC000483C1A /* media */ = {
 			isa = PBXGroup;
 			children = (
+				68D0FD8D1BFE68BA00D430A2 /* camera-lens-icon.png */,
+				683CAD0D1BF53583004FE36C /* gender_female_white.png */,
+				683CAD0B1BF5357E004FE36C /* gender_male_white.png */,
+				683CAD091BF53578004FE36C /* glasses_outline.png */,
 				686C75BF1B95EAC000483C1A /* fonts */,
 				686C75C11B95EAC000483C1A /* images */,
 				686C75DD1B95EAC000483C1A /* sounds */,
@@ -432,8 +444,10 @@
 				686C75EA1B95EAC000483C1A /* Contempt.jpg in Resources */,
 				686C75EE1B95EAC000483C1A /* Eye Closure.jpg in Resources */,
 				686C75F21B95EAC000483C1A /* Frown.jpg in Resources */,
+				683CAD0C1BF5357E004FE36C /* gender_male_white.png in Resources */,
 				686C75E51B95EAC000483C1A /* Anger.jpg in Resources */,
 				686C75FD1B95EAC000483C1A /* Upper Lip Raise.jpg in Resources */,
+				68D0FD8E1BFE68BA00D430A2 /* camera-lens-icon.png in Resources */,
 				686C76001B95EAC000483C1A /* Whit.m4a in Resources */,
 				686C75F91B95EAC000483C1A /* Settings.png in Resources */,
 				686C75F51B95EAC000483C1A /* Lip Suck.jpg in Resources */,
@@ -443,6 +457,7 @@
 				68EC2EEF18A97F02006C9EC5 /* sdk.license in Resources */,
 				686C75FE1B95EAC000483C1A /* Valence.jpg in Resources */,
 				686C75F11B95EAC000483C1A /* Joy.jpg in Resources */,
+				683CAD0E1BF53583004FE36C /* gender_female_white.png in Resources */,
 				686C75FA1B95EAC000483C1A /* Smile.jpg in Resources */,
 				68F4233218CD216D0032A50D /* ExpressionView_iPad.xib in Resources */,
 				686C75F41B95EAC000483C1A /* Lip Pucker.jpg in Resources */,
@@ -458,6 +473,7 @@
 				686C75FF1B95EAC000483C1A /* Enk.m4a in Resources */,
 				686C75E41B95EAC000483C1A /* Affectiva_Logo Clear Background.png in Resources */,
 				686C75F31B95EAC000483C1A /* Lip Press.jpg in Resources */,
+				683CAD0A1BF53578004FE36C /* glasses_outline.png in Resources */,
 				686C75ED1B95EAC000483C1A /* Expressiveness.jpg in Resources */,
 				686C75E61B95EAC000483C1A /* Attention.jpg in Resources */,
 				686C75E71B95EAC000483C1A /* Brow Furrow.jpg in Resources */,

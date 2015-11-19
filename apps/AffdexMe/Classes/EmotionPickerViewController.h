@@ -21,14 +21,13 @@
 
 @property (weak) IBOutlet UICollectionView *collectionViewRegular;
 @property (weak) IBOutlet UICollectionView *collectionViewCompact;
-@property (strong) UICollectionView *collectionView;
+@property (strong) NSArray *availableClassifiers;
 @property (strong) NSMutableArray *selectedClassifiers;
-@property (strong) NSArray *emotions;
-@property (strong) NSArray *expressions;
 @property (weak) IBOutlet UILabel *instructionLabelRegular;
 @property (weak) IBOutlet UILabel *instructionLabelCompact;
 
 
+- (IBAction)clearAllTouched:(id)sender;
 - (IBAction)doneTouched:(id)sender;
 
 @end

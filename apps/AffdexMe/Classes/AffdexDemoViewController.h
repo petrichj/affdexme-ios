@@ -27,14 +27,13 @@
 @property (strong) NSMutableDictionary *faceMeasurements;
 @property (weak) IBOutlet UIView *classifiersView;
 
+@property (strong) NSMutableArray *selectedClassifiers;
 @property (weak) IBOutlet UIView *classifier1View_compact;
 @property (weak) IBOutlet UIView *classifier2View_compact;
 @property (weak) IBOutlet UIView *classifier3View_compact;
 @property (weak) IBOutlet UIView *classifier4View_compact;
 @property (weak) IBOutlet UIView *classifier5View_compact;
 @property (weak) IBOutlet UIView *classifier6View_compact;
-@property (weak) IBOutlet UIView *classifier7View_compact;
-@property (weak) IBOutlet UIView *classifier8View_compact;
 
 @property (weak) IBOutlet UIView *classifier1View_regular;
 @property (weak) IBOutlet UIView *classifier2View_regular;
@@ -42,12 +41,12 @@
 @property (weak) IBOutlet UIView *classifier4View_regular;
 @property (weak) IBOutlet UIView *classifier5View_regular;
 @property (weak) IBOutlet UIView *classifier6View_regular;
-@property (weak) IBOutlet UIView *classifier7View_regular;
-@property (weak) IBOutlet UIView *classifier8View_regular;
 
 @property (weak) IBOutlet UILabel *versionLabel;
 
 - (void)startDetector;
 - (void)stopDetector;
+
+- (IBAction)cameraButtonTouched:(id)sender;
 
 @end

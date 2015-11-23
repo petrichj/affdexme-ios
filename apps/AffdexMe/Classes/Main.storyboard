@@ -590,7 +590,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mJQ-9V-5iv">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mJQ-9V-5iv">
                                 <rect key="frame" x="16" y="559" width="568" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="206" id="6ph-7s-0wM"/>
@@ -626,7 +626,7 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pV2-va-AiG">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pV2-va-AiG">
                                 <rect key="frame" x="16" y="560" width="32" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="1FQ-Rv-nDz"/>
@@ -659,16 +659,6 @@
                                 </variation>
                                 <connections>
                                     <action selector="showPicker:" destination="1Ft-RU-JxF" eventType="touchUpInside" id="HZs-2U-8O6"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m71-16-guR">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Button" image="camera-lens-icon.png"/>
-                                <variation key="widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="336" y="496" width="128" height="96"/>
-                                </variation>
-                                <connections>
-                                    <action selector="cameraButtonTouched:" destination="1Ft-RU-JxF" eventType="touchUpInside" id="kZ1-Ql-8qP"/>
                                 </connections>
                             </button>
                             <view alpha="0.25" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Uc-IE-nMP">
@@ -709,11 +699,34 @@
                                         <include reference="Zmk-0k-Aw3"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="336" y="496" width="128" height="96"/>
-                                </variation>
                                 <connections>
                                     <action selector="cameraButtonTouched:" destination="1Ft-RU-JxF" eventType="touchUpInside" id="A3z-VR-Jsi"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m71-16-guR">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="96" id="v3L-rY-l2l"/>
+                                    <constraint firstAttribute="width" constant="128" id="yHi-kg-bTZ"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="camera-lens-icon.png"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="v3L-rY-l2l"/>
+                                        <exclude reference="yHi-kg-bTZ"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="v3L-rY-l2l"/>
+                                        <include reference="yHi-kg-bTZ"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="336" y="684" width="128" height="96"/>
+                                </variation>
+                                <connections>
+                                    <action selector="cameraButtonTouched:" destination="1Ft-RU-JxF" eventType="touchUpInside" id="kZ1-Ql-8qP"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -740,44 +753,48 @@
                             <constraint firstItem="1Uc-IE-nMP" firstAttribute="leading" secondItem="gNX-hF-ygK" secondAttribute="leadingMargin" constant="-16" id="nDl-dc-MG1"/>
                             <constraint firstItem="GpE-xu-wrT" firstAttribute="top" secondItem="gNX-hF-ygK" secondAttribute="topMargin" id="pCJ-My-lBM"/>
                             <constraint firstAttribute="trailingMargin" secondItem="1Za-bm-qkF" secondAttribute="trailing" constant="-20" id="r30-oV-w1E"/>
+                            <constraint firstItem="m71-16-guR" firstAttribute="centerX" secondItem="gNX-hF-ygK" secondAttribute="centerX" id="rna-tF-xCV"/>
                             <constraint firstItem="vnk-XW-LYC" firstAttribute="top" secondItem="pV2-va-AiG" secondAttribute="bottom" constant="20" id="t5U-FJ-d0H"/>
                             <constraint firstItem="vnk-XW-LYC" firstAttribute="top" secondItem="1Za-bm-qkF" secondAttribute="bottom" id="tb6-YM-fkN"/>
                             <constraint firstItem="mO8-Ka-BDU" firstAttribute="top" secondItem="1Za-bm-qkF" secondAttribute="top" id="u8z-Ed-wH9"/>
                             <constraint firstItem="1Uc-IE-nMP" firstAttribute="top" secondItem="gNX-hF-ygK" secondAttribute="topMargin" id="uJm-G7-jXj"/>
                             <constraint firstItem="vnk-XW-LYC" firstAttribute="top" secondItem="mJQ-9V-5iv" secondAttribute="bottom" constant="12.5" id="ufp-o4-5Uz"/>
                             <constraint firstItem="1Za-bm-qkF" firstAttribute="leading" secondItem="gNX-hF-ygK" secondAttribute="leadingMargin" constant="-20" id="vEA-aK-H94"/>
+                            <constraint firstItem="vnk-XW-LYC" firstAttribute="top" secondItem="m71-16-guR" secondAttribute="bottom" constant="8" id="vIW-Sh-VED"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="GpE-xu-wrT"/>
                                 <exclude reference="mO8-Ka-BDU"/>
                                 <exclude reference="HDR-sj-e7X"/>
-                                <exclude reference="m71-16-guR"/>
                                 <exclude reference="1Uc-IE-nMP"/>
                                 <exclude reference="fNw-UR-Eca"/>
+                                <exclude reference="m71-16-guR"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="con-Jw-z3U"/>
                                 <exclude reference="nDl-dc-MG1"/>
                                 <exclude reference="uJm-G7-jXj"/>
-                                <exclude reference="6ub-Nx-0dH"/>
-                                <exclude reference="Bh5-E5-EW4"/>
-                                <exclude reference="fuJ-gM-GOB"/>
-                                <exclude reference="u8z-Ed-wH9"/>
                                 <exclude reference="2gY-Tm-kPq"/>
                                 <exclude reference="5lY-jX-b8H"/>
                                 <exclude reference="pCJ-My-lBM"/>
                                 <exclude reference="45H-cu-Wb5"/>
-                                <exclude reference="THw-7W-AgM"/>
-                                <exclude reference="Ym9-9v-hDL"/>
+                                <exclude reference="6ub-Nx-0dH"/>
+                                <exclude reference="Bh5-E5-EW4"/>
+                                <exclude reference="fuJ-gM-GOB"/>
+                                <exclude reference="u8z-Ed-wH9"/>
                                 <exclude reference="Lxr-8C-PYh"/>
                                 <exclude reference="VCa-14-asZ"/>
-                                <exclude reference="del-3U-0Vi"/>
                                 <exclude reference="5LK-qk-kWw"/>
                                 <exclude reference="J9e-bL-Tlk"/>
                                 <exclude reference="T77-pU-Cz4"/>
                                 <exclude reference="t5U-FJ-d0H"/>
                                 <exclude reference="ufp-o4-5Uz"/>
+                                <exclude reference="vIW-Sh-VED"/>
+                                <exclude reference="THw-7W-AgM"/>
+                                <exclude reference="Ym9-9v-hDL"/>
+                                <exclude reference="del-3U-0Vi"/>
+                                <exclude reference="rna-tF-xCV"/>
                                 <exclude reference="PN3-Sj-odG"/>
                                 <exclude reference="YmF-td-x2J"/>
                             </mask>
@@ -793,13 +810,13 @@
                                 <include reference="5lY-jX-b8H"/>
                                 <include reference="pCJ-My-lBM"/>
                                 <include reference="45H-cu-Wb5"/>
-                                <include reference="THw-7W-AgM"/>
-                                <include reference="Ym9-9v-hDL"/>
                                 <include reference="Lxr-8C-PYh"/>
-                                <include reference="del-3U-0Vi"/>
                                 <include reference="5LK-qk-kWw"/>
                                 <include reference="J9e-bL-Tlk"/>
                                 <include reference="ufp-o4-5Uz"/>
+                                <include reference="THw-7W-AgM"/>
+                                <include reference="Ym9-9v-hDL"/>
+                                <include reference="del-3U-0Vi"/>
                                 <include reference="PN3-Sj-odG"/>
                             </mask>
                         </variation>
@@ -811,6 +828,8 @@
                                 <include reference="VCa-14-asZ"/>
                                 <include reference="T77-pU-Cz4"/>
                                 <include reference="t5U-FJ-d0H"/>
+                                <include reference="vIW-Sh-VED"/>
+                                <include reference="rna-tF-xCV"/>
                                 <include reference="YmF-td-x2J"/>
                             </mask>
                         </variation>
@@ -831,6 +850,8 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="cameraButton_compact" destination="fNw-UR-Eca" id="hL4-hf-44G"/>
+                        <outlet property="cameraButton_regular" destination="m71-16-guR" id="qx8-2z-l1A"/>
                         <outlet property="classifier1View_compact" destination="MCI-Ib-Bke" id="AkZ-ry-DZj"/>
                         <outlet property="classifier1View_regular" destination="eZZ-SZ-fcc" id="nld-9W-hqm"/>
                         <outlet property="classifier2View_compact" destination="Iks-ky-5ib" id="Byx-ML-gHh"/>
@@ -928,7 +949,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8jP-6I-NI9">
@@ -1091,7 +1112,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="154" height="154"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vOn-Id-fYZ">

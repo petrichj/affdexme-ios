@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Affectiva All rights reserved.
 //
 
+#import "SoundEffect.h"
+
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import "ExpressionViewController.h"
@@ -26,6 +28,8 @@
 @property (assign) BOOL drawFaceRect;
 @property (strong) NSMutableDictionary *faceMeasurements;
 @property (weak) IBOutlet UIView *classifiersView;
+@property (weak) IBOutlet UIButton *cameraButton_compact;
+@property (weak) IBOutlet UIButton *cameraButton_regular;
 
 @property (strong) NSMutableArray *selectedClassifiers;
 @property (weak) IBOutlet UIView *classifier1View_compact;
@@ -43,6 +47,8 @@
 @property (weak) IBOutlet UIView *classifier6View_regular;
 
 @property (weak) IBOutlet UILabel *versionLabel;
+@property (strong) SoundEffect *sound;
+
 
 - (void)startDetector;
 - (void)stopDetector;

@@ -65,6 +65,7 @@
 		68CF76801B83AF500083B32E /* UIDeviceHardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CF767F1B83AF500083B32E /* UIDeviceHardware.m */; };
 		68CF76831B83B0B30083B32E /* EmotionPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CF76821B83B0B30083B32E /* EmotionPickerViewController.m */; };
 		68D0FD8E1BFE68BA00D430A2 /* camera-lens-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 68D0FD8D1BFE68BA00D430A2 /* camera-lens-icon.png */; };
+		68D0FD931C035AAB00D430A2 /* camera-shutter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 68D0FD921C035AAB00D430A2 /* camera-shutter.mp3 */; };
 		68DCE53D1767642C000DE093 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68DCE53C1767642C000DE093 /* AudioToolbox.framework */; };
 		68DD4B68194784A70077ED24 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65920A7616D73F8700D89A4B /* CoreGraphics.framework */; };
 		68EC2EEF18A97F02006C9EC5 /* sdk.license in Resources */ = {isa = PBXBuildFile; fileRef = 68EC2EEE18A97F02006C9EC5 /* sdk.license */; };
@@ -159,6 +160,7 @@
 		68CF76811B83B0B30083B32E /* EmotionPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmotionPickerViewController.h; sourceTree = "<group>"; };
 		68CF76821B83B0B30083B32E /* EmotionPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmotionPickerViewController.m; sourceTree = "<group>"; };
 		68D0FD8D1BFE68BA00D430A2 /* camera-lens-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "camera-lens-icon.png"; path = "images/camera-lens-icon.png"; sourceTree = "<group>"; };
+		68D0FD921C035AAB00D430A2 /* camera-shutter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "camera-shutter.mp3"; sourceTree = "<group>"; };
 		68DCE53C1767642C000DE093 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		68EC2EEE18A97F02006C9EC5 /* sdk.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sdk.license; sourceTree = "<group>"; };
 		68F4233018CD216D0032A50D /* ExpressionView_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpressionView_iPad.xib; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 		686C75BE1B95EAC000483C1A /* media */ = {
 			isa = PBXGroup;
 			children = (
+				68D0FD921C035AAB00D430A2 /* camera-shutter.mp3 */,
 				68D0FD8D1BFE68BA00D430A2 /* camera-lens-icon.png */,
 				683CAD0D1BF53583004FE36C /* gender_female_white.png */,
 				683CAD0B1BF5357E004FE36C /* gender_male_white.png */,
@@ -460,6 +463,7 @@
 				683CAD0E1BF53583004FE36C /* gender_female_white.png in Resources */,
 				686C75FA1B95EAC000483C1A /* Smile.jpg in Resources */,
 				68F4233218CD216D0032A50D /* ExpressionView_iPad.xib in Resources */,
+				68D0FD931C035AAB00D430A2 /* camera-shutter.mp3 in Resources */,
 				686C75F41B95EAC000483C1A /* Lip Pucker.jpg in Resources */,
 				686C76021B95EAC000483C1A /* face1.m4v in Resources */,
 				686C75F81B95EAC000483C1A /* Sadness.jpg in Resources */,

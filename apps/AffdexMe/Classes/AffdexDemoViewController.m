@@ -275,7 +275,13 @@
 
 - (IBAction)cameraButtonTouched:(id)sender;
 {
+    self.cameraButton_compact.hidden = TRUE;
+    self.cameraButton_regular.hidden = TRUE;
     UIImage *snap = [self captureSnapshot];
+    self.sound = [[SoundEffect alloc] initWithSoundNamed:@"camera-shutter.mp3"];
+    [self.sound play];
+    self.cameraButton_compact.hidden = FALSE;
+    self.cameraButton_regular.hidden = FALSE;
     if (nil != snap) {
         UIImageWriteToSavedPhotosAlbum(snap, nil, nil, nil);
     }

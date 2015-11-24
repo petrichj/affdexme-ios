@@ -683,7 +683,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fNw-UR-Eca">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="64" id="Cj4-6m-oxq"/>
+                                    <constraint firstAttribute="width" constant="64" id="Cj4-6m-oxq">
+                                        <variation key="widthClass=compact" constant="48"/>
+                                    </constraint>
                                     <constraint firstAttribute="height" constant="48" id="Zmk-0k-Aw3"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="camera-lens-icon.png"/>
@@ -706,8 +708,12 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m71-16-guR">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="96" id="v3L-rY-l2l"/>
-                                    <constraint firstAttribute="width" constant="128" id="yHi-kg-bTZ"/>
+                                    <constraint firstAttribute="height" constant="96" id="v3L-rY-l2l">
+                                        <variation key="widthClass=regular" constant="96"/>
+                                    </constraint>
+                                    <constraint firstAttribute="width" constant="128" id="yHi-kg-bTZ">
+                                        <variation key="widthClass=regular" constant="96"/>
+                                    </constraint>
                                 </constraints>
                                 <state key="normal" title="Button" image="camera-lens-icon.png"/>
                                 <variation key="default">
@@ -949,7 +955,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8jP-6I-NI9">
@@ -1112,7 +1118,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="154" height="154"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vOn-Id-fYZ">

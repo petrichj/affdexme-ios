@@ -30,6 +30,11 @@
 @property (weak) IBOutlet UIView *classifiersView;
 @property (weak) IBOutlet UIButton *cameraButton_compact;
 @property (weak) IBOutlet UIButton *cameraButton_regular;
+@property (weak) IBOutlet UIButton *cameraSwapButton_compact;
+@property (weak) IBOutlet UIButton *cameraSwapButton_regular;
+
+@property (weak) IBOutlet UIView *classifierHeaderView_compact;
+@property (weak) IBOutlet UIView *classifierHeaderView_regular;
 
 @property (strong) NSMutableArray *selectedClassifiers;
 @property (weak) IBOutlet UIView *classifier1View_compact;
@@ -54,5 +59,6 @@
 - (void)stopDetector;
 
 - (IBAction)cameraButtonTouched:(id)sender;
+- (IBAction)cameraSwapButtonTouched:(id)sender;
 
 @end

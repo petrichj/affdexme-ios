@@ -82,8 +82,11 @@
 @property (strong) UIImage *glassesImage;
 @property (assign) CGRect genderRect;
 @property (assign) CGRect glassesRect;
+@property (assign) AFDXCameraType cameraToUse;
 
 @property (strong) NSArray *faces;
+
+@property (assign) BOOL multifaceMode;
 
 @end
 
@@ -99,9 +102,38 @@
 }
 #endif
 
+- (void)enterSingleFaceMode;
+{
+//    if (self.multifaceMode == TRUE)
+    {
+        self.multifaceMode = FALSE;
+        self.classifierHeaderView_compact.hidden = TRUE;
+        self.classifierHeaderView_regular.hidden = TRUE;
+    }
+}
+
+- (void)enterMultiFaceMode;
+{
+//    if (self.multifaceMode == FALSE)
+    {
+        self.multifaceMode = TRUE;
+        self.classifierHeaderView_compact.hidden = FALSE;
+        self.classifierHeaderView_regular.hidden = FALSE;
+    }
+}
+
 - (void)processedImageReady:(AFDXDetector *)detector image:(UIImage *)image faces:(NSDictionary *)faces atTime:(NSTimeInterval)time;
 {
     self.faces = [faces allValues];
+    
+    // determine single or multi face mode
+    if (self.faces.count <= 1) {
+        // multi face mode
+        [self enterMultiFaceMode];
+    } else {
+        // single face mode
+        [self enterSingleFaceMode];
+    }
     
     NSDate *now = [NSDate date];
     
@@ -127,42 +159,6 @@
     {
         NSDictionary *faceData = face.userInfo;
         NSArray *viewControllers = [faceData objectForKey:@"viewControllers"];
-        UIImageView *maleGenderView = [faceData objectForKey:@"male"];
-        UIImageView *femaleGenderView = [faceData objectForKey:@"female"];
-        UIImageView *glassesView = [faceData objectForKey:@"glasses"];
-
-#if 0
-        // put appropriate gender image up
-        switch (face.appearance.gender) {
-            case AFDX_GENDER_UNKNOWN:
-                maleGenderView.hidden = TRUE;
-                femaleGenderView.hidden = TRUE;
-                break;
-
-            case AFDX_GENDER_MALE:
-                maleGenderView.hidden = FALSE;
-                femaleGenderView.hidden = TRUE;
-                break;
-
-            case AFDX_GENDER_FEMALE:
-                maleGenderView.hidden = TRUE;
-                femaleGenderView.hidden = FALSE;
-                break;
-        }
-        
-        self.glassesRect = glassesView.frame;
-        self.glassesRect = CGRectMake(face.faceBounds.origin.x + self.glassesRect.size.width / 2, face.faceBounds.origin.y, self.glassesRect.size.width, self.glassesRect.size.height);
-
-        self.genderRect = maleGenderView.frame;
-        NSLog(@"%@", NSStringFromCGRect(face.faceBounds));
-        self.genderRect = CGRectMake(face.faceBounds.origin.x + (face.faceBounds.size.width / 2) + self.genderRect.size.width / 2, face.faceBounds.origin.y + (face.faceBounds.size.height / 2), self.genderRect.size.width, self.genderRect.size.height);
-
-        maleGenderView.frame = self.genderRect;
-        femaleGenderView.frame = self.genderRect;
-        glassesView.frame = self.glassesRect;
-        
-        glassesView.hidden = !(face.appearance.glasses >= 50.0);
-#endif
         
         __block float classifier1Score = 0.0, classifier2Score = 0.0, classifier3Score = 0.0;
         __block float classifier4Score = 0.0, classifier5Score = 0.0, classifier6Score = 0.0;
@@ -277,14 +273,29 @@
 {
     self.cameraButton_compact.hidden = TRUE;
     self.cameraButton_regular.hidden = TRUE;
+    self.cameraSwapButton_compact.hidden = TRUE;
+    self.cameraSwapButton_regular.hidden = TRUE;
     UIImage *snap = [self captureSnapshot];
     self.sound = [[SoundEffect alloc] initWithSoundNamed:@"camera-shutter.mp3"];
     [self.sound play];
     self.cameraButton_compact.hidden = FALSE;
     self.cameraButton_regular.hidden = FALSE;
+    self.cameraSwapButton_compact.hidden = FALSE;
+    self.cameraSwapButton_regular.hidden = FALSE;
     if (nil != snap) {
         UIImageWriteToSavedPhotosAlbum(snap, nil, nil, nil);
     }
+}
+
+- (IBAction)cameraSwapButtonTouched:(id)sender;
+{
+    if (self.cameraToUse == AFDX_CAMERA_FRONT) {
+        self.cameraToUse = AFDX_CAMERA_BACK;
+    } else {
+        self.cameraToUse = AFDX_CAMERA_FRONT;
+    }
+    
+    [self startDetector];
 }
 
 - (void)unprocessedImageReady:(AFDXDetector *)detector image:(UIImage *)image atTime:(NSTimeInterval)time;
@@ -317,18 +328,22 @@
             }
             
             if (genderImage != nil) {
-                CGRect rect = CGRectMake(face.faceBounds.origin.x, face.faceBounds.origin.y + (face.faceBounds.size.height) - genderImage.size.height, genderImage.size.width, genderImage.size.height);
+                CGRect rect = CGRectMake(face.faceBounds.origin.x - genderImage.size.width, face.faceBounds.origin.y + (face.faceBounds.size.height) - genderImage.size.height, genderImage.size.width, genderImage.size.height);
                 newImage = [newImage drawImage:genderImage inRect:rect];
             }
 
             if (face.appearance.glasses > 50.0) {
-                CGRect rect = CGRectMake(face.faceBounds.origin.x + face.faceBounds.size.width - self.glassesImage.size.width, face.faceBounds.origin.y + (face.faceBounds.size.height) - self.glassesImage.size.height, self.glassesImage.size.width, self.glassesImage.size.height);
+                CGRect rect = CGRectMake(face.faceBounds.origin.x - self.glassesImage.size.width, face.faceBounds.origin.y + (face.faceBounds.size.height) - self.glassesImage.size.height - genderImage.size.height    , self.glassesImage.size.width, self.glassesImage.size.height);
                 newImage = [newImage drawImage:self.glassesImage inRect:rect];
             }
         }
 
-        UIImage *flippedImage = [UIImage imageWithCGImage:newImage.CGImage scale:image.scale orientation:UIImageOrientationUpMirrored];
-        [weakSelf.imageView setImage:flippedImage];
+        if (self.cameraToUse == AFDX_CAMERA_FRONT) {
+            UIImage *flippedImage = [UIImage imageWithCGImage:newImage.CGImage scale:image.scale orientation:UIImageOrientationUpMirrored];
+            [weakSelf.imageView setImage:flippedImage];
+        } else {
+            [weakSelf.imageView setImage:image];
+        }
 
     });
     
@@ -403,30 +418,15 @@
         
         if (weakSelf.viewControllers != nil)
         {
-            UIImageView *maleGenderView = [[UIImageView alloc] initWithImage:self.maleImage];
-            maleGenderView.hidden = TRUE;
-            UIImageView *femaleGenderView = [[UIImageView alloc] initWithImage:self.femaleImage];
-            femaleGenderView.hidden = TRUE;
-            UIImageView *glassesView = [[UIImageView alloc] initWithImage:self.glassesImage];
-            glassesView.hidden = TRUE;
-            
-            face.userInfo = @{@"viewControllers" : weakSelf.viewControllers,
-                              @"male": maleGenderView,
-                              @"female": femaleGenderView,
-                              @"glasses": glassesView
-                              };
+            face.userInfo = @{@"viewControllers" : weakSelf.viewControllers};
 
-            [self.imageView addSubview:maleGenderView];
-            [self.imageView addSubview:femaleGenderView];
-            [self.imageView addSubview:glassesView];
-            
 #ifdef BROADCAST_VIA_UDP
             char buffer[2];
             buffer[0] = (char)face.faceId;
             buffer[1] = 1;
             NSData *d = [NSData dataWithBytes:buffer length:sizeof(buffer)];
             [weakSelf.udpSocket sendData:d toHost:MULTICAST_GROUP port:MULTICAST_PORT withTimeout:-1 tag:0];
-    #endif
+#endif
         }
     });
 }
@@ -440,14 +440,6 @@
         
         [UIView beginAnimations:nil context:NULL];
         [UIView setAnimationDuration:0.5];
-        
-        UIImageView *maleGenderView = [face.userInfo objectForKey:@"male"];
-        UIImageView *femaleGenderView = [face.userInfo objectForKey:@"female"];
-        UIImageView *glassesView = [face.userInfo objectForKey:@"glasses"];
-        
-        [maleGenderView removeFromSuperview];
-        [femaleGenderView removeFromSuperview];
-        [glassesView removeFromSuperview];
         
         if (iPhone == TRUE)
         {
@@ -583,7 +575,9 @@
 {
     [super viewDidLoad];
     
-    CGFloat scaleFactor = 3;
+    self.cameraToUse = AFDX_CAMERA_FRONT;
+    
+    CGFloat scaleFactor = 4;
     BOOL iPhone = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone);
     if (iPhone == TRUE) {
         scaleFactor *= 2;
@@ -824,7 +818,7 @@
     self.detector = [[AFDXDetector alloc] initWithDelegate:self usingFile:self.mediaFilename maximumFaces:3];
 #else
     // create our detector with our desired facial expresions, using the front facing camera
-    self.detector = [[AFDXDetector alloc] initWithDelegate:self usingCamera:AFDX_CAMERA_FRONT maximumFaces:3];
+    self.detector = [[AFDXDetector alloc] initWithDelegate:self usingCamera:self.cameraToUse maximumFaces:3];
 #endif
     
 

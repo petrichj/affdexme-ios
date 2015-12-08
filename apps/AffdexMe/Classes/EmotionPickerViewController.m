@@ -19,6 +19,8 @@
 #define SELECTED_TEXT_COLOR [UIColor blackColor]
 #define UNSELECTED_COLOR [UIColor whiteColor]
 #define UNSELECTED_TEXT_COLOR [UIColor blackColor]
+#define ERROR_COLOR [UIColor redColor]
+#define ERROR_TEXT_COLOR [UIColor whiteColor]
 
 @implementation EmotionVideoCell
 
@@ -44,6 +46,12 @@
     self.label.textColor = UNSELECTED_TEXT_COLOR;
     self.label.backgroundColor = UNSELECTED_COLOR;
     self.backgroundColor = UNSELECTED_COLOR;
+}
+
+- (void)highlightError {
+    self.label.textColor = ERROR_TEXT_COLOR;
+    self.label.backgroundColor = ERROR_COLOR;
+    self.backgroundColor = ERROR_COLOR;
 }
 
 @end
@@ -157,7 +165,13 @@
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView;
 {
-    return 3;
+    NSInteger count = [self.availableClassifiers count];
+
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"allowEmojiSelection"] boolValue] == YES) {
+        return count;
+    } else {
+        return count - 1;
+    }
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section;
@@ -185,7 +199,7 @@
     NSUInteger index = [indexPath row];
     cell.label.text = [[[self.availableClassifiers objectAtIndex:section] objectAtIndex:index] objectForKey:@"name"];
     
-    UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg", cell.label.text]];
+    UIImage *image = [[[self.availableClassifiers objectAtIndex:section] objectAtIndex:index] objectForKey:@"image"];
     [cell.classifierView setImage:image];
 #if 0
     if (cell.moviePlayer == nil)
@@ -259,6 +273,18 @@
             self.instructionLabelCompact.text = self.instructionLabelRegular.text;
 
             // alert user visually
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [cell highlightError];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [cell unhighlight];
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        [cell highlightError];
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                            [cell unhighlight];
+                        });
+                    });
+                });
+            });
 #if PLAY_SOUNDS
             self.sound = [[SoundEffect alloc] initWithSoundNamed:@"Enk.m4a"];
             [self.sound play];

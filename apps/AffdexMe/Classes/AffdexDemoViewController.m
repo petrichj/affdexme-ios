@@ -27,23 +27,70 @@
 
 @interface UIImage (test)
 
-- (UIImage *)drawImage:(UIImage *)inputImage inRect:(CGRect)frame;
++ (UIImage *)imageFromText:(NSString *)text size:(CGFloat)size;
++ (UIImage *)imageFromView:(UIView *)view;
 
 @end
 
 @implementation UIImage (test)
 
-- (UIImage *)drawImage:(UIImage *)inputImage inRect:(CGRect)frame;
++ (UIImage *)imageFromText:(NSString *)text size:(CGFloat)size;
+{
+    // set the font type and size
+    UIFont *font = [UIFont systemFontOfSize:size];
+    CGSize imageSize  = [text sizeWithAttributes:@{ NSFontAttributeName : font }];
+
+    // check if UIGraphicsBeginImageContextWithOptions is available (iOS is 4.0+)
+    UIGraphicsBeginImageContextWithOptions(imageSize, NO, 0.0);
+    
+    // optional: add a shadow, to avoid clipping the shadow you should make the context size bigger
+    //
+    // CGContextRef ctx = UIGraphicsGetCurrentContext();
+    // CGContextSetShadowWithColor(ctx, CGSizeMake(1.0, 1.0), 5.0, [[UIColor grayColor] CGColor]);
+    
+    // draw in context, you can use also drawInRect:withFont:
+    [text drawAtPoint:CGPointMake(0.0, 0.0) withAttributes:@{ NSFontAttributeName : font }];
+    
+    // transfer image
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
+
++ (UIImage *)imageFromView:(UIView *)view;
+{
+    UIGraphicsBeginImageContext(view.bounds.size);
+    
+    [view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    
+    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return img;
+}
+
+- (UIImage *)drawImages:(NSArray *)inputImages inRects:(NSArray *)frames;
 {
     UIGraphicsBeginImageContextWithOptions(self.size, NO, 0.0);
     [self drawInRect:CGRectMake(0.0, 0.0, self.size.width, self.size.height)];
-    [inputImage drawInRect:frame];
+    NSUInteger inputImagesCount = [inputImages count];
+    NSUInteger framesCount = [frames count];
+    if (inputImagesCount == framesCount) {
+        for (int i = 0; i < inputImagesCount; i++) {
+            UIImage *inputImage = [inputImages objectAtIndex:i];
+            CGRect frame = [[frames objectAtIndex:i] CGRectValue];
+            [inputImage drawInRect:frame];
+        }
+    }
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return newImage;
 }
 
 @end
+
 @interface AffdexDemoViewController ()
 
 @property (strong) NSDate *dateOfLastFrame;
@@ -85,8 +132,10 @@
 @property (assign) AFDXCameraType cameraToUse;
 
 @property (strong) NSArray *faces;
+@property (assign) Emoji dominantEmoji;
 
 @property (assign) BOOL multifaceMode;
+@property (strong) ExpressionViewController *dominantEmotionOrExpression;
 
 @end
 
@@ -104,22 +153,24 @@
 
 - (void)enterSingleFaceMode;
 {
-//    if (self.multifaceMode == TRUE)
-    {
-        self.multifaceMode = FALSE;
-        self.classifierHeaderView_compact.hidden = TRUE;
-        self.classifierHeaderView_regular.hidden = TRUE;
-    }
+    self.multifaceMode = FALSE;
+    
+    [UIView animateWithDuration:0.1 animations:^{
+        self.classifierHeaderView_compact.hidden = FALSE;
+        self.classifierHeaderView_regular.hidden = FALSE;
+    } completion: ^(BOOL finished) {
+    }];
 }
 
 - (void)enterMultiFaceMode;
 {
-//    if (self.multifaceMode == FALSE)
-    {
-        self.multifaceMode = TRUE;
-        self.classifierHeaderView_compact.hidden = FALSE;
-        self.classifierHeaderView_regular.hidden = FALSE;
-    }
+    self.multifaceMode = TRUE;
+    
+    [UIView animateWithDuration:0.1 animations:^{
+        self.classifierHeaderView_compact.hidden = TRUE;
+        self.classifierHeaderView_regular.hidden = TRUE;
+    } completion: ^(BOOL finished) {
+    }];
 }
 
 - (void)processedImageReady:(AFDXDetector *)detector image:(UIImage *)image faces:(NSDictionary *)faces atTime:(NSTimeInterval)time;
@@ -127,7 +178,7 @@
     self.faces = [faces allValues];
     
     // determine single or multi face mode
-    if (self.faces.count <= 1) {
+    if (self.faces.count > 1) {
         // multi face mode
         [self enterMultiFaceMode];
     } else {
@@ -170,6 +221,10 @@
         {
             for (NSArray *a in self.availableClassifiers)
             {
+                // get dominant emoji
+                self.dominantEmoji = face.emojis.dominantEmoji;
+//                self.dominantEmoji = AFDX_EMOJI_SCREAM;
+                
                 for (NSDictionary *d in a) {
                     if ([[d objectForKey:@"name"] isEqualToString:self.classifier1Name])
                     {
@@ -303,16 +358,6 @@
     __block AffdexDemoViewController *weakSelf = self;
     __block UIImage *newImage = image;
     dispatch_async(dispatch_get_main_queue(), ^{
-        if (TRUE == self.drawFacePoints || TRUE == self.drawFaceRect)
-        {
-            newImage = [detector imageByDrawingPoints:weakSelf.drawFacePoints ? weakSelf.facePointsToDraw : nil
-                                                    andRectangles:weakSelf.drawFaceRect ? weakSelf.faceRectsToDraw : nil
-                                                       withRadius:1.4
-                                                  usingPointColor:[UIColor whiteColor]
-                                              usingRectangleColor:[UIColor whiteColor]
-                                                          onImage:newImage];
-        }
-
         for (AFDXFace *face in self.faces) {
             UIImage *genderImage = nil;
             switch (face.appearance.gender) {
@@ -326,23 +371,103 @@
                     genderImage = nil;
                     break;
             }
+
+            // create array of images and rects to do all drawing at once
+            NSMutableArray *imagesArray = [NSMutableArray array];
+            NSMutableArray *rectsArray = [NSMutableArray array];
             
+            if (self.dominantEmoji != AFDX_EMOJI_NONE) {
+                for (NSDictionary *emojiDictionary in self.emojis) {
+                    NSNumber *code = [emojiDictionary objectForKey:@"code"];
+                    if (self.dominantEmoji == [code intValue]) {
+                        // match!
+                        UIImage *emojiImage = [emojiDictionary objectForKey:@"image"];
+                        if (nil != emojiImage) {
+                            CGRect rect = CGRectMake(face.faceBounds.origin.x - emojiImage.size.width, face.faceBounds.origin.y - emojiImage.size.height / 2, emojiImage.size.width, emojiImage.size.height);
+                            [imagesArray addObject:emojiImage];
+                            [rectsArray addObject:[NSValue valueWithCGRect:rect]];
+                            break;
+                        }
+                    }
+                }
+            }
+            
+            // add gender image
             if (genderImage != nil) {
                 CGRect rect = CGRectMake(face.faceBounds.origin.x - genderImage.size.width, face.faceBounds.origin.y + (face.faceBounds.size.height) - genderImage.size.height, genderImage.size.width, genderImage.size.height);
-                newImage = [newImage drawImage:genderImage inRect:rect];
+                [imagesArray addObject:genderImage];
+                [rectsArray addObject:[NSValue valueWithCGRect:rect]];
             }
 
+            // add glasses image
             if (face.appearance.glasses > 50.0) {
                 CGRect rect = CGRectMake(face.faceBounds.origin.x - self.glassesImage.size.width, face.faceBounds.origin.y + (face.faceBounds.size.height) - self.glassesImage.size.height - genderImage.size.height    , self.glassesImage.size.width, self.glassesImage.size.height);
-                newImage = [newImage drawImage:self.glassesImage inRect:rect];
+                [imagesArray addObject:self.glassesImage];
+                [rectsArray addObject:[NSValue valueWithCGRect:rect]];
             }
+
+            // add dominant emotion/expression
+            if (self.multifaceMode == TRUE) {
+                CGFloat dominantScore = -9999;
+                NSString *dominantName = @"NONAME";
+             
+                // pass through emotions to find the dominant one
+                for (NSDictionary *d in self.emotions) {
+                    CGFloat score = [[face valueForKeyPath:[d objectForKey:@"score"]] floatValue];
+                    if (score > dominantScore) {
+                        dominantScore = score;
+                        dominantName = [d objectForKey:@"name"];
+                    }
+                }
+                    
+                // pass through expressions to find the dominant one
+                for (NSDictionary *d in self.expressions) {
+                    CGFloat score = [[face valueForKeyPath:[d objectForKey:@"score"]] floatValue];
+                    if (score > dominantScore) {
+                        dominantScore = score;
+                        dominantName = [d objectForKey:@"name"];
+                    }
+                }
+                
+                BOOL iPhone = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone);
+                if (self.dominantEmotionOrExpression == nil) {
+                    self.dominantEmotionOrExpression = [[ExpressionViewController alloc] initWithName:dominantName deviceIsPhone:iPhone];
+                }
+                [self.dominantEmotionOrExpression setMetric:dominantScore];
+                self.dominantEmotionOrExpression.expressionLabel.text = dominantName;
+                UIImage *image = [UIImage imageFromView:self.dominantEmotionOrExpression.view];
+                if (self.cameraToUse == AFDX_CAMERA_FRONT) {
+                    image = [UIImage imageWithCGImage:image.CGImage
+                                                                scale:image.scale
+                                                          orientation:UIImageOrientationUpMirrored];
+                }
+                CGRect rect = CGRectMake(face.faceBounds.origin.x + (face.faceBounds.size.width / 2) - image.size.width / 2,
+                                         face.faceBounds.origin.y + face.faceBounds.size.height,
+                                         image.size.width,
+                                         image.size.height);
+                [imagesArray addObject:image];
+                [rectsArray addObject:[NSValue valueWithCGRect:rect]];
+            }
+            
+            // do drawing here
+            newImage = [AFDXDetector imageByDrawingPoints:weakSelf.drawFacePoints ? weakSelf.facePointsToDraw : nil
+                                        andRectangles:weakSelf.drawFaceRect ? weakSelf.faceRectsToDraw : nil
+                                            andImages:imagesArray
+                                           withRadius:1.4
+                                      usingPointColor:[UIColor whiteColor]
+                                  usingRectangleColor:[UIColor whiteColor]
+                                      usingImageRects:rectsArray
+                                              onImage:newImage];
         }
 
+        // flip image if the front camera is being used so that the perspective is mirrored.
         if (self.cameraToUse == AFDX_CAMERA_FRONT) {
-            UIImage *flippedImage = [UIImage imageWithCGImage:newImage.CGImage scale:image.scale orientation:UIImageOrientationUpMirrored];
+            UIImage *flippedImage = [UIImage imageWithCGImage:newImage.CGImage
+                                                        scale:image.scale
+                                                  orientation:UIImageOrientationUpMirrored];
             [weakSelf.imageView setImage:flippedImage];
         } else {
-            [weakSelf.imageView setImage:image];
+            [weakSelf.imageView setImage:newImage];
         }
 
     });
@@ -480,6 +605,7 @@
 + (void)initialize;
 {
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"drawFacePoints" : [NSNumber numberWithBool:YES]}];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"allowEmojiSelection" : [NSNumber numberWithBool:NO]}];
 }
 
 -(BOOL)canBecomeFirstResponder;
@@ -514,48 +640,205 @@
 {
     if (self = [super initWithCoder:aDecoder])
     {
-        self.emotions = @[@{@"name" : @"Anger", @"propertyName" : @"anger", @"score": @"emotions.anger"},
-                          @{@"name" : @"Contempt", @"propertyName" : @"contempt", @"score": @"emotions.contempt"},
-                          @{@"name" : @"Disgust", @"propertyName" : @"disgust", @"score": @"emotions.disgust"},
-                          @{@"name" : @"Engagement", @"propertyName" : @"engagement", @"score": @"emotions.engagement"},
-                          @{@"name" : @"Fear", @"propertyName" : @"fear", @"score": @"emotions.fear"},
-                          @{@"name" : @"Joy", @"propertyName" : @"joy", @"score": @"emotions.joy"},
-                          @{@"name" : @"Sadness", @"propertyName" : @"sadness", @"score": @"emotions.sadness"},
-                          @{@"name" : @"Surprise", @"propertyName" : @"surprise", @"score": @"emotions.surprise"},
-                          @{@"name" : @"Valence", @"propertyName" : @"valence", @"score": @"emotions.valence"}
+        self.emotions = @[@{@"name" : @"Anger",
+                            @"propertyName" : @"anger",
+                            @"score": @"emotions.anger",
+                            @"image": [UIImage imageNamed:@"Anger.jpg"]
+                            },
+                          @{@"name" : @"Contempt",
+                            @"propertyName" : @"contempt",
+                            @"score": @"emotions.contempt",
+                            @"image": [UIImage imageNamed:@"Contempt.jpg"]
+                            },
+                          @{@"name" : @"Disgust",
+                            @"propertyName" : @"disgust",
+                            @"score": @"emotions.disgust",
+                            @"image": [UIImage imageNamed:@"Disgust.jpg"]
+                            },
+                          @{@"name" : @"Engagement",
+                            @"propertyName" : @"engagement",
+                            @"score": @"emotions.engagement",
+                            @"image": [UIImage imageNamed:@"Engagement.jpg"]
+                            },
+                          @{@"name" : @"Fear",
+                            @"propertyName" : @"fear",
+                            @"score": @"emotions.fear",
+                            @"image": [UIImage imageNamed:@"Fear.jpg"]
+                            },
+                          @{@"name" : @"Joy",
+                            @"propertyName" : @"joy",
+                            @"score": @"emotions.joy",
+                            @"image": [UIImage imageNamed:@"Joy.jpg"]
+                            },
+                          @{@"name" : @"Sadness",
+                            @"propertyName" : @"sadness",
+                            @"score": @"emotions.sadness",
+                            @"image": [UIImage imageNamed:@"Sadness.jpg"]
+                            },
+                          @{@"name" : @"Surprise",
+                            @"propertyName" : @"surprise",
+                            @"score": @"emotions.surprise",
+                            @"image": [UIImage imageNamed:@"Surprise.jpg"]
+                            },
+                          @{@"name" : @"Valence",
+                            @"propertyName" : @"valence",
+                            @"score": @"emotions.valence",
+                            @"image": [UIImage imageNamed:@"Valence.jpg"]
+                            }
                           ];
         
-        self.expressions = @[@{@"name" : @"Attention", @"propertyName" : @"attention", @"score": @"attentionScore"},
-                             @{@"name" : @"Brow Furrow", @"propertyName" : @"browFurrow", @"score": @"browFurrowScore"},
-                             @{@"name" : @"Brow Raise", @"propertyName" : @"browRaise", @"score": @"browRaiseScore"},
-                             @{@"name" : @"Chin Raise", @"propertyName" : @"chinRaise", @"score": @"chinRaiseScore"},
-                             @{@"name" : @"Eye Closure", @"propertyName" : @"eyeClosure", @"score": @"eyeClosureScore"},
-                             @{@"name" : @"Inner Brow Raise", @"propertyName" : @"innerBrowRaise", @"score": @"innerBrowRaiseScore"},
-                             @{@"name" : @"Frown", @"propertyName" : @"lipCornerDepressor", @"score": @"lipCornerDepressorScore"},
-                             @{@"name" : @"Lip Press", @"propertyName" : @"lipPress", @"score": @"lipPressScore"},
-                             @{@"name" : @"Lip Pucker", @"propertyName" : @"lipPucker", @"score": @"lipPuckerScore"},
-                             @{@"name" : @"Lip Suck", @"propertyName" : @"lipSuck", @"score": @"lipSuckScore"},
-                             @{@"name" : @"Mouth Open", @"propertyName" : @"mouthOpen", @"score": @"mouthOpenScore"},
-                             @{@"name" : @"Nose Wrinkle", @"propertyName" : @"noseWrinkle", @"score": @"noseWrinkleScore"},
-                             @{@"name" : @"Smile", @"propertyName" : @"smile", @"score": @"smileScore"},
-                             @{@"name" : @"Smirk", @"propertyName" : @"smirk", @"score": @"smirkScore"},
-                             @{@"name" : @"Upper Lip Raise", @"propertyName" : @"upperLipRaise", @"score": @"upperLipRaiseScore"},
+        self.expressions = @[@{@"name" : @"Attention",
+                               @"propertyName" : @"attention",
+                               @"score": @"attentionScore",
+                               @"image": [UIImage imageNamed:@"Attention.jpg"]
+                               },
+                             @{@"name" : @"Brow Furrow",
+                               @"propertyName" : @"browFurrow",
+                               @"score": @"browFurrowScore",
+                               @"image": [UIImage imageNamed:@"Brow Furrow.jpg"]
+                               },
+                             @{@"name" : @"Brow Raise",
+                               @"propertyName" : @"browRaise",
+                               @"score": @"browRaiseScore",
+                               @"image": [UIImage imageNamed:@"Brow Raise.jpg"]
+                               },
+                             @{@"name" : @"Chin Raise",
+                               @"propertyName" : @"chinRaise",
+                               @"score": @"chinRaiseScore",
+                               @"image": [UIImage imageNamed:@"Chin Raise.jpg"]
+                               },
+                             @{@"name" : @"Eye Closure",
+                               @"propertyName" : @"eyeClosure",
+                               @"score": @"eyeClosureScore",
+                               @"image": [UIImage imageNamed:@"Eye Closure.jpg"]
+                               },
+                             @{@"name" : @"Inner Brow Raise",
+                               @"propertyName" : @"innerBrowRaise",
+                               @"score": @"innerBrowRaiseScore",
+                               @"image": [UIImage imageNamed:@"Inner Brow Raise.jpg"]
+                               },
+                             @{@"name" : @"Frown",
+                               @"propertyName" : @"lipCornerDepressor",
+                               @"score": @"lipCornerDepressorScore",
+                               @"image": [UIImage imageNamed:@"Frown.jpg"]
+                               },
+                             @{@"name" : @"Lip Press",
+                               @"propertyName" : @"lipPress",
+                               @"score": @"lipPressScore",
+                               @"image": [UIImage imageNamed:@"Lip Press.jpg"]
+                               },
+                             @{@"name" : @"Lip Pucker",
+                               @"propertyName" : @"lipPucker",
+                               @"score": @"lipPuckerScore",
+                               @"image": [UIImage imageNamed:@"Lip Pucker.jpg"]
+                               },
+                             @{@"name" : @"Lip Suck",
+                               @"propertyName" : @"lipSuck",
+                               @"score": @"lipSuckScore",
+                               @"image": [UIImage imageNamed:@"Lip Suck.jpg"]
+                               },
+                             @{@"name" : @"Mouth Open",
+                               @"propertyName" : @"mouthOpen",
+                               @"score": @"mouthOpenScore",
+                               @"image": [UIImage imageNamed:@"Mouth Open.jpg"]
+                               },
+                             @{@"name" : @"Nose Wrinkle",
+                               @"propertyName" : @"noseWrinkle",
+                               @"score": @"noseWrinkleScore",
+                               @"image": [UIImage imageNamed:@"Nose Wrinkle.jpg"]
+                               },
+                             @{@"name" : @"Smile",
+                               @"propertyName" : @"smile",
+                               @"score": @"smileScore",
+                               @"image": [UIImage imageNamed:@"Smile.jpg"]
+                               },
+                             @{@"name" : @"Smirk",
+                               @"propertyName" : @"smirk",
+                               @"score": @"smirkScore",
+                               @"image": [UIImage imageNamed:@"Smirk.jpg"]
+                               },
+                             @{@"name" : @"Upper Lip Raise",
+                               @"propertyName" : @"upperLipRaise",
+                               @"score": @"upperLipRaiseScore",
+                               @"image": [UIImage imageNamed:@"Upper Lip Raise.jpg"]
+                               }
                           ];
         
-        self.emojis = @[@{@"name" : @"Laughing", @"score": @"emojis.laughing"},
-                        @{@"name" : @"Smiley", @"score": @"emojis.smiley"},
-                        @{@"name" : @"Relaxed", @"score": @"emojis.relaxed"},
-                        @{@"name" : @"Wink", @"score": @"emojis.wink"},
-                        @{@"name" : @"Kiss", @"score": @"emojis.kiss"},
-                        @{@"name" : @"Kiss Eye Closure", @"score": @"emojis.kissAndEyeClosure"},
-                        @{@"name" : @"Tongue Wink", @"score": @"emojis.tongueOutAndWink"},
-                        @{@"name" : @"Tongue Out", @"score": @"emojis.tongueOut"},
-                        @{@"name" : @"Tongue Eye Closure", @"score": @"emojis.tongueOutAndEyeClosure"},
-                        @{@"name" : @"Flushed", @"score": @"emojis.flushed"},
-                        @{@"name" : @"Disappointed", @"score": @"emojis.disappointed"},
-                        @{@"name" : @"Rage", @"score": @"emojis.rage"},
-                        @{@"name" : @"Scream", @"score": @"emojis.scream"},
-                        @{@"name" : @"Smirk", @"score": @"emojis.smirk"}
+        CGFloat emojiFontSize = 80.0;
+        BOOL iPhone = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone);
+        if (TRUE == iPhone) {
+            emojiFontSize /= 2;
+        }
+        
+        self.emojis = @[@{@"name" : @"Laughing",
+                          @"score": @"emojis.laughing",
+                          @"image": [UIImage imageFromText:@"\xF0\x9F\x98\x81" size:emojiFontSize],
+                          @"code": [NSNumber numberWithInt:AFDX_EMOJI_LAUGHING]
+                          },
+                        @{@"name" : @"Smiley",
+                          @"score": @"emojis.smiley",
+                          @"image": [UIImage imageFromText:@"\xF0\x9F\x98\x83" size:emojiFontSize],
+                          @"code": [NSNumber numberWithInt:AFDX_EMOJI_SMILEY]
+                          },
+                        @{@"name" : @"Relaxed",
+                          @"score": @"emojis.relaxed",
+                          @"image": [UIImage imageFromText:@"\xF0\x9F\x98\x8C" size:emojiFontSize],
+                          },
+                        @{@"name" : @"Wink",
+                          @"score": @"emojis.wink",
+                          @"image": [UIImage imageFromText:@"\xF0\x9F\x98\x89" size:emojiFontSize],
+                          @"code": [NSNumber numberWithInt:AFDX_EMOJI_WINK]
+                          },
+                        @{@"name" : @"Kiss",
+                          @"score": @"emojis.kissing",
+                          @"image": [UIImage imageFromText:@"\xF0\x9F\x98\x97" size:emojiFontSize],
+                          @"code": [NSNumber numberWithInt:AFDX_EMOJI_KISS]
+                          },
+                        @{@"name" : @"Kiss Eye Closure",
+                          @"score": @"emojis.kissingClosedEyes",
+                          @"image": [UIImage imageFromText:@"\xF0\x9F\x98\x9A" size:emojiFontSize],
+                          @"code": [NSNumber numberWithInt:AFDX_EMOJI_KISS]
+                          },
+                        @{@"name" : @"Tongue Wink",
+                          @"score": @"emojis.stuckOutTongueWinkingEye",
+                          @"image": [UIImage imageFromText:@"\xF0\x9F\x98\x9C" size:emojiFontSize],
+                          @"code": [NSNumber numberWithInt:AFDX_EMOJI_TONGUE_OUT_AND_WINK]
+                          },
+                        @{@"name" : @"Tongue Out",
+                          @"score": @"emojis.stuckOutTongue",
+                          @"image": [UIImage imageFromText:@"\xF0\x9F\x98\x9B" size:emojiFontSize],
+                          @"code": [NSNumber numberWithInt:AFDX_EMOJI_TONGUE_OUT]
+                          },
+                        @{@"name" : @"Tongue Eye Closure",
+                          @"score": @"emojis.stuckOutTongueClosedEyes",
+                          @"image": [UIImage imageFromText:@"\xF0\x9F\x98\x9D" size:emojiFontSize],
+                          @"code": [NSNumber numberWithInt:AFDX_EMOJI_TONGUE_OUT_AND_EYE_CLOSURE]
+                          },
+                        @{@"name" : @"Flushed",
+                          @"score": @"emojis.flushed",
+                          @"image": [UIImage imageFromText:@"\xF0\x9F\x98\xB3" size:emojiFontSize],
+                          @"code": [NSNumber numberWithInt:AFDX_EMOJI_FLUSHED]
+                          },
+                        @{@"name" : @"Disappointed",
+                          @"score": @"emojis.disappointed",
+                          @"image": [UIImage imageFromText:@"\xF0\x9F\x98\x9E" size:emojiFontSize],
+                          @"code": [NSNumber numberWithInt:AFDX_EMOJI_DISAPPOINTED]
+                          },
+                        @{@"name" : @"Rage",
+                          @"score": @"emojis.rage",
+                          @"image": [UIImage imageFromText:@"\xF0\x9F\x98\xA0" size:emojiFontSize],
+                          @"code": [NSNumber numberWithInt:AFDX_EMOJI_RAGE]
+                          },
+                        @{@"name" : @"Scream",
+                          @"score": @"emojis.scream",
+                          @"image": [UIImage imageFromText:@"\xF0\x9F\x98\xB1" size:emojiFontSize],
+                          @"code": [NSNumber numberWithInt:AFDX_EMOJI_SCREAM]
+                          },
+                        @{@"name" : @"Smirk",
+                          @"score": @"emojis.smirk",
+                          @"image": [UIImage imageFromText:@"\xF0\x9F\x98\x8F" size:emojiFontSize],
+                          @"code": [NSNumber numberWithInt:AFDX_EMOJI_SMIRK]
+                          }
                         ];
         
         self.availableClassifiers = @[self.emotions, self.expressions, self.emojis];
@@ -576,11 +859,12 @@
     [super viewDidLoad];
     
     self.cameraToUse = AFDX_CAMERA_FRONT;
+    self.dominantEmoji = AFDX_EMOJI_NONE;
     
     CGFloat scaleFactor = 4;
     BOOL iPhone = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone);
     if (iPhone == TRUE) {
-        scaleFactor *= 2;
+        scaleFactor *= 1;
     }
     
     self.maleImage = [UIImage imageNamed:@"gender_male_white.png"];
@@ -845,7 +1129,7 @@
     // tell the detector which facial expressions we want to measure
     [self.detector setDetectAllEmotions:NO];
     [self.detector setDetectAllExpressions:NO];
-    [self.detector setDetectEmojis:NO];
+    [self.detector setDetectEmojis:YES];
     self.detector.gender = TRUE;
     self.detector.glasses = TRUE;
     

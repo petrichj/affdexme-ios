@@ -26,7 +26,6 @@
 @property (weak) IBOutlet UILabel *instructionLabelRegular;
 @property (weak) IBOutlet UILabel *instructionLabelCompact;
 
-
 - (IBAction)clearAllTouched:(id)sender;
 - (IBAction)doneTouched:(id)sender;
 

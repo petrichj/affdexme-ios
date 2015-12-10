@@ -58,7 +58,7 @@
     return image;
 }
 
-+ (UIImage *)imageFromView:(UIView *)view;
++ (UIImage *)imageFromView:(UIView *)view withSize:(CGSize)size;
 {
     UIGraphicsBeginImageContext(view.bounds.size);
     
@@ -69,6 +69,11 @@
     UIGraphicsEndImageContext();
     
     return img;
+}
+
++ (UIImage *)imageFromView:(UIView *)view
+{
+    return [UIImage imageFromView:view withSize:view.bounds.size];
 }
 
 - (UIImage *)drawImages:(NSArray *)inputImages inRects:(NSArray *)frames;
@@ -155,22 +160,16 @@
 {
     self.multifaceMode = FALSE;
     
-    [UIView animateWithDuration:0.1 animations:^{
-        self.classifierHeaderView_compact.hidden = FALSE;
-        self.classifierHeaderView_regular.hidden = FALSE;
-    } completion: ^(BOOL finished) {
-    }];
+    self.classifierHeaderView_compact.hidden = FALSE;
+    self.classifierHeaderView_regular.hidden = FALSE;
 }
 
 - (void)enterMultiFaceMode;
 {
     self.multifaceMode = TRUE;
     
-    [UIView animateWithDuration:0.1 animations:^{
-        self.classifierHeaderView_compact.hidden = TRUE;
-        self.classifierHeaderView_regular.hidden = TRUE;
-    } completion: ^(BOOL finished) {
-    }];
+    self.classifierHeaderView_compact.hidden = TRUE;
+    self.classifierHeaderView_regular.hidden = TRUE;
 }
 
 - (void)processedImageReady:(AFDXDetector *)detector image:(UIImage *)image faces:(NSDictionary *)faces atTime:(NSTimeInterval)time;
@@ -376,6 +375,7 @@
             NSMutableArray *imagesArray = [NSMutableArray array];
             NSMutableArray *rectsArray = [NSMutableArray array];
             
+            // add dominant emoji
             if (self.dominantEmoji != AFDX_EMOJI_NONE) {
                 for (NSDictionary *emojiDictionary in self.emojis) {
                     NSNumber *code = [emojiDictionary objectForKey:@"code"];
@@ -383,7 +383,16 @@
                         // match!
                         UIImage *emojiImage = [emojiDictionary objectForKey:@"image"];
                         if (nil != emojiImage) {
-                            CGRect rect = CGRectMake(face.faceBounds.origin.x - emojiImage.size.width, face.faceBounds.origin.y - emojiImage.size.height / 2, emojiImage.size.width, emojiImage.size.height);
+                            // resize bounds to be relative in size to bounding box
+                            CGSize size = emojiImage.size;
+                            CGFloat aspectRatio = size.height / size.width;
+                            size.width = face.faceBounds.size.width * .2;
+                            size.height = size.width * aspectRatio;
+                            
+                            CGRect rect = CGRectMake(face.faceBounds.origin.x - size.width,
+                                                     face.faceBounds.origin.y - size.height / 2,
+                                                     size.width,
+                                                     size.height);
                             [imagesArray addObject:emojiImage];
                             [rectsArray addObject:[NSValue valueWithCGRect:rect]];
                             break;
@@ -391,62 +400,84 @@
                     }
                 }
             }
-            
-            // add gender image
-            if (genderImage != nil) {
-                CGRect rect = CGRectMake(face.faceBounds.origin.x - genderImage.size.width, face.faceBounds.origin.y + (face.faceBounds.size.height) - genderImage.size.height, genderImage.size.width, genderImage.size.height);
-                [imagesArray addObject:genderImage];
-                [rectsArray addObject:[NSValue valueWithCGRect:rect]];
-            }
 
-            // add glasses image
-            if (face.appearance.glasses > 50.0) {
-                CGRect rect = CGRectMake(face.faceBounds.origin.x - self.glassesImage.size.width, face.faceBounds.origin.y + (face.faceBounds.size.height) - self.glassesImage.size.height - genderImage.size.height    , self.glassesImage.size.width, self.glassesImage.size.height);
-                [imagesArray addObject:self.glassesImage];
-                [rectsArray addObject:[NSValue valueWithCGRect:rect]];
-            }
-
-            // add dominant emotion/expression
-            if (self.multifaceMode == TRUE) {
-                CGFloat dominantScore = -9999;
-                NSString *dominantName = @"NONAME";
-             
-                // pass through emotions to find the dominant one
-                for (NSDictionary *d in self.emotions) {
-                    CGFloat score = [[face valueForKeyPath:[d objectForKey:@"score"]] floatValue];
-                    if (score > dominantScore) {
-                        dominantScore = score;
-                        dominantName = [d objectForKey:@"name"];
-                    }
-                }
+            if (weakSelf.drawAppearanceIcons) {
+                // add gender image
+                if (genderImage != nil) {
+                    // resize bounds to be relative in size to bounding box
+                    CGSize size = genderImage.size;
+                    CGFloat aspectRatio = size.height / size.width;
+                    size.width = face.faceBounds.size.width * .2;
+                    size.height = size.width * aspectRatio;
                     
-                // pass through expressions to find the dominant one
-                for (NSDictionary *d in self.expressions) {
-                    CGFloat score = [[face valueForKeyPath:[d objectForKey:@"score"]] floatValue];
-                    if (score > dominantScore) {
-                        dominantScore = score;
-                        dominantName = [d objectForKey:@"name"];
+                    CGRect rect = CGRectMake(face.faceBounds.origin.x - size.width, face.faceBounds.origin.y + (face.faceBounds.size.height) - size.height, size.width, size.height);
+                    [imagesArray addObject:genderImage];
+                    [rectsArray addObject:[NSValue valueWithCGRect:rect]];
+                }
+
+                // add glasses image
+                if (face.appearance.glasses > 50.0) {
+                    // resize bounds to be relative in size to bounding box
+                    CGSize size = self.glassesImage.size;
+                    CGFloat aspectRatio = size.height / size.width;
+                    size.width = face.faceBounds.size.width * .4;
+                    size.height = size.width * aspectRatio;
+
+                    CGRect rect = CGRectMake(face.faceBounds.origin.x + face.faceBounds.size.width,
+                                             face.faceBounds.origin.y + (face.faceBounds.size.height) - size.height,
+                                             size.width,
+                                             size.height);
+                    [imagesArray addObject:self.glassesImage];
+                    [rectsArray addObject:[NSValue valueWithCGRect:rect]];
+                }
+
+                // add dominant emotion/expression
+                if (self.multifaceMode == TRUE) {
+                    CGFloat dominantScore = -9999;
+                    NSString *dominantName = @"NONAME";
+                 
+                    // pass through emotions to find the dominant one
+                    for (NSDictionary *d in self.emotions) {
+                        CGFloat score = [[face valueForKeyPath:[d objectForKey:@"score"]] floatValue];
+                        if (score > dominantScore) {
+                            dominantScore = score;
+                            dominantName = [d objectForKey:@"name"];
+                        }
                     }
+                        
+                    // pass through expressions to find the dominant one
+                    for (NSDictionary *d in self.expressions) {
+                        CGFloat score = [[face valueForKeyPath:[d objectForKey:@"score"]] floatValue];
+                        if (score > dominantScore) {
+                            dominantScore = score;
+                            dominantName = [d objectForKey:@"name"];
+                        }
+                    }
+                    
+                    BOOL iPhone = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone);
+                    if (self.dominantEmotionOrExpression == nil) {
+                        self.dominantEmotionOrExpression = [[ExpressionViewController alloc] initWithName:dominantName deviceIsPhone:iPhone];
+                    }
+                    [self.dominantEmotionOrExpression setMetric:dominantScore];
+                    self.dominantEmotionOrExpression.expressionLabel.text = dominantName;
+                    // resize bounds to be relative in size to bounding box
+                    CGSize size = self.dominantEmotionOrExpression.view.bounds.size;
+                    CGFloat aspectRatio = size.width > size.height ? size.width / size.height : size.height / size.width;
+                    size.width = face.faceBounds.size.width * .75;
+                    size.height = size.width > size.height ? size.width / aspectRatio : size.width * aspectRatio;
+                    UIImage *image = [UIImage imageFromView:self.dominantEmotionOrExpression.view];
+                    if (self.cameraToUse == AFDX_CAMERA_FRONT) {
+                        image = [UIImage imageWithCGImage:image.CGImage
+                                                                    scale:image.scale
+                                                              orientation:UIImageOrientationUpMirrored];
+                    }
+                    CGRect rect = CGRectMake(face.faceBounds.origin.x + (face.faceBounds.size.width / 2) - size.width / 2,
+                                             face.faceBounds.origin.y + face.faceBounds.size.height,
+                                             size.width,
+                                             size.height);
+                    [imagesArray addObject:image];
+                    [rectsArray addObject:[NSValue valueWithCGRect:rect]];
                 }
-                
-                BOOL iPhone = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone);
-                if (self.dominantEmotionOrExpression == nil) {
-                    self.dominantEmotionOrExpression = [[ExpressionViewController alloc] initWithName:dominantName deviceIsPhone:iPhone];
-                }
-                [self.dominantEmotionOrExpression setMetric:dominantScore];
-                self.dominantEmotionOrExpression.expressionLabel.text = dominantName;
-                UIImage *image = [UIImage imageFromView:self.dominantEmotionOrExpression.view];
-                if (self.cameraToUse == AFDX_CAMERA_FRONT) {
-                    image = [UIImage imageWithCGImage:image.CGImage
-                                                                scale:image.scale
-                                                          orientation:UIImageOrientationUpMirrored];
-                }
-                CGRect rect = CGRectMake(face.faceBounds.origin.x + (face.faceBounds.size.width / 2) - image.size.width / 2,
-                                         face.faceBounds.origin.y + face.faceBounds.size.height,
-                                         image.size.width,
-                                         image.size.height);
-                [imagesArray addObject:image];
-                [rectsArray addObject:[NSValue valueWithCGRect:rect]];
             }
             
             // do drawing here
@@ -605,6 +636,7 @@
 + (void)initialize;
 {
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"drawFacePoints" : [NSNumber numberWithBool:YES]}];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"drawAppearanceIcons" : [NSNumber numberWithBool:YES]}];
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"allowEmojiSelection" : [NSNumber numberWithBool:NO]}];
 }
 
@@ -765,10 +797,6 @@
                           ];
         
         CGFloat emojiFontSize = 80.0;
-        BOOL iPhone = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone);
-        if (TRUE == iPhone) {
-            emojiFontSize /= 2;
-        }
         
         self.emojis = @[@{@"name" : @"Laughing",
                           @"score": @"emojis.laughing",
@@ -797,7 +825,7 @@
                         @{@"name" : @"Kiss Eye Closure",
                           @"score": @"emojis.kissingClosedEyes",
                           @"image": [UIImage imageFromText:@"\xF0\x9F\x98\x9A" size:emojiFontSize],
-                          @"code": [NSNumber numberWithInt:AFDX_EMOJI_KISS]
+                          @"code": [NSNumber numberWithInt:AFDX_EMOJI_KISS_AND_EYE_CLOSURE]
                           },
                         @{@"name" : @"Tongue Wink",
                           @"score": @"emojis.stuckOutTongueWinkingEye",
@@ -1028,7 +1056,8 @@
     [self becomeFirstResponder];
 
 #ifdef DEMO_MODE
-    self.mediaFilename = [[NSBundle mainBundle] pathForResource:@"face1" ofType:@"m4v"];
+//    self.mediaFilename = [[NSBundle mainBundle] pathForResource:@"face1" ofType:@"m4v"];
+    self.mediaFilename = [[NSBundle mainBundle] pathForResource:@"four_steves" ofType:@"mp4"];
     
     if ([[NSFileManager defaultManager] fileExistsAtPath:self.mediaFilename] == YES)
     {
@@ -1108,6 +1137,7 @@
 
     self.drawFacePoints = [[[NSUserDefaults standardUserDefaults] objectForKey:@"drawFacePoints"] boolValue];
     self.drawFaceRect = self.drawFacePoints;
+    self.drawAppearanceIcons = [[[NSUserDefaults standardUserDefaults] objectForKey:@"drawAppearanceIcons"] boolValue];
     
     NSInteger maxProcessRate = [[[NSUserDefaults standardUserDefaults] objectForKey:@"maxProcessRate"] integerValue];
     if (0 == maxProcessRate)

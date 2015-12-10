@@ -25,6 +25,7 @@
 @property (weak) IBOutlet UILabel *appleDetectors;
 @property (strong) AFDXDetector *detector;
 @property (assign) BOOL drawFacePoints;
+@property (assign) BOOL drawAppearanceIcons;
 @property (assign) BOOL drawFaceRect;
 @property (strong) NSMutableDictionary *faceMeasurements;
 @property (weak) IBOutlet UIView *classifiersView;

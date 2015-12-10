@@ -24,6 +24,22 @@
             <key>Type</key>
             <string>PSToggleSwitchSpecifier</string>
             <key>Title</key>
+            <string>Draw Appearance Icons</string>
+            <key>Key</key>
+            <string>drawAppearanceIcons</string>
+            <key>DefaultValue</key>
+            <true/>
+        </dict>
+        <dict>
+            <key>Type</key>
+            <string>PSGroupSpecifier</string>
+            <key>Title</key>
+            <string>Performance</string>
+        </dict>
+        <dict>
+            <key>Type</key>
+            <string>PSToggleSwitchSpecifier</string>
+            <key>Title</key>
             <string>Allow Emoji Selection</string>
             <key>Key</key>
             <string>allowEmojiSelection</string>

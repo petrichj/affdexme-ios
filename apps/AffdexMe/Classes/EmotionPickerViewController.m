@@ -139,6 +139,9 @@
         NSIndexPath *path = [self getPathForClassifierName:name];
         
         if (nil != path) {
+            if ([path indexAtPosition:0] > 1 && [[[NSUserDefaults standardUserDefaults] objectForKey:@"allowEmojiSelection"] boolValue] == NO) {
+                break;
+            }
             [self.collectionViewCompact selectItemAtIndexPath:path
                                                      animated:YES
                                                scrollPosition:UICollectionViewScrollPositionNone];

@@ -24,6 +24,7 @@
 		683CAD0A1BF53578004FE36C /* glasses_outline.png in Resources */ = {isa = PBXBuildFile; fileRef = 683CAD091BF53578004FE36C /* glasses_outline.png */; };
 		683CAD0C1BF5357E004FE36C /* gender_male_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 683CAD0B1BF5357E004FE36C /* gender_male_white.png */; };
 		683CAD0E1BF53583004FE36C /* gender_female_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 683CAD0D1BF53583004FE36C /* gender_female_white.png */; };
+		6851F7621C1882E9009BEDB0 /* four_steves.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 6851F7611C1882E9009BEDB0 /* four_steves.mp4 */; };
 		686C75E31B95EAC000483C1A /* Square.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 686C75C01B95EAC000483C1A /* Square.ttf */; };
 		686C75E41B95EAC000483C1A /* Affectiva_Logo Clear Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 686C75C21B95EAC000483C1A /* Affectiva_Logo Clear Background.png */; };
 		686C75E51B95EAC000483C1A /* Anger.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 686C75C31B95EAC000483C1A /* Anger.jpg */; };
@@ -69,6 +70,9 @@
 		68D0FD951C0545C700D430A2 /* camera-swap-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 68D0FD941C0545C700D430A2 /* camera-swap-icon.png */; };
 		68DCE53D1767642C000DE093 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68DCE53C1767642C000DE093 /* AudioToolbox.framework */; };
 		68DD4B68194784A70077ED24 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65920A7616D73F8700D89A4B /* CoreGraphics.framework */; };
+		68E978CF1C17724400EAD971 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68E978CE1C17724400EAD971 /* LaunchScreen.storyboard */; };
+		68E978D11C1772D200EAD971 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 68E978D01C1772D200EAD971 /* background.png */; };
+		68E978D31C1772F600EAD971 /* Affectiva_Logo Clear Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 68E978D21C1772F600EAD971 /* Affectiva_Logo Clear Background.png */; };
 		68EC2EEF18A97F02006C9EC5 /* sdk.license in Resources */ = {isa = PBXBuildFile; fileRef = 68EC2EEE18A97F02006C9EC5 /* sdk.license */; };
 		68F4233218CD216D0032A50D /* ExpressionView_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68F4233018CD216D0032A50D /* ExpressionView_iPad.xib */; };
 		68F4233318CD216D0032A50D /* ExpressionView_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68F4233118CD216D0032A50D /* ExpressionView_iPhone.xib */; };
@@ -115,6 +119,7 @@
 		683CAD091BF53578004FE36C /* glasses_outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = glasses_outline.png; path = images/glasses_outline.png; sourceTree = "<group>"; };
 		683CAD0B1BF5357E004FE36C /* gender_male_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gender_male_white.png; path = images/gender_male_white.png; sourceTree = "<group>"; };
 		683CAD0D1BF53583004FE36C /* gender_female_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gender_female_white.png; path = images/gender_female_white.png; sourceTree = "<group>"; };
+		6851F7611C1882E9009BEDB0 /* four_steves.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = four_steves.mp4; path = "../../../../../../Volumes/Affectiva/affdex-ios/affdex-media/testvideos/four_steves.mp4"; sourceTree = "<group>"; };
 		686C75C01B95EAC000483C1A /* Square.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Square.ttf; sourceTree = "<group>"; };
 		686C75C21B95EAC000483C1A /* Affectiva_Logo Clear Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Affectiva_Logo Clear Background.png"; sourceTree = "<group>"; };
 		686C75C31B95EAC000483C1A /* Anger.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Anger.jpg; sourceTree = "<group>"; };
@@ -164,6 +169,9 @@
 		68D0FD921C035AAB00D430A2 /* camera-shutter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "camera-shutter.mp3"; sourceTree = "<group>"; };
 		68D0FD941C0545C700D430A2 /* camera-swap-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-swap-icon.png"; sourceTree = "<group>"; };
 		68DCE53C1767642C000DE093 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		68E978CE1C17724400EAD971 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ../LaunchScreen.storyboard; sourceTree = "<group>"; };
+		68E978D01C1772D200EAD971 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		68E978D21C1772F600EAD971 /* Affectiva_Logo Clear Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Affectiva_Logo Clear Background.png"; path = "../apps/AffdexMe/Affectiva_Logo Clear Background.png"; sourceTree = "<group>"; };
 		68EC2EEE18A97F02006C9EC5 /* sdk.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sdk.license; sourceTree = "<group>"; };
 		68F4233018CD216D0032A50D /* ExpressionView_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpressionView_iPad.xib; sourceTree = "<group>"; };
 		68F4233118CD216D0032A50D /* ExpressionView_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpressionView_iPhone.xib; sourceTree = "<group>"; };
@@ -234,6 +242,7 @@
 				68CF76811B83B0B30083B32E /* EmotionPickerViewController.h */,
 				68CF76821B83B0B30083B32E /* EmotionPickerViewController.m */,
 				68914FF31A9104FE00A6C4D7 /* Main.storyboard */,
+				68E978CE1C17724400EAD971 /* LaunchScreen.storyboard */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -300,6 +309,8 @@
 		686C75BE1B95EAC000483C1A /* media */ = {
 			isa = PBXGroup;
 			children = (
+				68E978D21C1772F600EAD971 /* Affectiva_Logo Clear Background.png */,
+				68E978D01C1772D200EAD971 /* background.png */,
 				68D0FD941C0545C700D430A2 /* camera-swap-icon.png */,
 				68D0FD921C035AAB00D430A2 /* camera-shutter.mp3 */,
 				68D0FD8D1BFE68BA00D430A2 /* camera-lens-icon.png */,
@@ -370,6 +381,7 @@
 		686C75E11B95EAC000483C1A /* videos */ = {
 			isa = PBXGroup;
 			children = (
+				6851F7611C1882E9009BEDB0 /* four_steves.mp4 */,
 				686C75E21B95EAC000483C1A /* face1.m4v */,
 			);
 			path = videos;
@@ -447,6 +459,7 @@
 				686C75E91B95EAC000483C1A /* Chin Raise.jpg in Resources */,
 				686C75F01B95EAC000483C1A /* Inner Brow Raise.jpg in Resources */,
 				686C75F61B95EAC000483C1A /* Mouth Open.jpg in Resources */,
+				6851F7621C1882E9009BEDB0 /* four_steves.mp4 in Resources */,
 				686C75EA1B95EAC000483C1A /* Contempt.jpg in Resources */,
 				686C75EE1B95EAC000483C1A /* Eye Closure.jpg in Resources */,
 				686C75F21B95EAC000483C1A /* Frown.jpg in Resources */,
@@ -461,7 +474,9 @@
 				686C75EF1B95EAC000483C1A /* Fear.jpg in Resources */,
 				68F4233318CD216D0032A50D /* ExpressionView_iPhone.xib in Resources */,
 				68EC2EEF18A97F02006C9EC5 /* sdk.license in Resources */,
+				68E978D31C1772F600EAD971 /* Affectiva_Logo Clear Background.png in Resources */,
 				686C75FE1B95EAC000483C1A /* Valence.jpg in Resources */,
+				68E978CF1C17724400EAD971 /* LaunchScreen.storyboard in Resources */,
 				686C75F11B95EAC000483C1A /* Joy.jpg in Resources */,
 				683CAD0E1BF53583004FE36C /* gender_female_white.png in Resources */,
 				686C75FA1B95EAC000483C1A /* Smile.jpg in Resources */,
@@ -488,6 +503,7 @@
 				68914FF21A9102CC00A6C4D7 /* Images.xcassets in Resources */,
 				686C75E81B95EAC000483C1A /* Brow Raise.jpg in Resources */,
 				686C76011B95EAC000483C1A /* Whoot.m4a in Resources */,
+				68E978D11C1772D200EAD971 /* background.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -591,7 +607,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -619,7 +634,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

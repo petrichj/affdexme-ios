@@ -21,9 +21,9 @@
     {
       "orientation" : "portrait",
       "idiom" : "iphone",
+      "filename" : "Affdex-Launch-Image-640x960.png",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
-      "filename" : "Affdex-Launch-Image-640x960.png",
       "scale" : "2x"
     },
     {

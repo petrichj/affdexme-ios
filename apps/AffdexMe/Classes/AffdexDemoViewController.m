@@ -131,9 +131,10 @@
 
 @property (strong) UIImage *maleImage;
 @property (strong) UIImage *femaleImage;
-@property (strong) UIImage *glassesImage;
+@property (strong) UIImage *maleImageWithGlasses;
+@property (strong) UIImage *femaleImageWithGlasses;
+@property (strong) UIImage *unknownImageWithGlasses;
 @property (assign) CGRect genderRect;
-@property (assign) CGRect glassesRect;
 @property (assign) AFDXCameraType cameraToUse;
 
 @property (strong) NSArray *faces;
@@ -160,27 +161,32 @@
 {
     self.multifaceMode = FALSE;
     
-    self.classifierHeaderView_compact.hidden = FALSE;
-    self.classifierHeaderView_regular.hidden = FALSE;
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.5];
+    self.classifierHeaderView_compact.alpha = 1.0;
+    self.classifierHeaderView_regular.alpha = 1.0;
+    [UIView commitAnimations];
 }
 
 - (void)enterMultiFaceMode;
 {
     self.multifaceMode = TRUE;
     
-    self.classifierHeaderView_compact.hidden = TRUE;
-    self.classifierHeaderView_regular.hidden = TRUE;
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.5];
+    self.classifierHeaderView_compact.alpha = 0.0;
+    self.classifierHeaderView_regular.alpha = 0.0;
+    [UIView commitAnimations];
 }
 
 - (void)processedImageReady:(AFDXDetector *)detector image:(UIImage *)image faces:(NSDictionary *)faces atTime:(NSTimeInterval)time;
 {
     self.faces = [faces allValues];
-    
     // determine single or multi face mode
-    if (self.faces.count > 1) {
+    if (self.faces.count > 1 && self.multifaceMode == FALSE) {
         // multi face mode
         [self enterMultiFaceMode];
-    } else {
+    } else if (self.faces.count == 1 && self.multifaceMode == TRUE) {
         // single face mode
         [self enterSingleFaceMode];
     }
@@ -362,12 +368,21 @@
             switch (face.appearance.gender) {
                 case AFDX_GENDER_MALE:
                     genderImage = self.maleImage;
+                    if (face.appearance.glasses > 50.0) {
+                        genderImage = self.maleImageWithGlasses;
+                    }
                     break;
                 case AFDX_GENDER_FEMALE:
                     genderImage = self.femaleImage;
+                    if (face.appearance.glasses > 50.0) {
+                        genderImage = self.femaleImageWithGlasses;
+                    }
                     break;
                 case AFDX_GENDER_UNKNOWN:
                     genderImage = nil;
+                    if (face.appearance.glasses > 50.0) {
+                        genderImage = self.unknownImageWithGlasses;
+                    }
                     break;
             }
 
@@ -386,7 +401,7 @@
                             // resize bounds to be relative in size to bounding box
                             CGSize size = emojiImage.size;
                             CGFloat aspectRatio = size.height / size.width;
-                            size.width = face.faceBounds.size.width * .2;
+                            size.width = face.faceBounds.size.height * .33;
                             size.height = size.width * aspectRatio;
                             
                             CGRect rect = CGRectMake(face.faceBounds.origin.x - size.width,
@@ -407,27 +422,11 @@
                     // resize bounds to be relative in size to bounding box
                     CGSize size = genderImage.size;
                     CGFloat aspectRatio = size.height / size.width;
-                    size.width = face.faceBounds.size.width * .2;
+                    size.width = face.faceBounds.size.height * .45;
                     size.height = size.width * aspectRatio;
                     
                     CGRect rect = CGRectMake(face.faceBounds.origin.x - size.width, face.faceBounds.origin.y + (face.faceBounds.size.height) - size.height, size.width, size.height);
                     [imagesArray addObject:genderImage];
-                    [rectsArray addObject:[NSValue valueWithCGRect:rect]];
-                }
-
-                // add glasses image
-                if (face.appearance.glasses > 50.0) {
-                    // resize bounds to be relative in size to bounding box
-                    CGSize size = self.glassesImage.size;
-                    CGFloat aspectRatio = size.height / size.width;
-                    size.width = face.faceBounds.size.width * .4;
-                    size.height = size.width * aspectRatio;
-
-                    CGRect rect = CGRectMake(face.faceBounds.origin.x + face.faceBounds.size.width,
-                                             face.faceBounds.origin.y + (face.faceBounds.size.height) - size.height,
-                                             size.width,
-                                             size.height);
-                    [imagesArray addObject:self.glassesImage];
                     [rectsArray addObject:[NSValue valueWithCGRect:rect]];
                 }
 
@@ -462,9 +461,9 @@
                     self.dominantEmotionOrExpression.expressionLabel.text = dominantName;
                     // resize bounds to be relative in size to bounding box
                     CGSize size = self.dominantEmotionOrExpression.view.bounds.size;
-                    CGFloat aspectRatio = size.width > size.height ? size.width / size.height : size.height / size.width;
-                    size.width = face.faceBounds.size.width * .75;
-                    size.height = size.width > size.height ? size.width / aspectRatio : size.width * aspectRatio;
+                    CGFloat aspectRatio = size.height / size.width;
+                    size.width = face.faceBounds.size.width * 1.0;
+                    size.height = size.width * aspectRatio;
                     UIImage *image = [UIImage imageFromView:self.dominantEmotionOrExpression.view];
                     if (self.cameraToUse == AFDX_CAMERA_FRONT) {
                         image = [UIImage imageWithCGImage:image.CGImage
@@ -545,7 +544,8 @@
 {
     __block AffdexDemoViewController *weakSelf = self;
 
-    dispatch_async(dispatch_get_main_queue(), ^{
+ dispatch_async(dispatch_get_main_queue(), ^{
+     /*
         BOOL iPhone = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone);
         
         [UIView beginAnimations:nil context:NULL];
@@ -571,7 +571,7 @@
         }
         
         [UIView commitAnimations];
-        
+        */
         if (weakSelf.viewControllers != nil)
         {
             face.userInfo = @{@"viewControllers" : weakSelf.viewControllers};
@@ -592,6 +592,7 @@
     __block AffdexDemoViewController *weakSelf = self;
 
     dispatch_async(dispatch_get_main_queue(), ^{
+/*
         BOOL iPhone = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone);
         
         [UIView beginAnimations:nil context:NULL];
@@ -617,7 +618,7 @@
         }
         
         [UIView commitAnimations];
-        
+        */
         face.userInfo = nil;
 #ifdef BROADCAST_VIA_UDP
         char buffer[2];
@@ -637,7 +638,7 @@
 {
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"drawFacePoints" : [NSNumber numberWithBool:YES]}];
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"drawAppearanceIcons" : [NSNumber numberWithBool:YES]}];
-    [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"allowEmojiSelection" : [NSNumber numberWithBool:NO]}];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"allowEmojiSelection" : [NSNumber numberWithBool:YES]}];
 }
 
 -(BOOL)canBecomeFirstResponder;
@@ -820,27 +821,27 @@
                         @{@"name" : @"Kiss",
                           @"score": @"emojis.kissing",
                           @"image": [UIImage imageFromText:@"\xF0\x9F\x98\x97" size:emojiFontSize],
-                          @"code": [NSNumber numberWithInt:AFDX_EMOJI_KISS]
+                          @"code": [NSNumber numberWithInt:AFDX_EMOJI_KISSING]
                           },
                         @{@"name" : @"Kiss Eye Closure",
                           @"score": @"emojis.kissingClosedEyes",
                           @"image": [UIImage imageFromText:@"\xF0\x9F\x98\x9A" size:emojiFontSize],
-                          @"code": [NSNumber numberWithInt:AFDX_EMOJI_KISS_AND_EYE_CLOSURE]
+                          @"code": [NSNumber numberWithInt:AFDX_EMOJI_KISSING_CLOSED_EYES]
                           },
                         @{@"name" : @"Tongue Wink",
                           @"score": @"emojis.stuckOutTongueWinkingEye",
                           @"image": [UIImage imageFromText:@"\xF0\x9F\x98\x9C" size:emojiFontSize],
-                          @"code": [NSNumber numberWithInt:AFDX_EMOJI_TONGUE_OUT_AND_WINK]
+                          @"code": [NSNumber numberWithInt:AFDX_EMOJI_STUCK_OUT_TONGUE_WINKING_EYE]
                           },
                         @{@"name" : @"Tongue Out",
                           @"score": @"emojis.stuckOutTongue",
                           @"image": [UIImage imageFromText:@"\xF0\x9F\x98\x9B" size:emojiFontSize],
-                          @"code": [NSNumber numberWithInt:AFDX_EMOJI_TONGUE_OUT]
+                          @"code": [NSNumber numberWithInt:AFDX_EMOJI_STUCK_OUT_TONGUE]
                           },
                         @{@"name" : @"Tongue Eye Closure",
                           @"score": @"emojis.stuckOutTongueClosedEyes",
                           @"image": [UIImage imageFromText:@"\xF0\x9F\x98\x9D" size:emojiFontSize],
-                          @"code": [NSNumber numberWithInt:AFDX_EMOJI_TONGUE_OUT_AND_EYE_CLOSURE]
+                          @"code": [NSNumber numberWithInt:AFDX_EMOJI_STUCK_OUT_TONGUE_CLOSED_EYES]
                           },
                         @{@"name" : @"Flushed",
                           @"score": @"emojis.flushed",
@@ -895,18 +896,26 @@
         scaleFactor *= 1;
     }
     
-    self.maleImage = [UIImage imageNamed:@"gender_male_white.png"];
+    self.maleImage = [UIImage imageNamed:@"male-green-noglasses-alpha.png"];
     self.maleImage = [UIImage imageWithCGImage:[self.maleImage CGImage]
                         scale:(self.maleImage.scale * scaleFactor)
                   orientation:(self.maleImage.imageOrientation)];
-    self.femaleImage = [UIImage imageNamed:@"gender_female_white.png"];
+    self.femaleImage = [UIImage imageNamed:@"female-red-noglasses-alpha.png"];
     self.femaleImage = [UIImage imageWithCGImage:[self.femaleImage CGImage]
                                          scale:(self.femaleImage.scale * scaleFactor)
                                    orientation:(self.femaleImage.imageOrientation)];
-    self.glassesImage = [UIImage imageNamed:@"glasses_outline.png"];
-    self.glassesImage = [UIImage imageWithCGImage:[self.glassesImage CGImage]
-                                         scale:(self.glassesImage.scale * scaleFactor)
-                                   orientation:(self.glassesImage.imageOrientation)];
+    self.maleImageWithGlasses = [UIImage imageNamed:@"male-green-glasses-alpha.png"];
+    self.maleImageWithGlasses = [UIImage imageWithCGImage:[self.maleImageWithGlasses CGImage]
+                                         scale:(self.maleImageWithGlasses.scale * scaleFactor)
+                                   orientation:(self.maleImageWithGlasses.imageOrientation)];
+    self.femaleImageWithGlasses = [UIImage imageNamed:@"female-red-glasses-alpha.png"];
+    self.femaleImageWithGlasses = [UIImage imageWithCGImage:[self.femaleImageWithGlasses CGImage]
+                                                    scale:(self.femaleImageWithGlasses.scale * scaleFactor)
+                                              orientation:(self.femaleImageWithGlasses.imageOrientation)];
+    self.unknownImageWithGlasses = [UIImage imageNamed:@"unknown-glasses-alpha.png"];
+    self.unknownImageWithGlasses = [UIImage imageWithCGImage:[self.unknownImageWithGlasses CGImage]
+                                                      scale:(self.unknownImageWithGlasses.scale * scaleFactor)
+                                                orientation:(self.unknownImageWithGlasses.imageOrientation)];
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey];
     NSString *shortVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
 
@@ -966,12 +975,12 @@
         [self.classifier5View_compact setBackgroundColor:[UIColor clearColor]];
         [self.classifier6View_compact setBackgroundColor:[UIColor clearColor]];
 
-        self.classifier1View_compact.alpha = 0.0;
-        self.classifier2View_compact.alpha = 0.0;
-        self.classifier3View_compact.alpha = 0.0;
-        self.classifier4View_compact.alpha = 0.0;
-        self.classifier5View_compact.alpha = 0.0;
-        self.classifier6View_compact.alpha = 0.0;
+        self.classifier1View_compact.alpha = 1.0;
+        self.classifier2View_compact.alpha = 1.0;
+        self.classifier3View_compact.alpha = 1.0;
+        self.classifier4View_compact.alpha = 1.0;
+        self.classifier5View_compact.alpha = 1.0;
+        self.classifier6View_compact.alpha = 1.0;
     }
     else
     {
@@ -982,12 +991,12 @@
         [self.classifier5View_regular setBackgroundColor:[UIColor clearColor]];
         [self.classifier6View_regular setBackgroundColor:[UIColor clearColor]];
 
-        self.classifier1View_regular.alpha = 0.0;
-        self.classifier2View_regular.alpha = 0.0;
-        self.classifier3View_regular.alpha = 0.0;
-        self.classifier4View_regular.alpha = 0.0;
-        self.classifier5View_regular.alpha = 0.0;
-        self.classifier6View_regular.alpha = 0.0;
+        self.classifier1View_regular.alpha = 1.0;
+        self.classifier2View_regular.alpha = 1.0;
+        self.classifier3View_regular.alpha = 1.0;
+        self.classifier4View_regular.alpha = 1.0;
+        self.classifier5View_regular.alpha = 1.0;
+        self.classifier6View_regular.alpha = 1.0;
     }
     
     // create the expression view controllers to hold the expressions for this face
@@ -1057,7 +1066,7 @@
 
 #ifdef DEMO_MODE
 //    self.mediaFilename = [[NSBundle mainBundle] pathForResource:@"face1" ofType:@"m4v"];
-    self.mediaFilename = [[NSBundle mainBundle] pathForResource:@"four_steves" ofType:@"mp4"];
+    self.mediaFilename = [[NSBundle mainBundle] pathForResource:@"faces_in_out" ofType:@"mp4"];
     
     if ([[NSFileManager defaultManager] fileExistsAtPath:self.mediaFilename] == YES)
     {

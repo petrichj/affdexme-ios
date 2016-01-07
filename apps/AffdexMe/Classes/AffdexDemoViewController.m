@@ -2,8 +2,9 @@
 //  AffdexDemoViewController.m
 //
 //  Created by Affectiva on 2/22/13.
-//  Copyright (c) 2013 Affectiva All rights reserved.
+//  Copyright (c) 2016 Affectiva Inc.
 //
+//  See the file license.txt for copying permission.
 
 // If this feature is turned on, then emotions and expressions will be sent via UDP
 #undef BROADCAST_VIA_UDP
@@ -60,15 +61,11 @@
 
 + (UIImage *)imageFromView:(UIView *)view withSize:(CGSize)size;
 {
-    UIGraphicsBeginImageContext(view.bounds.size);
-    
-    [view.layer renderInContext:UIGraphicsGetCurrentContext()];
-    
-    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
-    
+    UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
+    [view drawViewHierarchyInRect:view.bounds afterScreenUpdates:YES];
+    UIImage *snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    
-    return img;
+    return snapshotImage;
 }
 
 + (UIImage *)imageFromView:(UIView *)view
@@ -131,6 +128,7 @@
 
 @property (strong) UIImage *maleImage;
 @property (strong) UIImage *femaleImage;
+@property (strong) UIImage *unknownImage;
 @property (strong) UIImage *maleImageWithGlasses;
 @property (strong) UIImage *femaleImageWithGlasses;
 @property (strong) UIImage *unknownImageWithGlasses;
@@ -157,6 +155,7 @@
 }
 #endif
 
+// In single face mode, we turn on only the selected classifiers
 - (void)enterSingleFaceMode;
 {
     self.multifaceMode = FALSE;
@@ -171,6 +170,14 @@
 - (void)enterMultiFaceMode;
 {
     self.multifaceMode = TRUE;
+    
+    self.detector.joy = TRUE;
+    self.detector.anger = TRUE;
+    self.detector.disgust = TRUE;
+    self.detector.contempt = TRUE;
+    self.detector.sadness = TRUE;
+    self.detector.fear = TRUE;
+    self.detector.surprise = TRUE;
     
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.5];
@@ -216,6 +223,7 @@
         NSDictionary *faceData = face.userInfo;
         NSArray *viewControllers = [faceData objectForKey:@"viewControllers"];
         
+//        NSLog(@"yaw=%.f, pitch=%.f, roll=%.f", face.orientation.yaw, face.orientation.pitch, face.orientation.roll);
         __block float classifier1Score = 0.0, classifier2Score = 0.0, classifier3Score = 0.0;
         __block float classifier4Score = 0.0, classifier5Score = 0.0, classifier6Score = 0.0;
         
@@ -355,7 +363,14 @@
         self.cameraToUse = AFDX_CAMERA_FRONT;
     }
     
+    // restart the detector so that the other camera comes into view
     [self startDetector];
+    
+    // set the expression bars for the visible expressions to 0
+    for (ExpressionViewController *vc in self.viewControllers)
+    {
+        vc.metric = 0.0;
+    }
 }
 
 - (void)unprocessedImageReady:(AFDXDetector *)detector image:(UIImage *)image atTime:(NSTimeInterval)time;
@@ -368,19 +383,19 @@
             switch (face.appearance.gender) {
                 case AFDX_GENDER_MALE:
                     genderImage = self.maleImage;
-                    if (face.appearance.glasses > 50.0) {
+                    if (face.appearance.glasses == AFDX_GLASSES_YES) {
                         genderImage = self.maleImageWithGlasses;
                     }
                     break;
                 case AFDX_GENDER_FEMALE:
                     genderImage = self.femaleImage;
-                    if (face.appearance.glasses > 50.0) {
+                    if (face.appearance.glasses == AFDX_GLASSES_YES) {
                         genderImage = self.femaleImageWithGlasses;
                     }
                     break;
                 case AFDX_GENDER_UNKNOWN:
-                    genderImage = nil;
-                    if (face.appearance.glasses > 50.0) {
+                    genderImage = self.unknownImage;
+                    if (face.appearance.glasses == AFDX_GLASSES_YES) {
                         genderImage = self.unknownImageWithGlasses;
                     }
                     break;
@@ -405,7 +420,7 @@
                             size.height = size.width * aspectRatio;
                             
                             CGRect rect = CGRectMake(face.faceBounds.origin.x - size.width,
-                                                     face.faceBounds.origin.y - size.height / 2,
+                                                     face.faceBounds.origin.y,
                                                      size.width,
                                                      size.height);
                             [imagesArray addObject:emojiImage];
@@ -422,7 +437,7 @@
                     // resize bounds to be relative in size to bounding box
                     CGSize size = genderImage.size;
                     CGFloat aspectRatio = size.height / size.width;
-                    size.width = face.faceBounds.size.height * .45;
+                    size.width = face.faceBounds.size.height * .33;
                     size.height = size.width * aspectRatio;
                     
                     CGRect rect = CGRectMake(face.faceBounds.origin.x - size.width, face.faceBounds.origin.y + (face.faceBounds.size.height) - size.height, size.width, size.height);
@@ -435,15 +450,16 @@
                     CGFloat dominantScore = -9999;
                     NSString *dominantName = @"NONAME";
                  
-                    // pass through emotions to find the dominant one
                     for (NSDictionary *d in self.emotions) {
+                        NSString *name = [d objectForKey:@"name"];
                         CGFloat score = [[face valueForKeyPath:[d objectForKey:@"score"]] floatValue];
                         if (score > dominantScore) {
                             dominantScore = score;
-                            dominantName = [d objectForKey:@"name"];
+                            dominantName = name;
                         }
                     }
                         
+#if FIND_MAX_EXPRESSION
                     // pass through expressions to find the dominant one
                     for (NSDictionary *d in self.expressions) {
                         CGFloat score = [[face valueForKeyPath:[d objectForKey:@"score"]] floatValue];
@@ -452,30 +468,38 @@
                             dominantName = [d objectForKey:@"name"];
                         }
                     }
-                    
+#endif
+
                     BOOL iPhone = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone);
                     if (self.dominantEmotionOrExpression == nil) {
                         self.dominantEmotionOrExpression = [[ExpressionViewController alloc] initWithName:dominantName deviceIsPhone:iPhone];
                     }
-                    [self.dominantEmotionOrExpression setMetric:dominantScore];
-                    self.dominantEmotionOrExpression.expressionLabel.text = dominantName;
-                    // resize bounds to be relative in size to bounding box
-                    CGSize size = self.dominantEmotionOrExpression.view.bounds.size;
-                    CGFloat aspectRatio = size.height / size.width;
-                    size.width = face.faceBounds.size.width * 1.0;
-                    size.height = size.width * aspectRatio;
-                    UIImage *image = [UIImage imageFromView:self.dominantEmotionOrExpression.view];
-                    if (self.cameraToUse == AFDX_CAMERA_FRONT) {
-                        image = [UIImage imageWithCGImage:image.CGImage
-                                                                    scale:image.scale
-                                                              orientation:UIImageOrientationUpMirrored];
+                    
+                    if (dominantScore >= 50.0) {
+                        self.dominantEmotionOrExpression.view.hidden = FALSE;
+                        [self.dominantEmotionOrExpression setMetric:dominantScore];
+                        self.dominantEmotionOrExpression.expressionLabel.text = dominantName;
+                        // resize bounds to be relative in size to bounding box
+                        
+                        CGSize size = self.dominantEmotionOrExpression.view.bounds.size;
+                        CGFloat aspectRatio = size.height / size.width;
+                        size.width = face.faceBounds.size.width * 1.0;
+                        size.height = size.width * aspectRatio;
+                        UIImage *image = [UIImage imageFromView:self.dominantEmotionOrExpression.view];
+                        if (self.cameraToUse == AFDX_CAMERA_FRONT) {
+                            image = [UIImage imageWithCGImage:image.CGImage
+                                                                        scale:image.scale
+                                                                  orientation:UIImageOrientationUpMirrored];
+                        }
+                        CGRect rect = CGRectMake(face.faceBounds.origin.x + (face.faceBounds.size.width / 2) - size.width / 2,
+                                                 face.faceBounds.origin.y + face.faceBounds.size.height,
+                                                 size.width,
+                                                 size.height);
+                        [imagesArray addObject:image];
+                        [rectsArray addObject:[NSValue valueWithCGRect:rect]];
+                    } else {
+                        self.dominantEmotionOrExpression.view.hidden = TRUE;
                     }
-                    CGRect rect = CGRectMake(face.faceBounds.origin.x + (face.faceBounds.size.width / 2) - size.width / 2,
-                                             face.faceBounds.origin.y + face.faceBounds.size.height,
-                                             size.width,
-                                             size.height);
-                    [imagesArray addObject:image];
-                    [rectsArray addObject:[NSValue valueWithCGRect:rect]];
                 }
             }
             
@@ -589,9 +613,14 @@
 
 - (void)detector:(AFDXDetector *)detector didStopDetectingFace:(AFDXFace *)face;
 {
-    __block AffdexDemoViewController *weakSelf = self;
+//    __block AffdexDemoViewController *weakSelf = self;
 
     dispatch_async(dispatch_get_main_queue(), ^{
+        for (ExpressionViewController *vc in self.viewControllers)
+        {
+            vc.metric = 0.0;
+        }
+        
 /*
         BOOL iPhone = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone);
         
@@ -798,74 +827,78 @@
                           ];
         
         CGFloat emojiFontSize = 80.0;
-        
+        /*  RELAXED(0x263A),
+         SMILEY(0x1F603),
+         LAUGHING(0x1F606),
+         KISSING(0x1F617),
+         DISAPPOINTED(0x1F61E),
+         RAGE(0x1F621),
+         SMIRK(0x1F60F),
+         WINK(0x1F609),
+         STUCK_OUT_TONGUE_WINKING_EYE(0x1F61C),
+         STUCK_OUT_TONGUE(0x1F61B),
+         FLUSHED(0x1F633),
+         SCREAM(0x1F631),
+         UNKNOWN(0x1F610);
+*/
         self.emojis = @[@{@"name" : @"Laughing",
                           @"score": @"emojis.laughing",
-                          @"image": [UIImage imageFromText:@"\xF0\x9F\x98\x81" size:emojiFontSize],
+                          @"image": [UIImage imageFromText:@"😆" size:emojiFontSize],
                           @"code": [NSNumber numberWithInt:AFDX_EMOJI_LAUGHING]
                           },
                         @{@"name" : @"Smiley",
                           @"score": @"emojis.smiley",
-                          @"image": [UIImage imageFromText:@"\xF0\x9F\x98\x83" size:emojiFontSize],
+                          @"image": [UIImage imageFromText:@"😀" size:emojiFontSize],
                           @"code": [NSNumber numberWithInt:AFDX_EMOJI_SMILEY]
                           },
                         @{@"name" : @"Relaxed",
                           @"score": @"emojis.relaxed",
-                          @"image": [UIImage imageFromText:@"\xF0\x9F\x98\x8C" size:emojiFontSize],
+                          @"image": [UIImage imageFromText:@"☺️" size:emojiFontSize],
+                          @"code": [NSNumber numberWithInt:AFDX_EMOJI_RELAXED]
                           },
                         @{@"name" : @"Wink",
                           @"score": @"emojis.wink",
-                          @"image": [UIImage imageFromText:@"\xF0\x9F\x98\x89" size:emojiFontSize],
+                          @"image": [UIImage imageFromText:@"😉" size:emojiFontSize],
                           @"code": [NSNumber numberWithInt:AFDX_EMOJI_WINK]
                           },
                         @{@"name" : @"Kiss",
                           @"score": @"emojis.kissing",
-                          @"image": [UIImage imageFromText:@"\xF0\x9F\x98\x97" size:emojiFontSize],
+                          @"image": [UIImage imageFromText:@"😗" size:emojiFontSize],
                           @"code": [NSNumber numberWithInt:AFDX_EMOJI_KISSING]
-                          },
-                        @{@"name" : @"Kiss Eye Closure",
-                          @"score": @"emojis.kissingClosedEyes",
-                          @"image": [UIImage imageFromText:@"\xF0\x9F\x98\x9A" size:emojiFontSize],
-                          @"code": [NSNumber numberWithInt:AFDX_EMOJI_KISSING_CLOSED_EYES]
                           },
                         @{@"name" : @"Tongue Wink",
                           @"score": @"emojis.stuckOutTongueWinkingEye",
-                          @"image": [UIImage imageFromText:@"\xF0\x9F\x98\x9C" size:emojiFontSize],
+                          @"image": [UIImage imageFromText:@"😜" size:emojiFontSize],
                           @"code": [NSNumber numberWithInt:AFDX_EMOJI_STUCK_OUT_TONGUE_WINKING_EYE]
                           },
                         @{@"name" : @"Tongue Out",
                           @"score": @"emojis.stuckOutTongue",
-                          @"image": [UIImage imageFromText:@"\xF0\x9F\x98\x9B" size:emojiFontSize],
+                          @"image": [UIImage imageFromText:@"😛" size:emojiFontSize],
                           @"code": [NSNumber numberWithInt:AFDX_EMOJI_STUCK_OUT_TONGUE]
-                          },
-                        @{@"name" : @"Tongue Eye Closure",
-                          @"score": @"emojis.stuckOutTongueClosedEyes",
-                          @"image": [UIImage imageFromText:@"\xF0\x9F\x98\x9D" size:emojiFontSize],
-                          @"code": [NSNumber numberWithInt:AFDX_EMOJI_STUCK_OUT_TONGUE_CLOSED_EYES]
                           },
                         @{@"name" : @"Flushed",
                           @"score": @"emojis.flushed",
-                          @"image": [UIImage imageFromText:@"\xF0\x9F\x98\xB3" size:emojiFontSize],
+                          @"image": [UIImage imageFromText:@"😳" size:emojiFontSize],
                           @"code": [NSNumber numberWithInt:AFDX_EMOJI_FLUSHED]
                           },
                         @{@"name" : @"Disappointed",
                           @"score": @"emojis.disappointed",
-                          @"image": [UIImage imageFromText:@"\xF0\x9F\x98\x9E" size:emojiFontSize],
+                          @"image": [UIImage imageFromText:@"😞" size:emojiFontSize],
                           @"code": [NSNumber numberWithInt:AFDX_EMOJI_DISAPPOINTED]
                           },
                         @{@"name" : @"Rage",
                           @"score": @"emojis.rage",
-                          @"image": [UIImage imageFromText:@"\xF0\x9F\x98\xA0" size:emojiFontSize],
+                          @"image": [UIImage imageFromText:@"😡" size:emojiFontSize],
                           @"code": [NSNumber numberWithInt:AFDX_EMOJI_RAGE]
                           },
                         @{@"name" : @"Scream",
                           @"score": @"emojis.scream",
-                          @"image": [UIImage imageFromText:@"\xF0\x9F\x98\xB1" size:emojiFontSize],
+                          @"image": [UIImage imageFromText:@"😱" size:emojiFontSize],
                           @"code": [NSNumber numberWithInt:AFDX_EMOJI_SCREAM]
                           },
                         @{@"name" : @"Smirk",
                           @"score": @"emojis.smirk",
-                          @"image": [UIImage imageFromText:@"\xF0\x9F\x98\x8F" size:emojiFontSize],
+                          @"image": [UIImage imageFromText:@"😏" size:emojiFontSize],
                           @"code": [NSNumber numberWithInt:AFDX_EMOJI_SMIRK]
                           }
                         ];
@@ -890,29 +923,33 @@
     self.cameraToUse = AFDX_CAMERA_FRONT;
     self.dominantEmoji = AFDX_EMOJI_NONE;
     
-    CGFloat scaleFactor = 4;
+    CGFloat scaleFactor = 1;
     BOOL iPhone = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone);
     if (iPhone == TRUE) {
         scaleFactor *= 1;
     }
     
-    self.maleImage = [UIImage imageNamed:@"male-green-noglasses-alpha.png"];
+    self.maleImage = [UIImage imageNamed:@"male-noglasses.png"];
     self.maleImage = [UIImage imageWithCGImage:[self.maleImage CGImage]
                         scale:(self.maleImage.scale * scaleFactor)
                   orientation:(self.maleImage.imageOrientation)];
-    self.femaleImage = [UIImage imageNamed:@"female-red-noglasses-alpha.png"];
+    self.femaleImage = [UIImage imageNamed:@"female-noglasses.png"];
     self.femaleImage = [UIImage imageWithCGImage:[self.femaleImage CGImage]
                                          scale:(self.femaleImage.scale * scaleFactor)
                                    orientation:(self.femaleImage.imageOrientation)];
-    self.maleImageWithGlasses = [UIImage imageNamed:@"male-green-glasses-alpha.png"];
+    self.maleImageWithGlasses = [UIImage imageNamed:@"male-glasses.png"];
     self.maleImageWithGlasses = [UIImage imageWithCGImage:[self.maleImageWithGlasses CGImage]
                                          scale:(self.maleImageWithGlasses.scale * scaleFactor)
                                    orientation:(self.maleImageWithGlasses.imageOrientation)];
-    self.femaleImageWithGlasses = [UIImage imageNamed:@"female-red-glasses-alpha.png"];
+    self.femaleImageWithGlasses = [UIImage imageNamed:@"female-glasses.png"];
     self.femaleImageWithGlasses = [UIImage imageWithCGImage:[self.femaleImageWithGlasses CGImage]
                                                     scale:(self.femaleImageWithGlasses.scale * scaleFactor)
                                               orientation:(self.femaleImageWithGlasses.imageOrientation)];
-    self.unknownImageWithGlasses = [UIImage imageNamed:@"unknown-glasses-alpha.png"];
+    self.unknownImage = [UIImage imageNamed:@"unknown-noglasses.png"];
+    self.unknownImage = [UIImage imageWithCGImage:[self.unknownImage CGImage]
+                                                       scale:(self.unknownImage.scale * scaleFactor)
+                                                 orientation:(self.unknownImage.imageOrientation)];
+    self.unknownImageWithGlasses = [UIImage imageNamed:@"unknown-glasses.png"];
     self.unknownImageWithGlasses = [UIImage imageWithCGImage:[self.unknownImageWithGlasses CGImage]
                                                       scale:(self.unknownImageWithGlasses.scale * scaleFactor)
                                                 orientation:(self.unknownImageWithGlasses.imageOrientation)];

@@ -3,8 +3,9 @@
 //  AffdexMe
 //
 //  Created by boisy on 8/18/15.
-//  Copyright (c) 2015 Affectiva. All rights reserved.
+//  Copyright (c) 2016 Affectiva Inc.
 //
+//  See the file license.txt for copying permission.
 
 #import "EmotionPickerViewController.h"
 #if PLAY_SOUNDS
@@ -203,6 +204,7 @@
     cell.label.text = [[[self.availableClassifiers objectAtIndex:section] objectAtIndex:index] objectForKey:@"name"];
     
     UIImage *image = [[[self.availableClassifiers objectAtIndex:section] objectAtIndex:index] objectForKey:@"image"];
+    cell.classifierView.contentMode = UIViewContentModeScaleAspectFill;
     [cell.classifierView setImage:image];
 #if 0
     if (cell.moviePlayer == nil)

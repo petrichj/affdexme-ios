@@ -3,8 +3,9 @@
 //  AffdexMe
 //
 //  Created by Boisy Pitre on 2/14/14.
-//  Copyright (c) 2014 Affectiva. All rights reserved.
+//  Copyright (c) 2016 Affectiva Inc.
 //
+//  See the file license.txt for copying permission.
 
 #import <UIKit/UIKit.h>
 

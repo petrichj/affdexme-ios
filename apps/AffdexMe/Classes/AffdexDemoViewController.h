@@ -27,13 +27,12 @@
 @property (strong) AFDXDetector *detector;
 @property (assign) BOOL drawFacePoints;
 @property (assign) BOOL drawAppearanceIcons;
+@property (assign) BOOL drawEmojis;
 @property (assign) BOOL drawFaceRect;
 @property (strong) NSMutableDictionary *faceMeasurements;
 @property (weak) IBOutlet UIView *classifiersView;
-@property (weak) IBOutlet UIButton *cameraButton_compact;
-@property (weak) IBOutlet UIButton *cameraButton_regular;
-@property (weak) IBOutlet UIButton *cameraSwapButton_compact;
-@property (weak) IBOutlet UIButton *cameraSwapButton_regular;
+@property (weak) IBOutlet UIView *settingsView_compact;
+@property (weak) IBOutlet UIView *settingsView_regular;
 
 @property (weak) IBOutlet UIView *classifierHeaderView_compact;
 @property (weak) IBOutlet UIView *classifierHeaderView_regular;
@@ -53,7 +52,8 @@
 @property (weak) IBOutlet UIView *classifier5View_regular;
 @property (weak) IBOutlet UIView *classifier6View_regular;
 
-@property (weak) IBOutlet UILabel *versionLabel;
+@property (weak) IBOutlet UILabel *versionLabel_compact;
+@property (weak) IBOutlet UILabel *versionLabel_regular;
 @property (strong) SoundEffect *sound;
 
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1Ft-RU-JxF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1Ft-RU-JxF">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -515,7 +515,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f3D-aM-2S1">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f3D-aM-2S1" userLabel="Settings View Regular">
                                 <rect key="frame" x="326" y="408" width="90" height="204"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4oG-0q-rjr">
@@ -649,7 +649,7 @@
                                     <rect key="frame" x="10" y="10" width="50" height="164"/>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zN8-qq-5xg">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zN8-qq-5xg" userLabel="Settings View Compact">
                                 <rect key="frame" x="326" y="408" width="90" height="204"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jyE-SM-JuB">
@@ -826,7 +826,10 @@
                         <outlet property="classifierHeaderView_compact" destination="HDR-sj-e7X" id="l7Y-wj-R45"/>
                         <outlet property="classifierHeaderView_regular" destination="mO8-Ka-BDU" id="yL6-yN-Rix"/>
                         <outlet property="imageView" destination="1Za-bm-qkF" id="7eL-yI-1fm"/>
-                        <outlet property="versionLabel" destination="mJQ-9V-5iv" id="cEV-bp-L9t"/>
+                        <outlet property="settingsView_compact" destination="zN8-qq-5xg" id="0fR-Is-l74"/>
+                        <outlet property="settingsView_regular" destination="f3D-aM-2S1" id="abh-3i-Mj2"/>
+                        <outlet property="versionLabel_compact" destination="mJQ-9V-5iv" id="z7q-9w-3xG"/>
+                        <outlet property="versionLabel_regular" destination="mJQ-9V-5iv" id="abJ-c9-JJd"/>
                         <segue destination="yoa-aN-mWW" kind="showDetail" identifier="select" id="OeV-uc-83t"/>
                     </connections>
                 </viewController>
@@ -849,7 +852,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2OV-qO-0Dd">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="56" id="4ai-gZ-2QB"/>
+                                    <constraint firstAttribute="width" constant="56" id="4ai-gZ-2QB">
+                                        <variation key="widthClass=regular" constant="80"/>
+                                    </constraint>
                                     <constraint firstAttribute="height" constant="36" id="tPk-gi-6t5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -1274,7 +1279,9 @@
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="FHw-Yy-aNG"/>
-                                    <constraint firstAttribute="width" constant="43" id="gVB-pj-fTX"/>
+                                    <constraint firstAttribute="width" constant="43" id="gVB-pj-fTX">
+                                        <variation key="widthClass=compact" constant="54"/>
+                                    </constraint>
                                 </constraints>
                                 <state key="normal" title="DONE">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1302,7 +1309,7 @@
                                         <variation key="widthClass=compact" constant="30"/>
                                     </constraint>
                                     <constraint firstAttribute="width" constant="43" id="uJs-cu-Qd4">
-                                        <variation key="widthClass=compact" constant="78"/>
+                                        <variation key="widthClass=compact" constant="91"/>
                                     </constraint>
                                 </constraints>
                                 <state key="normal" title="CLEAR ALL">
@@ -1335,7 +1342,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="IIz-6y-Vxf"/>
                                     <constraint firstAttribute="width" constant="56" id="p43-0F-XcW">
-                                        <variation key="widthClass=regular" constant="110"/>
+                                        <variation key="widthClass=regular" constant="120"/>
                                     </constraint>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -1379,7 +1386,9 @@
                             <constraint firstAttribute="trailing" secondItem="kH6-FP-TFK" secondAttribute="trailing" id="SgM-Wg-pBO"/>
                             <constraint firstItem="kH6-FP-TFK" firstAttribute="leading" secondItem="sui-Lx-vil" secondAttribute="leading" id="VcS-H2-Ssf"/>
                             <constraint firstItem="tNU-X7-V3c" firstAttribute="top" secondItem="2OV-qO-0Dd" secondAttribute="bottom" constant="8" id="Vho-UQ-lLe"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="2OV-qO-0Dd" secondAttribute="trailing" constant="-10" id="Vza-Os-q4W"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2OV-qO-0Dd" secondAttribute="trailing" constant="-10" id="Vza-Os-q4W">
+                                <variation key="widthClass=regular" constant="0.0"/>
+                            </constraint>
                             <constraint firstItem="tNU-X7-V3c" firstAttribute="top" secondItem="2OV-qO-0Dd" secondAttribute="bottom" constant="8" symbolic="YES" id="WlW-Ll-OKM"/>
                             <constraint firstItem="0cK-sY-Ybj" firstAttribute="top" secondItem="nCq-KR-XIE" secondAttribute="bottom" constant="8" symbolic="YES" id="ckH-IF-Gep"/>
                             <constraint firstItem="kH6-FP-TFK" firstAttribute="top" secondItem="sui-Lx-vil" secondAttribute="top" constant="69" id="cqr-vv-Dd2">
@@ -1397,9 +1406,6 @@
                             </constraint>
                             <constraint firstItem="tNU-X7-V3c" firstAttribute="top" secondItem="aLm-dE-Qrv" secondAttribute="bottom" id="nXU-lW-eaM">
                                 <variation key="widthClass=compact" constant="8"/>
-                            </constraint>
-                            <constraint firstItem="0cK-sY-Ybj" firstAttribute="centerX" secondItem="2OV-qO-0Dd" secondAttribute="centerX" id="o5F-ai-y6k">
-                                <variation key="widthClass=regular" constant="-362"/>
                             </constraint>
                             <constraint firstItem="tNU-X7-V3c" firstAttribute="top" secondItem="bAh-LF-5qD" secondAttribute="bottom" constant="8" id="t80-lg-y2W"/>
                             <constraint firstItem="nCq-KR-XIE" firstAttribute="leading" secondItem="sui-Lx-vil" secondAttribute="leadingMargin" constant="-6" id="vKc-xj-Qul"/>
@@ -1436,7 +1442,6 @@
                                 <exclude reference="86Z-rR-Wtr"/>
                                 <exclude reference="ckH-IF-Gep"/>
                                 <exclude reference="dh1-TL-lIO"/>
-                                <exclude reference="o5F-ai-y6k"/>
                                 <exclude reference="9Xg-MO-Dgg"/>
                                 <exclude reference="SgM-Wg-pBO"/>
                                 <exclude reference="VcS-H2-Ssf"/>
@@ -1485,7 +1490,6 @@
                                 <include reference="86Z-rR-Wtr"/>
                                 <include reference="ckH-IF-Gep"/>
                                 <include reference="dh1-TL-lIO"/>
-                                <include reference="o5F-ai-y6k"/>
                             </mask>
                         </variation>
                     </view>

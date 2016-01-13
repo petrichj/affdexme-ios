@@ -136,7 +136,6 @@
 @property (assign) AFDXCameraType cameraToUse;
 
 @property (strong) NSArray *faces;
-@property (assign) Emoji dominantEmoji;
 
 @property (assign) BOOL multifaceMode;
 @property (strong) ExpressionViewController *dominantEmotionOrExpression;
@@ -235,8 +234,7 @@
             for (NSArray *a in self.availableClassifiers)
             {
                 // get dominant emoji
-                self.dominantEmoji = face.emojis.dominantEmoji;
-//                self.dominantEmoji = AFDX_EMOJI_SCREAM;
+                [face.userInfo setObject:[NSNumber numberWithInt:face.emojis.dominantEmoji] forKey:@"dominantEmoji"];
                 
                 for (NSDictionary *d in a) {
                     if ([[d objectForKey:@"name"] isEqualToString:self.classifier1Name])
@@ -339,17 +337,13 @@
 
 - (IBAction)cameraButtonTouched:(id)sender;
 {
-    self.cameraButton_compact.hidden = TRUE;
-    self.cameraButton_regular.hidden = TRUE;
-    self.cameraSwapButton_compact.hidden = TRUE;
-    self.cameraSwapButton_regular.hidden = TRUE;
+    self.settingsView_compact.hidden = TRUE;
+    self.settingsView_regular.hidden = TRUE;
     UIImage *snap = [self captureSnapshot];
     self.sound = [[SoundEffect alloc] initWithSoundNamed:@"camera-shutter.mp3"];
     [self.sound play];
-    self.cameraButton_compact.hidden = FALSE;
-    self.cameraButton_regular.hidden = FALSE;
-    self.cameraSwapButton_compact.hidden = FALSE;
-    self.cameraSwapButton_regular.hidden = FALSE;
+    self.settingsView_compact.hidden = FALSE;
+    self.settingsView_regular.hidden = FALSE;
     if (nil != snap) {
         UIImageWriteToSavedPhotosAlbum(snap, nil, nil, nil);
     }
@@ -375,6 +369,11 @@
 
 - (void)unprocessedImageReady:(AFDXDetector *)detector image:(UIImage *)image atTime:(NSTimeInterval)time;
 {
+    static int skip = 0;
+    if (skip++ % 5 != 0) {
+//        return;
+    }
+    
     __block AffdexDemoViewController *weakSelf = self;
     __block UIImage *newImage = image;
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -406,26 +405,29 @@
             NSMutableArray *rectsArray = [NSMutableArray array];
             
             // add dominant emoji
-            if (self.dominantEmoji != AFDX_EMOJI_NONE) {
-                for (NSDictionary *emojiDictionary in self.emojis) {
-                    NSNumber *code = [emojiDictionary objectForKey:@"code"];
-                    if (self.dominantEmoji == [code intValue]) {
-                        // match!
-                        UIImage *emojiImage = [emojiDictionary objectForKey:@"image"];
-                        if (nil != emojiImage) {
-                            // resize bounds to be relative in size to bounding box
-                            CGSize size = emojiImage.size;
-                            CGFloat aspectRatio = size.height / size.width;
-                            size.width = face.faceBounds.size.height * .33;
-                            size.height = size.width * aspectRatio;
-                            
-                            CGRect rect = CGRectMake(face.faceBounds.origin.x - size.width,
-                                                     face.faceBounds.origin.y,
-                                                     size.width,
-                                                     size.height);
-                            [imagesArray addObject:emojiImage];
-                            [rectsArray addObject:[NSValue valueWithCGRect:rect]];
-                            break;
+            if (weakSelf.drawEmojis) {
+                Emoji dominantEmoji = [[face.userInfo objectForKey:@"dominantEmoji"] intValue];
+                if (dominantEmoji != AFDX_EMOJI_NONE) {
+                    for (NSDictionary *emojiDictionary in self.emojis) {
+                        NSNumber *code = [emojiDictionary objectForKey:@"code"];
+                        if (dominantEmoji == [code intValue]) {
+                            // match!
+                            UIImage *emojiImage = [emojiDictionary objectForKey:@"image"];
+                            if (nil != emojiImage) {
+                                // resize bounds to be relative in size to bounding box
+                                CGSize size = emojiImage.size;
+                                CGFloat aspectRatio = size.height / size.width;
+                                size.width = face.faceBounds.size.height * .33;
+                                size.height = size.width * aspectRatio;
+                                
+                                CGRect rect = CGRectMake(face.faceBounds.origin.x - size.width,
+                                                         face.faceBounds.origin.y,
+                                                         size.width,
+                                                         size.height);
+                                [imagesArray addObject:emojiImage];
+                                [rectsArray addObject:[NSValue valueWithCGRect:rect]];
+                                break;
+                            }
                         }
                     }
                 }
@@ -598,7 +600,10 @@
         */
         if (weakSelf.viewControllers != nil)
         {
-            face.userInfo = @{@"viewControllers" : weakSelf.viewControllers};
+            face.userInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                             weakSelf.viewControllers, @"viewControllers",
+                             [NSNumber numberWithInt:AFDX_EMOJI_NONE], @"dominantEmoji",
+                             nil];
 
 #ifdef BROADCAST_VIA_UDP
             char buffer[2];
@@ -667,7 +672,9 @@
 {
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"drawFacePoints" : [NSNumber numberWithBool:YES]}];
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"drawAppearanceIcons" : [NSNumber numberWithBool:YES]}];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"drawEmojis" : [NSNumber numberWithBool:YES]}];
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"allowEmojiSelection" : [NSNumber numberWithBool:YES]}];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"allowMultiface" : [NSNumber numberWithBool:NO]}];
 }
 
 -(BOOL)canBecomeFirstResponder;
@@ -921,7 +928,6 @@
     [super viewDidLoad];
     
     self.cameraToUse = AFDX_CAMERA_FRONT;
-    self.dominantEmoji = AFDX_EMOJI_NONE;
     
     CGFloat scaleFactor = 1;
     BOOL iPhone = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone);
@@ -956,7 +962,8 @@
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey];
     NSString *shortVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
 
-    self.versionLabel.text = [NSString stringWithFormat:@"%@ (%@)", shortVersion, version];
+    self.versionLabel_compact.text = [NSString stringWithFormat:@"%@ (%@)", shortVersion, version];
+    self.versionLabel_regular.text = self.versionLabel_compact.text;
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(prepareForBackground:)
@@ -987,7 +994,8 @@
 
 - (void)viewWillAppear:(BOOL)animated;
 {
-    self.versionLabel.hidden = TRUE;
+    self.versionLabel_compact.hidden = TRUE;
+    self.versionLabel_regular.hidden = TRUE;
     [self.imageView setImage:nil];
     
     NSUInteger count = [self.selectedClassifiers count];
@@ -1082,15 +1090,31 @@
     }
     
     
+    
+    // if emoji selection is not allowed, deselect any emojis
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"allowEmojiSelection"] boolValue] == NO) {
+        for (int i = (int)[self.selectedClassifiers count] - 1; i >= 0; i--) {
+            NSString *classifierName = [self.selectedClassifiers objectAtIndex:i];
+            for (NSDictionary *classifier in self.emojis) {
+                if ([[classifier objectForKey:@"name"] isEqualToString:classifierName]) {
+                    [self.selectedClassifiers removeObjectAtIndex:i];
+                    break;
+                }
+            }
+        }
+    }
+
     [[NSUserDefaults standardUserDefaults] setObject:self.selectedClassifiers forKey:@"selectedClassifiers"];
     
+    [self enterSingleFaceMode];
 }
 
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event;
 {
     if (event.subtype == UIEventSubtypeMotionShake)
     {
-        self.versionLabel.hidden = !self.versionLabel.hidden;
+        self.versionLabel_compact.hidden = !self.versionLabel_compact.hidden;
+        self.versionLabel_regular.hidden = !self.versionLabel_regular.hidden;
     }
     
     [super motionEnded:motion withEvent:event];
@@ -1102,8 +1126,8 @@
     [self becomeFirstResponder];
 
 #ifdef DEMO_MODE
-//    self.mediaFilename = [[NSBundle mainBundle] pathForResource:@"face1" ofType:@"m4v"];
-    self.mediaFilename = [[NSBundle mainBundle] pathForResource:@"faces_in_out" ofType:@"mp4"];
+    self.mediaFilename = [[NSBundle mainBundle] pathForResource:@"face1" ofType:@"m4v"];
+//    self.mediaFilename = [[NSBundle mainBundle] pathForResource:@"faces_in_out" ofType:@"mp4"];
     
     if ([[NSFileManager defaultManager] fileExistsAtPath:self.mediaFilename] == YES)
     {
@@ -1172,18 +1196,23 @@
 {
     [self.detector stop];
     
+    NSUInteger maximumFaces = 1;
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"allowMultiface"] boolValue] == YES) {
+        maximumFaces = 3;
+    }
 #ifdef DEMO_MODE
     // create our detector with our desired facial expresions, using the front facing camera
-    self.detector = [[AFDXDetector alloc] initWithDelegate:self usingFile:self.mediaFilename maximumFaces:3];
+    self.detector = [[AFDXDetector alloc] initWithDelegate:self usingFile:self.mediaFilename maximumFaces:maximumFaces];
 #else
     // create our detector with our desired facial expresions, using the front facing camera
-    self.detector = [[AFDXDetector alloc] initWithDelegate:self usingCamera:self.cameraToUse maximumFaces:3];
+    self.detector = [[AFDXDetector alloc] initWithDelegate:self usingCamera:self.cameraToUse maximumFaces:maximumFaces];
 #endif
     
 
     self.drawFacePoints = [[[NSUserDefaults standardUserDefaults] objectForKey:@"drawFacePoints"] boolValue];
     self.drawFaceRect = self.drawFacePoints;
     self.drawAppearanceIcons = [[[NSUserDefaults standardUserDefaults] objectForKey:@"drawAppearanceIcons"] boolValue];
+    self.drawEmojis = [[[NSUserDefaults standardUserDefaults] objectForKey:@"drawEmojis"] boolValue];
     
     NSInteger maxProcessRate = [[[NSUserDefaults standardUserDefaults] objectForKey:@"maxProcessRate"] integerValue];
     if (0 == maxProcessRate)

@@ -13,3 +13,6 @@ In order to use the project, you will need to:
 - Copy the SDK archive file into the frameworks folder and dearchive it there.
 - Add the license file that you receive from Affectiva to the project as 'sdk.license'.
 
+***
+
+This app uses some of the excellent [Emoji One emojis](http://emojione.com).

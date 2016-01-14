@@ -121,6 +121,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated;
 {
+    [super viewWillDisappear:animated];
     BOOL iPhone = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone);
     UICollectionView *v;
     if (iPhone) {
@@ -140,9 +141,6 @@
         NSIndexPath *path = [self getPathForClassifierName:name];
         
         if (nil != path) {
-            if ([path indexAtPosition:0] > 1 && [[[NSUserDefaults standardUserDefaults] objectForKey:@"allowEmojiSelection"] boolValue] == NO) {
-                break;
-            }
             [self.collectionViewCompact selectItemAtIndexPath:path
                                                      animated:YES
                                                scrollPosition:UICollectionViewScrollPositionNone];
@@ -171,11 +169,7 @@
 {
     NSInteger count = [self.availableClassifiers count];
 
-    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"allowEmojiSelection"] boolValue] == YES) {
-        return count;
-    } else {
-        return count - 1;
-    }
+    return count;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section;
@@ -206,7 +200,7 @@
     UIImage *image = [[[self.availableClassifiers objectAtIndex:section] objectAtIndex:index] objectForKey:@"image"];
     cell.classifierView.contentMode = UIViewContentModeScaleAspectFill;
     [cell.classifierView setImage:image];
-#if 0
+#if MOVIE_AVAILABLE
     if (cell.moviePlayer == nil)
     {
         NSString *filePath = [[NSBundle mainBundle] pathForResource:@"anger" ofType:@"mp4"];

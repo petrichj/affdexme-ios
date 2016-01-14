@@ -50,16 +50,6 @@
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
 			<key>Title</key>
-			<string>Allow Emoji Selection</string>
-			<key>Key</key>
-			<string>allowEmojiSelection</string>
-			<key>DefaultValue</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSToggleSwitchSpecifier</string>
-			<key>Title</key>
 			<string>Allow Multiface</string>
 			<key>Key</key>
 			<string>allowMultiface</string>

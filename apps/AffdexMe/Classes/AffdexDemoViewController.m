@@ -229,13 +229,13 @@
         [self.facePointsToDraw addObjectsFromArray:face.facePoints];
         [self.faceRectsToDraw addObject:[NSValue valueWithCGRect:face.faceBounds]];
 
+        // get dominant emoji
+        [face.userInfo setObject:[NSNumber numberWithInt:face.emojis.dominantEmoji] forKey:@"dominantEmoji"];
+
         for (ExpressionViewController *v in viewControllers)
         {
             for (NSArray *a in self.availableClassifiers)
             {
-                // get dominant emoji
-                [face.userInfo setObject:[NSNumber numberWithInt:face.emojis.dominantEmoji] forKey:@"dominantEmoji"];
-                
                 for (NSDictionary *d in a) {
                     if ([[d objectForKey:@"name"] isEqualToString:self.classifier1Name])
                     {
@@ -357,14 +357,14 @@
         self.cameraToUse = AFDX_CAMERA_FRONT;
     }
     
-    // restart the detector so that the other camera comes into view
-    [self startDetector];
-    
     // set the expression bars for the visible expressions to 0
     for (ExpressionViewController *vc in self.viewControllers)
     {
         vc.metric = 0.0;
     }
+
+    // restart the detector so that the other camera comes into view
+    [self startDetector];
 }
 
 - (void)unprocessedImageReady:(AFDXDetector *)detector image:(UIImage *)image atTime:(NSTimeInterval)time;
@@ -455,6 +455,10 @@
                     for (NSDictionary *d in self.emotions) {
                         NSString *name = [d objectForKey:@"name"];
                         CGFloat score = [[face valueForKeyPath:[d objectForKey:@"score"]] floatValue];
+                        // don't allow valence as per Steve H's suggestion
+                        if ([name isEqualToString:@"Valence"]) {
+                            continue;
+                        }
                         if (score > dominantScore) {
                             dominantScore = score;
                             dominantName = name;
@@ -673,7 +677,6 @@
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"drawFacePoints" : [NSNumber numberWithBool:YES]}];
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"drawAppearanceIcons" : [NSNumber numberWithBool:YES]}];
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"drawEmojis" : [NSNumber numberWithBool:YES]}];
-    [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"allowEmojiSelection" : [NSNumber numberWithBool:YES]}];
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"allowMultiface" : [NSNumber numberWithBool:NO]}];
 }
 
@@ -834,20 +837,7 @@
                           ];
         
         CGFloat emojiFontSize = 80.0;
-        /*  RELAXED(0x263A),
-         SMILEY(0x1F603),
-         LAUGHING(0x1F606),
-         KISSING(0x1F617),
-         DISAPPOINTED(0x1F61E),
-         RAGE(0x1F621),
-         SMIRK(0x1F60F),
-         WINK(0x1F609),
-         STUCK_OUT_TONGUE_WINKING_EYE(0x1F61C),
-         STUCK_OUT_TONGUE(0x1F61B),
-         FLUSHED(0x1F633),
-         SCREAM(0x1F631),
-         UNKNOWN(0x1F610);
-*/
+
         self.emojis = @[@{@"name" : @"Laughing",
                           @"score": @"emojis.laughing",
                           @"image": [UIImage imageFromText:@"😆" size:emojiFontSize],
@@ -910,7 +900,7 @@
                           }
                         ];
         
-        self.availableClassifiers = @[self.emotions, self.expressions, self.emojis];
+        self.availableClassifiers = @[self.emotions, self.expressions];
         
         self.selectedClassifiers = [[[NSUserDefaults standardUserDefaults] objectForKey:@"selectedClassifiers"] mutableCopy];
         if (self.selectedClassifiers == nil)
@@ -1089,21 +1079,6 @@
         iPhone == TRUE ? [self.classifier6View_compact addSubview:vc.view] : [self.classifier6View_regular addSubview:vc.view];
     }
     
-    
-    
-    // if emoji selection is not allowed, deselect any emojis
-    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"allowEmojiSelection"] boolValue] == NO) {
-        for (int i = (int)[self.selectedClassifiers count] - 1; i >= 0; i--) {
-            NSString *classifierName = [self.selectedClassifiers objectAtIndex:i];
-            for (NSDictionary *classifier in self.emojis) {
-                if ([[classifier objectForKey:@"name"] isEqualToString:classifierName]) {
-                    [self.selectedClassifiers removeObjectAtIndex:i];
-                    break;
-                }
-            }
-        }
-    }
-
     [[NSUserDefaults standardUserDefaults] setObject:self.selectedClassifiers forKey:@"selectedClassifiers"];
     
     [self enterSingleFaceMode];
@@ -1163,29 +1138,6 @@
     }
 #endif
 }
-
-#if 0
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration;
-{
-    [UIView setAnimationsEnabled:NO];
-    
-    if (nil != self.session)
-    {
-        [self recordOrientation:toInterfaceOrientation];
-    }
-    
-    if (nil != self.selfieView)
-    {
-        [self setupSelfieView];
-    }
-}
-
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation;
-{
-    [UIView setAnimationsEnabled:YES];
-    [self.player.view setFrame:self.movieView.bounds];  // player's frame must match parent's
-}
-#endif
 
 - (void)stopDetector;
 {

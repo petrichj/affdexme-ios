@@ -170,14 +170,6 @@
 {
     self.multifaceMode = TRUE;
     
-    self.detector.joy = TRUE;
-    self.detector.anger = TRUE;
-    self.detector.disgust = TRUE;
-    self.detector.contempt = TRUE;
-    self.detector.sadness = TRUE;
-    self.detector.fear = TRUE;
-    self.detector.surprise = TRUE;
-    
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.5];
     self.classifierHeaderView_compact.alpha = 0.0;

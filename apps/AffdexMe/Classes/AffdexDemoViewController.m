@@ -14,7 +14,7 @@
 #endif
 
 #ifndef YOUR_AFFDEX_LICENSE_STRING_GOES_HERE
-#define YOUR_AFFDEX_LICENSE_STRING_GOES_HERE "invalidlicensestring"
+#error Please set the macro YOUR_AFFDEX_LICENSE_STRING_GOES_HERE to the contents of your Affectiva SDK license file.
 #endif
 
 // If this is being compiled for the iOS simulator, a demo mode is used since the camera isn't supported.

@@ -13,6 +13,10 @@
 #define MULTICAST_PORT 12345
 #endif
 
+#ifndef YOUR_AFFDEX_LICENSE_STRING_GOES_HERE
+#define YOUR_AFFDEX_LICENSE_STRING_GOES_HERE "invalidlicensestring"
+#endif
+
 // If this is being compiled for the iOS simulator, a demo mode is used since the camera isn't supported.
 #if TARGET_IPHONE_SIMULATOR
 #define DEMO_MODE
@@ -1170,10 +1174,9 @@
     }
     
     self.detector.maxProcessRate = maxProcessRate;
-    
     self.dateOfLastFrame = nil;
     self.dateOfLastProcessedFrame = nil;
-    self.detector.licensePath = [[NSBundle mainBundle] pathForResource:@"sdk" ofType:@"license"];
+    self.detector.licenseString = @YOUR_AFFDEX_LICENSE_STRING_GOES_HERE;
     
     // tell the detector which facial expressions we want to measure
     [self.detector setDetectAllEmotions:NO];

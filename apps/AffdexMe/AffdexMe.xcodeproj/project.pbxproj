@@ -29,7 +29,6 @@
 		682B8B73185F6D4F00DB10DE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 682B8B72185F6D4F00DB10DE /* main.m */; };
 		683400F417B0389800A63823 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 683400F317B0389800A63823 /* libc++.dylib */; };
 		683400F617B0389F00A63823 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 683400F517B0389F00A63823 /* libstdc++.dylib */; };
-		6851F7621C1882E9009BEDB0 /* four_steves.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 6851F7611C1882E9009BEDB0 /* four_steves.mp4 */; };
 		686C75E31B95EAC000483C1A /* Square.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 686C75C01B95EAC000483C1A /* Square.ttf */; };
 		686C75E41B95EAC000483C1A /* Affectiva_Logo Clear Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 686C75C21B95EAC000483C1A /* Affectiva_Logo Clear Background.png */; };
 		686C75E51B95EAC000483C1A /* Anger.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 686C75C31B95EAC000483C1A /* Anger.jpg */; };
@@ -71,7 +70,6 @@
 		68CF76831B83B0B30083B32E /* EmotionPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CF76821B83B0B30083B32E /* EmotionPickerViewController.m */; };
 		68D0FD931C035AAB00D430A2 /* camera-shutter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 68D0FD921C035AAB00D430A2 /* camera-shutter.mp3 */; };
 		68D0FD951C0545C700D430A2 /* camera-swap-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 68D0FD941C0545C700D430A2 /* camera-swap-icon.png */; };
-		68D7E2471C2073350058E303 /* faces_in_out.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 68D7E2461C2073350058E303 /* faces_in_out.mp4 */; };
 		68DCE53D1767642C000DE093 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68DCE53C1767642C000DE093 /* AudioToolbox.framework */; };
 		68DD4B68194784A70077ED24 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65920A7616D73F8700D89A4B /* CoreGraphics.framework */; };
 		68E978CF1C17724400EAD971 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68E978CE1C17724400EAD971 /* LaunchScreen.storyboard */; };
@@ -473,7 +471,6 @@
 				686C75E91B95EAC000483C1A /* Chin Raise.jpg in Resources */,
 				686C75F01B95EAC000483C1A /* Inner Brow Raise.jpg in Resources */,
 				686C75F61B95EAC000483C1A /* Mouth Open.jpg in Resources */,
-				6851F7621C1882E9009BEDB0 /* four_steves.mp4 in Resources */,
 				6803489D1C3C7C05005CF454 /* camera-lens-icon.png in Resources */,
 				686C75EA1B95EAC000483C1A /* Contempt.jpg in Resources */,
 				686C75EE1B95EAC000483C1A /* Eye Closure.jpg in Resources */,
@@ -483,7 +480,6 @@
 				680348971C3C1413005CF454 /* male-glasses.png in Resources */,
 				686C76001B95EAC000483C1A /* Whit.m4a in Resources */,
 				686C75F51B95EAC000483C1A /* Lip Suck.jpg in Resources */,
-				68D7E2471C2073350058E303 /* faces_in_out.mp4 in Resources */,
 				680348941C3C1413005CF454 /* unknown-noglasses.png in Resources */,
 				686C75E31B95EAC000483C1A /* Square.ttf in Resources */,
 				680348981C3C1413005CF454 /* female-noglasses.png in Resources */,

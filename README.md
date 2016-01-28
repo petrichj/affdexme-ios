@@ -13,3 +13,5 @@ In order to use the project, you will need to:
 
 We welcome your contributions to this project. Also, feel free to use this code as starting point for your app.
 
+Attributions: Some graphical elements provided by Emoji One (www.emojione.com)
+

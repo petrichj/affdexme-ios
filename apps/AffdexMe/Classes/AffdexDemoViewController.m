@@ -1176,7 +1176,7 @@
     self.detector.maxProcessRate = maxProcessRate;
     self.dateOfLastFrame = nil;
     self.dateOfLastProcessedFrame = nil;
-    self.detector.licenseString = @"#YOUR_AFFDEX_LICENSE_STRING_GOES_HERE";
+    self.detector.licenseString = YOUR_AFFDEX_LICENSE_STRING_GOES_HERE;
     
     // tell the detector which facial expressions we want to measure
     [self.detector setDetectAllEmotions:NO];

@@ -13,6 +13,14 @@
 		65920A7516D73F8700D89A4B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65920A7416D73F8700D89A4B /* Foundation.framework */; };
 		65920A9816D7414700D89A4B /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65920A9716D7414700D89A4B /* CoreImage.framework */; };
 		65920A9A16D7415200D89A4B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65920A9916D7415200D89A4B /* QuartzCore.framework */; };
+		680348831C3B18EC005CF454 /* Settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 680348821C3B18EC005CF454 /* Settings.png */; };
+		680348941C3C1413005CF454 /* unknown-noglasses.png in Resources */ = {isa = PBXBuildFile; fileRef = 6803488E1C3C1413005CF454 /* unknown-noglasses.png */; };
+		680348951C3C1413005CF454 /* unknown-glasses.png in Resources */ = {isa = PBXBuildFile; fileRef = 6803488F1C3C1413005CF454 /* unknown-glasses.png */; };
+		680348961C3C1413005CF454 /* male-noglasses.png in Resources */ = {isa = PBXBuildFile; fileRef = 680348901C3C1413005CF454 /* male-noglasses.png */; };
+		680348971C3C1413005CF454 /* male-glasses.png in Resources */ = {isa = PBXBuildFile; fileRef = 680348911C3C1413005CF454 /* male-glasses.png */; };
+		680348981C3C1413005CF454 /* female-noglasses.png in Resources */ = {isa = PBXBuildFile; fileRef = 680348921C3C1413005CF454 /* female-noglasses.png */; };
+		680348991C3C1413005CF454 /* female-glasses.png in Resources */ = {isa = PBXBuildFile; fileRef = 680348931C3C1413005CF454 /* female-glasses.png */; };
+		6803489D1C3C7C05005CF454 /* camera-lens-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6803489C1C3C7C05005CF454 /* camera-lens-icon.png */; };
 		68224A111B94E164000CE9BB /* Affdex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68224A101B94E164000CE9BB /* Affdex.framework */; };
 		68224A121B94E276000CE9BB /* Affdex.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 68224A101B94E164000CE9BB /* Affdex.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		682664D71766679C004E93E6 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 682664D61766679C004E93E6 /* CoreVideo.framework */; };
@@ -43,7 +51,6 @@
 		686C75F61B95EAC000483C1A /* Mouth Open.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 686C75D41B95EAC000483C1A /* Mouth Open.jpg */; };
 		686C75F71B95EAC000483C1A /* Nose Wrinkle.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 686C75D51B95EAC000483C1A /* Nose Wrinkle.jpg */; };
 		686C75F81B95EAC000483C1A /* Sadness.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 686C75D61B95EAC000483C1A /* Sadness.jpg */; };
-		686C75F91B95EAC000483C1A /* Settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 686C75D71B95EAC000483C1A /* Settings.png */; };
 		686C75FA1B95EAC000483C1A /* Smile.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 686C75D81B95EAC000483C1A /* Smile.jpg */; };
 		686C75FB1B95EAC000483C1A /* Smirk.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 686C75D91B95EAC000483C1A /* Smirk.jpg */; };
 		686C75FC1B95EAC000483C1A /* Surprise.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 686C75DA1B95EAC000483C1A /* Surprise.jpg */; };
@@ -61,9 +68,13 @@
 		689DB56217DA32BD00751050 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 689DB56117DA32BD00751050 /* SystemConfiguration.framework */; };
 		68CF76801B83AF500083B32E /* UIDeviceHardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CF767F1B83AF500083B32E /* UIDeviceHardware.m */; };
 		68CF76831B83B0B30083B32E /* EmotionPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CF76821B83B0B30083B32E /* EmotionPickerViewController.m */; };
+		68D0FD931C035AAB00D430A2 /* camera-shutter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 68D0FD921C035AAB00D430A2 /* camera-shutter.mp3 */; };
+		68D0FD951C0545C700D430A2 /* camera-swap-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 68D0FD941C0545C700D430A2 /* camera-swap-icon.png */; };
 		68DCE53D1767642C000DE093 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68DCE53C1767642C000DE093 /* AudioToolbox.framework */; };
 		68DD4B68194784A70077ED24 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65920A7616D73F8700D89A4B /* CoreGraphics.framework */; };
-		68EC2EEF18A97F02006C9EC5 /* sdk.license in Resources */ = {isa = PBXBuildFile; fileRef = 68EC2EEE18A97F02006C9EC5 /* sdk.license */; };
+		68E978CF1C17724400EAD971 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68E978CE1C17724400EAD971 /* LaunchScreen.storyboard */; };
+		68E978D11C1772D200EAD971 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 68E978D01C1772D200EAD971 /* background.png */; };
+		68E978D31C1772F600EAD971 /* Affectiva_Logo Clear Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 68E978D21C1772F600EAD971 /* Affectiva_Logo Clear Background.png */; };
 		68F4233218CD216D0032A50D /* ExpressionView_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68F4233018CD216D0032A50D /* ExpressionView_iPad.xib */; };
 		68F4233318CD216D0032A50D /* ExpressionView_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68F4233118CD216D0032A50D /* ExpressionView_iPhone.xib */; };
 		68F626B81B909F2C004521CE /* SoundEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F626B71B909F2C004521CE /* SoundEffect.m */; };
@@ -99,6 +110,15 @@
 		65920A8016D73F8700D89A4B /* AffdexMe-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AffdexMe-Prefix.pch"; sourceTree = "<group>"; };
 		65920A9716D7414700D89A4B /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		65920A9916D7415200D89A4B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		680348821C3B18EC005CF454 /* Settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings.png; sourceTree = "<group>"; };
+		6803488E1C3C1413005CF454 /* unknown-noglasses.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unknown-noglasses.png"; sourceTree = "<group>"; };
+		6803488F1C3C1413005CF454 /* unknown-glasses.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unknown-glasses.png"; sourceTree = "<group>"; };
+		680348901C3C1413005CF454 /* male-noglasses.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "male-noglasses.png"; sourceTree = "<group>"; };
+		680348911C3C1413005CF454 /* male-glasses.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "male-glasses.png"; sourceTree = "<group>"; };
+		680348921C3C1413005CF454 /* female-noglasses.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "female-noglasses.png"; sourceTree = "<group>"; };
+		680348931C3C1413005CF454 /* female-glasses.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "female-glasses.png"; sourceTree = "<group>"; };
+		6803489A1C3C531C005CF454 /* license.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license.txt; sourceTree = "<group>"; };
+		6803489C1C3C7C05005CF454 /* camera-lens-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-lens-icon.png"; sourceTree = "<group>"; };
 		68224A101B94E164000CE9BB /* Affdex.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Affdex.framework; path = ../../frameworks/Affdex.framework; sourceTree = "<group>"; };
 		682664D61766679C004E93E6 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		682664D8176667A7004E93E6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -106,6 +126,7 @@
 		682B8B72185F6D4F00DB10DE /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Classes/main.m; sourceTree = "<group>"; };
 		683400F317B0389800A63823 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		683400F517B0389F00A63823 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
+		6851F7611C1882E9009BEDB0 /* four_steves.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = four_steves.mp4; path = "../../../../../../Volumes/Affectiva/affdex-ios/affdex-media/testvideos/four_steves.mp4"; sourceTree = "<group>"; };
 		686C75C01B95EAC000483C1A /* Square.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Square.ttf; sourceTree = "<group>"; };
 		686C75C21B95EAC000483C1A /* Affectiva_Logo Clear Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Affectiva_Logo Clear Background.png"; sourceTree = "<group>"; };
 		686C75C31B95EAC000483C1A /* Anger.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Anger.jpg; sourceTree = "<group>"; };
@@ -128,7 +149,6 @@
 		686C75D41B95EAC000483C1A /* Mouth Open.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Mouth Open.jpg"; sourceTree = "<group>"; };
 		686C75D51B95EAC000483C1A /* Nose Wrinkle.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Nose Wrinkle.jpg"; sourceTree = "<group>"; };
 		686C75D61B95EAC000483C1A /* Sadness.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Sadness.jpg; sourceTree = "<group>"; };
-		686C75D71B95EAC000483C1A /* Settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings.png; sourceTree = "<group>"; };
 		686C75D81B95EAC000483C1A /* Smile.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Smile.jpg; sourceTree = "<group>"; };
 		686C75D91B95EAC000483C1A /* Smirk.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Smirk.jpg; sourceTree = "<group>"; };
 		686C75DA1B95EAC000483C1A /* Surprise.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Surprise.jpg; sourceTree = "<group>"; };
@@ -151,8 +171,13 @@
 		68CF767F1B83AF500083B32E /* UIDeviceHardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIDeviceHardware.m; sourceTree = "<group>"; };
 		68CF76811B83B0B30083B32E /* EmotionPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmotionPickerViewController.h; sourceTree = "<group>"; };
 		68CF76821B83B0B30083B32E /* EmotionPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmotionPickerViewController.m; sourceTree = "<group>"; };
+		68D0FD921C035AAB00D430A2 /* camera-shutter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "camera-shutter.mp3"; sourceTree = "<group>"; };
+		68D0FD941C0545C700D430A2 /* camera-swap-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-swap-icon.png"; sourceTree = "<group>"; };
+		68D7E2461C2073350058E303 /* faces_in_out.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = faces_in_out.mp4; path = "../../../../../../Volumes/Affectiva/affdex-ios/affdex-media/testvideos/faces_in_out.mp4"; sourceTree = "<group>"; };
 		68DCE53C1767642C000DE093 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		68EC2EEE18A97F02006C9EC5 /* sdk.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sdk.license; sourceTree = "<group>"; };
+		68E978CE1C17724400EAD971 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ../LaunchScreen.storyboard; sourceTree = "<group>"; };
+		68E978D01C1772D200EAD971 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		68E978D21C1772F600EAD971 /* Affectiva_Logo Clear Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Affectiva_Logo Clear Background.png"; path = "../apps/AffdexMe/Affectiva_Logo Clear Background.png"; sourceTree = "<group>"; };
 		68F4233018CD216D0032A50D /* ExpressionView_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpressionView_iPad.xib; sourceTree = "<group>"; };
 		68F4233118CD216D0032A50D /* ExpressionView_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpressionView_iPhone.xib; sourceTree = "<group>"; };
 		68F626B61B909F2C004521CE /* SoundEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundEffect.h; sourceTree = "<group>"; };
@@ -222,6 +247,7 @@
 				68CF76811B83B0B30083B32E /* EmotionPickerViewController.h */,
 				68CF76821B83B0B30083B32E /* EmotionPickerViewController.m */,
 				68914FF31A9104FE00A6C4D7 /* Main.storyboard */,
+				68E978CE1C17724400EAD971 /* LaunchScreen.storyboard */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -229,7 +255,7 @@
 		65920A6616D73F8700D89A4B = {
 			isa = PBXGroup;
 			children = (
-				68EC2EEE18A97F02006C9EC5 /* sdk.license */,
+				6803489A1C3C531C005CF454 /* license.txt */,
 				68F69CCF1A7FEC37001A7DAB /* Settings.bundle */,
 				68914FF11A9102CC00A6C4D7 /* Images.xcassets */,
 				686C75BE1B95EAC000483C1A /* media */,
@@ -288,6 +314,18 @@
 		686C75BE1B95EAC000483C1A /* media */ = {
 			isa = PBXGroup;
 			children = (
+				68D0FD941C0545C700D430A2 /* camera-swap-icon.png */,
+				6803489C1C3C7C05005CF454 /* camera-lens-icon.png */,
+				6803488E1C3C1413005CF454 /* unknown-noglasses.png */,
+				6803488F1C3C1413005CF454 /* unknown-glasses.png */,
+				680348901C3C1413005CF454 /* male-noglasses.png */,
+				680348911C3C1413005CF454 /* male-glasses.png */,
+				680348921C3C1413005CF454 /* female-noglasses.png */,
+				680348931C3C1413005CF454 /* female-glasses.png */,
+				680348821C3B18EC005CF454 /* Settings.png */,
+				68E978D21C1772F600EAD971 /* Affectiva_Logo Clear Background.png */,
+				68E978D01C1772D200EAD971 /* background.png */,
+				68D0FD921C035AAB00D430A2 /* camera-shutter.mp3 */,
 				686C75BF1B95EAC000483C1A /* fonts */,
 				686C75C11B95EAC000483C1A /* images */,
 				686C75DD1B95EAC000483C1A /* sounds */,
@@ -329,7 +367,6 @@
 				686C75D41B95EAC000483C1A /* Mouth Open.jpg */,
 				686C75D51B95EAC000483C1A /* Nose Wrinkle.jpg */,
 				686C75D61B95EAC000483C1A /* Sadness.jpg */,
-				686C75D71B95EAC000483C1A /* Settings.png */,
 				686C75D81B95EAC000483C1A /* Smile.jpg */,
 				686C75D91B95EAC000483C1A /* Smirk.jpg */,
 				686C75DA1B95EAC000483C1A /* Surprise.jpg */,
@@ -352,6 +389,8 @@
 		686C75E11B95EAC000483C1A /* videos */ = {
 			isa = PBXGroup;
 			children = (
+				68D7E2461C2073350058E303 /* faces_in_out.mp4 */,
+				6851F7611C1882E9009BEDB0 /* four_steves.mp4 */,
 				686C75E21B95EAC000483C1A /* face1.m4v */,
 			);
 			path = videos;
@@ -429,24 +468,33 @@
 				686C75E91B95EAC000483C1A /* Chin Raise.jpg in Resources */,
 				686C75F01B95EAC000483C1A /* Inner Brow Raise.jpg in Resources */,
 				686C75F61B95EAC000483C1A /* Mouth Open.jpg in Resources */,
+				6803489D1C3C7C05005CF454 /* camera-lens-icon.png in Resources */,
 				686C75EA1B95EAC000483C1A /* Contempt.jpg in Resources */,
 				686C75EE1B95EAC000483C1A /* Eye Closure.jpg in Resources */,
 				686C75F21B95EAC000483C1A /* Frown.jpg in Resources */,
 				686C75E51B95EAC000483C1A /* Anger.jpg in Resources */,
 				686C75FD1B95EAC000483C1A /* Upper Lip Raise.jpg in Resources */,
+				680348971C3C1413005CF454 /* male-glasses.png in Resources */,
 				686C76001B95EAC000483C1A /* Whit.m4a in Resources */,
-				686C75F91B95EAC000483C1A /* Settings.png in Resources */,
 				686C75F51B95EAC000483C1A /* Lip Suck.jpg in Resources */,
+				680348941C3C1413005CF454 /* unknown-noglasses.png in Resources */,
 				686C75E31B95EAC000483C1A /* Square.ttf in Resources */,
+				680348981C3C1413005CF454 /* female-noglasses.png in Resources */,
+				680348961C3C1413005CF454 /* male-noglasses.png in Resources */,
+				680348991C3C1413005CF454 /* female-glasses.png in Resources */,
 				686C75EF1B95EAC000483C1A /* Fear.jpg in Resources */,
+				680348831C3B18EC005CF454 /* Settings.png in Resources */,
 				68F4233318CD216D0032A50D /* ExpressionView_iPhone.xib in Resources */,
-				68EC2EEF18A97F02006C9EC5 /* sdk.license in Resources */,
+				68E978D31C1772F600EAD971 /* Affectiva_Logo Clear Background.png in Resources */,
 				686C75FE1B95EAC000483C1A /* Valence.jpg in Resources */,
+				68E978CF1C17724400EAD971 /* LaunchScreen.storyboard in Resources */,
 				686C75F11B95EAC000483C1A /* Joy.jpg in Resources */,
 				686C75FA1B95EAC000483C1A /* Smile.jpg in Resources */,
 				68F4233218CD216D0032A50D /* ExpressionView_iPad.xib in Resources */,
+				68D0FD931C035AAB00D430A2 /* camera-shutter.mp3 in Resources */,
 				686C75F41B95EAC000483C1A /* Lip Pucker.jpg in Resources */,
 				686C76021B95EAC000483C1A /* face1.m4v in Resources */,
+				680348951C3C1413005CF454 /* unknown-glasses.png in Resources */,
 				686C75F81B95EAC000483C1A /* Sadness.jpg in Resources */,
 				68F69CD01A7FEC37001A7DAB /* Settings.bundle in Resources */,
 				686C75EC1B95EAC000483C1A /* Engagement.jpg in Resources */,
@@ -456,6 +504,7 @@
 				68914FF41A9104FE00A6C4D7 /* Main.storyboard in Resources */,
 				686C75FC1B95EAC000483C1A /* Surprise.jpg in Resources */,
 				686C75FF1B95EAC000483C1A /* Enk.m4a in Resources */,
+				68D0FD951C0545C700D430A2 /* camera-swap-icon.png in Resources */,
 				686C75E41B95EAC000483C1A /* Affectiva_Logo Clear Background.png in Resources */,
 				686C75F31B95EAC000483C1A /* Lip Press.jpg in Resources */,
 				686C75ED1B95EAC000483C1A /* Expressiveness.jpg in Resources */,
@@ -464,6 +513,7 @@
 				68914FF21A9102CC00A6C4D7 /* Images.xcassets in Resources */,
 				686C75E81B95EAC000483C1A /* Brow Raise.jpg in Resources */,
 				686C76011B95EAC000483C1A /* Whoot.m4a in Resources */,
+				68E978D11C1772D200EAD971 /* background.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -567,11 +617,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/../../frameworks",
@@ -595,12 +644,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/../../frameworks",

@@ -3,8 +3,9 @@
 //  AffdexMe
 //
 //  Created by boisy on 8/18/15.
-//  Copyright (c) 2015 Affectiva. All rights reserved.
+//  Copyright (c) 2016 Affectiva Inc.
 //
+//  See the file license.txt for copying permission.
 
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
@@ -21,14 +22,12 @@
 
 @property (weak) IBOutlet UICollectionView *collectionViewRegular;
 @property (weak) IBOutlet UICollectionView *collectionViewCompact;
-@property (strong) UICollectionView *collectionView;
+@property (strong) NSArray *availableClassifiers;
 @property (strong) NSMutableArray *selectedClassifiers;
-@property (strong) NSArray *emotions;
-@property (strong) NSArray *expressions;
 @property (weak) IBOutlet UILabel *instructionLabelRegular;
 @property (weak) IBOutlet UILabel *instructionLabelCompact;
 
-
+- (IBAction)clearAllTouched:(id)sender;
 - (IBAction)doneTouched:(id)sender;
 
 @end

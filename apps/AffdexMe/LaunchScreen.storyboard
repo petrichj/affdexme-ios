@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="J7Q-bu-mhE">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EuD-ki-OUn">
+            <objects>
+                <viewController storyboardIdentifier="Launch" id="J7Q-bu-mhE" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sei-Qr-teW"/>
+                        <viewControllerLayoutGuide type="bottom" id="eO8-5S-dfa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hQQ-gX-tip">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="jM1-3s-kTJ">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Affectiva_Logo Clear Background.png" translatesAutoresizingMaskIntoConstraints="NO" id="2ya-1M-POQ">
+                                <rect key="frame" x="140" y="166" width="320" height="268"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="Utn-Qs-0zB"/>
+                                    <constraint firstAttribute="height" constant="268" id="gtP-20-gc3"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2ya-1M-POQ" firstAttribute="centerY" secondItem="hQQ-gX-tip" secondAttribute="centerY" id="Fpa-4r-epp"/>
+                            <constraint firstItem="eO8-5S-dfa" firstAttribute="top" secondItem="jM1-3s-kTJ" secondAttribute="bottom" id="Gw3-XN-SHd"/>
+                            <constraint firstItem="jM1-3s-kTJ" firstAttribute="leading" secondItem="hQQ-gX-tip" secondAttribute="leadingMargin" constant="-20" id="QE4-kr-Mha"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jM1-3s-kTJ" secondAttribute="trailing" constant="-20" id="rlX-Wh-dIg"/>
+                            <constraint firstItem="2ya-1M-POQ" firstAttribute="centerX" secondItem="hQQ-gX-tip" secondAttribute="centerX" id="vjX-Ph-nhI"/>
+                            <constraint firstItem="jM1-3s-kTJ" firstAttribute="top" secondItem="hQQ-gX-tip" secondAttribute="topMargin" id="xN4-Uj-A1r"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="view" destination="hQQ-gX-tip" id="5iK-rK-E4Y"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Foc-w0-yhL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="191" y="70"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Affectiva_Logo Clear Background.png" width="638" height="295"/>
+        <image name="background.png" width="1782" height="1054"/>
+    </resources>
+</document>

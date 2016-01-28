@@ -1,9 +1,15 @@
-AffdexMe for iOS
-================
-AffdexMe is a demonstration app that uses the camera on your iOS device to view and mimic your facial expressions with icons.
+![Affectiva Logo](http://developer.affectiva.com/images/logo.png)
 
-In order to use the project, you will need to:
-- Obtain the Affdex SDK for iOS by visiting http://www.affectiva.com/sdk
+###Copyright (c) 2016 Affectiva Inc. <br> See the file [license.txt](license.txt) for copying permission.
+
+*****************************
+
+**AffdexMe** is an app that demonstrates the use of the Affectiva iOS SDK.  It uses the camera on your iOS device to view, process and analyze live video of your face. Start the app and you will see your face on the screen and metrics describing your expressions.
+
+This is an Xcode 7 project.
+
+In order to use this project, you will need to:
+- Obtain the Affectiva iOS SDK (visit http://www.affectiva.com/solutions/apis-sdks/)
 - Copy Affdex.framework into the frameworks folder.
 - Add the contents of the license file near the top of the AffdexDemoViewController.m file. For example:
 
@@ -11,7 +17,10 @@ In order to use the project, you will need to:
 #define YOUR_AFFDEX_LICENSE_STRING_GOES_HERE @"{\"token\": \"01234567890abcdefghijklmnopqrstuvwxyz01234567890abcdefghijklmnop\", \"licensor\": \"Affectiva Inc.\", \"expires\": \"2016-11-20\", \"developerId\": \"developer@mycompany.com\", \"software\": \"Affdex SDK\"}"
 ```
 
-We welcome your contributions to this project. Also, feel free to use this code as starting point for your app.
+- Build the project
+- Run the app and smile!
 
-Attributions: Some graphical elements provided by Emoji One (www.emojione.com)
+***
+
+This app uses some of the excellent [Emoji One emojis](http://emojione.com).
 

@@ -20,6 +20,8 @@ In order to use this project, you will need to:
 - Build the project
 - Run the app and smile!
 
+[![Build Status](https://travis-ci.org/Affectiva/affdexme-ios.svg?branch=master)](https://travis-ci.org/Affectiva/affdexme-ios)
+
 ***
 
 This app uses some of the excellent [Emoji One emojis](http://emojione.com).

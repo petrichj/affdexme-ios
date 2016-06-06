@@ -10,7 +10,7 @@ This is an Xcode 7 project.
 
 In order to use this project, you will need to:
 - Obtain the Affectiva iOS SDK (visit http://www.affectiva.com/solutions/apis-sdks/)
-- Copy Affdex.framework into the frameworks folder.
+- Use CocoaPods to obtain the Affdex SDK. The Podfile is included (see http://www.cocoapods.org for more info).
 - Add the contents of the license file near the top of the AffdexDemoViewController.m file. For example:
 
 ```

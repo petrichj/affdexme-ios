@@ -123,6 +123,7 @@
 		682B8B72185F6D4F00DB10DE /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Classes/main.m; sourceTree = "<group>"; };
 		683400F317B0389800A63823 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		683400F517B0389F00A63823 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
+		684DF3941D06066A00CDCA0A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		6851F7611C1882E9009BEDB0 /* four_steves.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = four_steves.mp4; path = "../../../../../../Volumes/Affectiva/affdex-ios/affdex-media/testvideos/four_steves.mp4"; sourceTree = "<group>"; };
 		686C75C01B95EAC000483C1A /* Square.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Square.ttf; sourceTree = "<group>"; };
 		686C75C31B95EAC000483C1A /* Anger.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Anger.jpg; sourceTree = "<group>"; };
@@ -252,6 +253,7 @@
 		65920A6616D73F8700D89A4B = {
 			isa = PBXGroup;
 			children = (
+				684DF3941D06066A00CDCA0A /* README.md */,
 				68F69CCF1A7FEC37001A7DAB /* Settings.bundle */,
 				68914FF11A9102CC00A6C4D7 /* Images.xcassets */,
 				686C75BE1B95EAC000483C1A /* media */,

@@ -13,7 +13,6 @@
 #define MULTICAST_PORT 12345
 #endif
 
-#define YOUR_AFFDEX_LICENSE_STRING_GOES_HERE @"x"
 #ifndef YOUR_AFFDEX_LICENSE_STRING_GOES_HERE
 #error Please set the macro YOUR_AFFDEX_LICENSE_STRING_GOES_HERE to the contents of your Affectiva SDK license file.
 #endif

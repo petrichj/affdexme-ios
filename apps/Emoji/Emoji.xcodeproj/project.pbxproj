@@ -23,8 +23,6 @@
 		6803489D1C3C7C05005CF454 /* camera-lens-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6803489C1C3C7C05005CF454 /* camera-lens-icon.png */; };
 		6813DF9D1C517C6E0049B0BA /* EmojiFoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6813DF9C1C517C6E0049B0BA /* EmojiFoundViewController.m */; };
 		6813DFB11C526ADA0049B0BA /* Affectiva_Logo_Powered_By.png in Resources */ = {isa = PBXBuildFile; fileRef = 6813DFB01C526ADA0049B0BA /* Affectiva_Logo_Powered_By.png */; };
-		68224A111B94E164000CE9BB /* Affdex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68224A101B94E164000CE9BB /* Affdex.framework */; };
-		68224A121B94E276000CE9BB /* Affdex.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 68224A101B94E164000CE9BB /* Affdex.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		682664D71766679C004E93E6 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 682664D61766679C004E93E6 /* CoreVideo.framework */; };
 		682664D9176667A7004E93E6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 682664D8176667A7004E93E6 /* AVFoundation.framework */; };
 		682664DB176667DC004E93E6 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 682664DA176667DC004E93E6 /* CoreMedia.framework */; };
@@ -33,7 +31,6 @@
 		683400F617B0389F00A63823 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 683400F517B0389F00A63823 /* libstdc++.dylib */; };
 		6851F7621C1882E9009BEDB0 /* four_steves.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 6851F7611C1882E9009BEDB0 /* four_steves.mp4 */; };
 		686C75E31B95EAC000483C1A /* Square.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 686C75C01B95EAC000483C1A /* Square.ttf */; };
-		686C75E41B95EAC000483C1A /* Affectiva_Logo Clear Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 686C75C21B95EAC000483C1A /* Affectiva_Logo Clear Background.png */; };
 		686C75E51B95EAC000483C1A /* Anger.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 686C75C31B95EAC000483C1A /* Anger.jpg */; };
 		686C75E61B95EAC000483C1A /* Attention.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 686C75C41B95EAC000483C1A /* Attention.jpg */; };
 		686C75E71B95EAC000483C1A /* Brow Furrow.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 686C75C51B95EAC000483C1A /* Brow Furrow.jpg */; };
@@ -76,10 +73,10 @@
 		68E978CF1C17724400EAD971 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68E978CE1C17724400EAD971 /* LaunchScreen.storyboard */; };
 		68E978D11C1772D200EAD971 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 68E978D01C1772D200EAD971 /* background.png */; };
 		68E978D31C1772F600EAD971 /* Affectiva_Logo Clear Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 68E978D21C1772F600EAD971 /* Affectiva_Logo Clear Background.png */; };
-		68EC2EEF18A97F02006C9EC5 /* sdk.license in Resources */ = {isa = PBXBuildFile; fileRef = 68EC2EEE18A97F02006C9EC5 /* sdk.license */; };
 		68F07FA01C4E931200A3E7CA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68F07F9F1C4E931200A3E7CA /* Images.xcassets */; };
 		68F626BD1B91E502004521CE /* HeaderCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F626BC1B91E502004521CE /* HeaderCollectionReusableView.m */; };
 		68FA744C1B8E1659004045F3 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68FA744B1B8E1659004045F3 /* MediaPlayer.framework */; };
+		BD1C64991F9572D6E21C4035 /* Pods_AffdexEmoji.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE5B9D9EFB08E357125EF516 /* Pods_AffdexEmoji.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -89,7 +86,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				68224A121B94E276000CE9BB /* Affdex.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -121,7 +117,6 @@
 		6813DF9B1C517C6E0049B0BA /* EmojiFoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmojiFoundViewController.h; sourceTree = "<group>"; };
 		6813DF9C1C517C6E0049B0BA /* EmojiFoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmojiFoundViewController.m; sourceTree = "<group>"; };
 		6813DFB01C526ADA0049B0BA /* Affectiva_Logo_Powered_By.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Affectiva_Logo_Powered_By.png; path = "../../../../../Volumes/Affectiva/affdex-ios/media/Affectiva_Logo_Powered_By.png"; sourceTree = "<group>"; };
-		68224A101B94E164000CE9BB /* Affdex.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Affdex.framework; path = ../../frameworks/Affdex.framework; sourceTree = "<group>"; };
 		682664D61766679C004E93E6 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		682664D8176667A7004E93E6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		682664DA176667DC004E93E6 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -130,7 +125,6 @@
 		683400F517B0389F00A63823 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		6851F7611C1882E9009BEDB0 /* four_steves.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = four_steves.mp4; path = "../../../../../../Volumes/Affectiva/affdex-ios/affdex-media/testvideos/four_steves.mp4"; sourceTree = "<group>"; };
 		686C75C01B95EAC000483C1A /* Square.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Square.ttf; sourceTree = "<group>"; };
-		686C75C21B95EAC000483C1A /* Affectiva_Logo Clear Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Affectiva_Logo Clear Background.png"; sourceTree = "<group>"; };
 		686C75C31B95EAC000483C1A /* Anger.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Anger.jpg; sourceTree = "<group>"; };
 		686C75C41B95EAC000483C1A /* Attention.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Attention.jpg; sourceTree = "<group>"; };
 		686C75C51B95EAC000483C1A /* Brow Furrow.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Brow Furrow.jpg"; sourceTree = "<group>"; };
@@ -175,7 +169,6 @@
 		68E978CE1C17724400EAD971 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ../LaunchScreen.storyboard; sourceTree = "<group>"; };
 		68E978D01C1772D200EAD971 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		68E978D21C1772F600EAD971 /* Affectiva_Logo Clear Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Affectiva_Logo Clear Background.png"; path = "../apps/AffdexMe/Affectiva_Logo Clear Background.png"; sourceTree = "<group>"; };
-		68EC2EEE18A97F02006C9EC5 /* sdk.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sdk.license; sourceTree = "<group>"; };
 		68F07F9F1C4E931200A3E7CA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		68F626BB1B91E502004521CE /* HeaderCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderCollectionReusableView.h; sourceTree = "<group>"; };
 		68F626BC1B91E502004521CE /* HeaderCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderCollectionReusableView.m; sourceTree = "<group>"; };
@@ -192,6 +185,9 @@
 		8B0E030F183B955B00436A0D /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
 		8B0E0311183B968400436A0D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		8B0E0313183B968F00436A0D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		B394707DD381231DB359EE01 /* Pods-AffdexEmoji.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AffdexEmoji.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AffdexEmoji/Pods-AffdexEmoji.debug.xcconfig"; sourceTree = "<group>"; };
+		BE5B9D9EFB08E357125EF516 /* Pods_AffdexEmoji.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AffdexEmoji.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2902A52E193C2E64CA39331 /* Pods-AffdexEmoji.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AffdexEmoji.release.xcconfig"; path = "Pods/Target Support Files/Pods-AffdexEmoji/Pods-AffdexEmoji.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,12 +205,12 @@
 				68DCE53D1767642C000DE093 /* AudioToolbox.framework in Frameworks */,
 				682664DB176667DC004E93E6 /* CoreMedia.framework in Frameworks */,
 				682664D9176667A7004E93E6 /* AVFoundation.framework in Frameworks */,
-				68224A111B94E164000CE9BB /* Affdex.framework in Frameworks */,
 				682664D71766679C004E93E6 /* CoreVideo.framework in Frameworks */,
 				65920A9A16D7415200D89A4B /* QuartzCore.framework in Frameworks */,
 				65920A9816D7414700D89A4B /* CoreImage.framework in Frameworks */,
 				65920A7316D73F8700D89A4B /* UIKit.framework in Frameworks */,
 				65920A7516D73F8700D89A4B /* Foundation.framework in Frameworks */,
+				BD1C64991F9572D6E21C4035 /* Pods_AffdexEmoji.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,7 +241,6 @@
 			children = (
 				68F07F9F1C4E931200A3E7CA /* Images.xcassets */,
 				6803489A1C3C531C005CF454 /* license.txt */,
-				68EC2EEE18A97F02006C9EC5 /* sdk.license */,
 				686C75BE1B95EAC000483C1A /* media */,
 				65920A7A16D73F8700D89A4B /* Emoji-Info.plist */,
 				65920A8016D73F8700D89A4B /* Emoji-Prefix.pch */,
@@ -253,6 +248,7 @@
 				659140EE1727E23500DB4E10 /* Classes */,
 				65920A7116D73F8700D89A4B /* Frameworks */,
 				65920A7016D73F8700D89A4B /* Products */,
+				ABC6F227CD356B190D37308E /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -267,7 +263,6 @@
 		65920A7116D73F8700D89A4B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				68224A101B94E164000CE9BB /* Affdex.framework */,
 				68FA744B1B8E1659004045F3 /* MediaPlayer.framework */,
 				8B0E0313183B968F00436A0D /* QuartzCore.framework */,
 				8B0E0311183B968400436A0D /* CoreGraphics.framework */,
@@ -295,6 +290,7 @@
 				68914F7F1A8FED6600A6C4D7 /* PhotosUI.framework */,
 				68914F811A8FED6600A6C4D7 /* Photos.framework */,
 				8B0E02BD183AA56C00436A0D /* Other Frameworks */,
+				BE5B9D9EFB08E357125EF516 /* Pods_AffdexEmoji.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -335,7 +331,6 @@
 		686C75C11B95EAC000483C1A /* images */ = {
 			isa = PBXGroup;
 			children = (
-				686C75C21B95EAC000483C1A /* Affectiva_Logo Clear Background.png */,
 				686C75C31B95EAC000483C1A /* Anger.jpg */,
 				686C75C41B95EAC000483C1A /* Attention.jpg */,
 				686C75C51B95EAC000483C1A /* Brow Furrow.jpg */,
@@ -395,6 +390,15 @@
 			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
+		ABC6F227CD356B190D37308E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B394707DD381231DB359EE01 /* Pods-AffdexEmoji.debug.xcconfig */,
+				C2902A52E193C2E64CA39331 /* Pods-AffdexEmoji.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -402,11 +406,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 65920A9216D73F8700D89A4B /* Build configuration list for PBXNativeTarget "AffdexEmoji" */;
 			buildPhases = (
+				6EB507DA4F140C9DEDE05168 /* Check Pods Manifest.lock */,
 				65920A6B16D73F8700D89A4B /* Sources */,
 				65920A6C16D73F8700D89A4B /* Frameworks */,
 				65920A6D16D73F8700D89A4B /* Resources */,
 				68914F3B1A8F8F9500A6C4D7 /* Embed Frameworks */,
 				68F198BA18B642BF00621FBA /* ShellScript */,
+				B8F0CEFF923F45B98C65FCF6 /* Embed Pods Frameworks */,
+				C7B372E45619C45342549082 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -476,7 +483,6 @@
 				680348991C3C1413005CF454 /* female-glasses.png in Resources */,
 				686C75EF1B95EAC000483C1A /* Fear.jpg in Resources */,
 				680348831C3B18EC005CF454 /* Settings.png in Resources */,
-				68EC2EEF18A97F02006C9EC5 /* sdk.license in Resources */,
 				68E978D31C1772F600EAD971 /* Affectiva_Logo Clear Background.png in Resources */,
 				686C75FE1B95EAC000483C1A /* Valence.jpg in Resources */,
 				68E978CF1C17724400EAD971 /* LaunchScreen.storyboard in Resources */,
@@ -495,7 +501,6 @@
 				686C75FC1B95EAC000483C1A /* Surprise.jpg in Resources */,
 				686C75FF1B95EAC000483C1A /* Enk.m4a in Resources */,
 				68D0FD951C0545C700D430A2 /* camera-swap-icon.png in Resources */,
-				686C75E41B95EAC000483C1A /* Affectiva_Logo Clear Background.png in Resources */,
 				686C75F31B95EAC000483C1A /* Lip Press.jpg in Resources */,
 				686C75ED1B95EAC000483C1A /* Expressiveness.jpg in Resources */,
 				686C75E61B95EAC000483C1A /* Attention.jpg in Resources */,
@@ -522,6 +527,51 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "set -x\nbuildPlist=${INFOPLIST_FILE}\nCFBundleVersion=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" $buildPlist)\nCFBundleVersionINCR=$((CFBundleVersion + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $CFBundleVersionINCR\" $buildPlist\nif [ \"$PLATFORM_NAME\" != \"iphonesimulator\" ]; then\n    rm $CODESIGNING_FOLDER_PATH/*.m4v\n    lipo -remove x86_64 ${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Affdex.framework/Affdex -output ${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Affdex.framework/Affdex || true\n    lipo -remove i386 ${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Affdex.framework/Affdex -output ${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Affdex.framework/Affdex || true\nfi\n";
+		};
+		6EB507DA4F140C9DEDE05168 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B8F0CEFF923F45B98C65FCF6 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AffdexEmoji/Pods-AffdexEmoji-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C7B372E45619C45342549082 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AffdexEmoji/Pods-AffdexEmoji-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -603,21 +653,22 @@
 		};
 		65920A9316D73F8700D89A4B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B394707DD381231DB359EE01 /* Pods-AffdexEmoji.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/../../frameworks",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Emoji-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
 				INFOPLIST_FILE = "Emoji-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "@exectuable_path/Frameworks @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = /private/tmp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.affectiva.AffdexEmoji;
 				PRODUCT_NAME = AffdexEmoji;
@@ -630,6 +681,7 @@
 		};
 		65920A9416D73F8700D89A4B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C2902A52E193C2E64CA39331 /* Pods-AffdexEmoji.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
@@ -637,16 +689,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_BITCODE = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/../../frameworks",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Emoji-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = "";
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = "Emoji-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "@exectuable_path/Frameworks @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = /private/tmp;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.affectiva.AffdexEmoji;

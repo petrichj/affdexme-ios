@@ -11,6 +11,10 @@
 #define DEMO_MODE
 #endif
 
+#ifndef YOUR_AFFDEX_LICENSE_STRING_GOES_HERE
+#error Please set the macro YOUR_AFFDEX_LICENSE_STRING_GOES_HERE to the contents of your Affectiva SDK license file.
+#endif
+
 #import "UIDeviceHardware.h"
 #import "EmojiViewController.h"
 #import "EmojiFoundViewController.h"
@@ -432,7 +436,7 @@
     
     self.dateOfLastFrame = nil;
     self.dateOfLastProcessedFrame = nil;
-    self.detector.licensePath = [[NSBundle mainBundle] pathForResource:@"sdk" ofType:@"license"];
+    self.detector.licenseString = YOUR_AFFDEX_LICENSE_STRING_GOES_HERE;
     
     // tell the detector which facial expressions we want to measure
     [self.detector setDetectAllEmotions:NO];

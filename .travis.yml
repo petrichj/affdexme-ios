@@ -10,4 +10,4 @@ before_install:
   # Download and decompress the latest Affdex iOS SDK
   - pod install
   # Add mock license to the top of AffdexDemoViewController.m
-  - echo '#define YOUR_AFFDEX_LICENSE_STRING_GOES_HERE @"{}"' | cat - apps/AffdexMe/Classes/AffdexDemoViewController.m > temp && mv temp apps/AffdexMe/Classes/AffdexDemoViewController.m
+  - echo '#define YOUR_AFFDEX_LICENSE_STRING_GOES_HERE @"{}"' | cat - Classes/AffdexDemoViewController.m > temp && mv temp Classes/AffdexDemoViewController.m

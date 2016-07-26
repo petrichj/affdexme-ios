@@ -57,13 +57,13 @@
 		68D0FD951C0545C700D430A2 /* camera-swap-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 68D0FD941C0545C700D430A2 /* camera-swap-icon.png */; };
 		68E978CF1C17724400EAD971 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68E978CE1C17724400EAD971 /* LaunchScreen.storyboard */; };
 		68E978D11C1772D200EAD971 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 68E978D01C1772D200EAD971 /* background.png */; };
-		68E978D31C1772F600EAD971 /* Affectiva_Logo Clear Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 68E978D21C1772F600EAD971 /* Affectiva_Logo Clear Background.png */; };
 		68F4233218CD216D0032A50D /* ExpressionView_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68F4233018CD216D0032A50D /* ExpressionView_iPad.xib */; };
 		68F4233318CD216D0032A50D /* ExpressionView_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68F4233118CD216D0032A50D /* ExpressionView_iPhone.xib */; };
 		68F626B81B909F2C004521CE /* SoundEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F626B71B909F2C004521CE /* SoundEffect.m */; };
 		68F626BD1B91E502004521CE /* HeaderCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F626BC1B91E502004521CE /* HeaderCollectionReusableView.m */; };
 		68F69CD01A7FEC37001A7DAB /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 68F69CCF1A7FEC37001A7DAB /* Settings.bundle */; };
 		7D187CE86775A5F679853650 /* Pods_AffdexMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 247A1136F06CBF30C33410A5 /* Pods_AffdexMe.framework */; };
+		C34792EA1D47295B00CA8995 /* Affectiva_Logo Clear Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 68E978D21C1772F600EAD971 /* Affectiva_Logo Clear Background.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -300,7 +300,6 @@
 				686C75DD1B95EAC000483C1A /* sounds */,
 				686C75E11B95EAC000483C1A /* videos */,
 			);
-			name = media;
 			path = media;
 			sourceTree = "<group>";
 		};
@@ -445,6 +444,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C34792EA1D47295B00CA8995 /* Affectiva_Logo Clear Background.png in Resources */,
 				686C75E91B95EAC000483C1A /* Chin Raise.jpg in Resources */,
 				686C75F01B95EAC000483C1A /* Inner Brow Raise.jpg in Resources */,
 				686C75F61B95EAC000483C1A /* Mouth Open.jpg in Resources */,
@@ -465,7 +465,6 @@
 				686C75EF1B95EAC000483C1A /* Fear.jpg in Resources */,
 				680348831C3B18EC005CF454 /* Settings.png in Resources */,
 				68F4233318CD216D0032A50D /* ExpressionView_iPhone.xib in Resources */,
-				68E978D31C1772F600EAD971 /* Affectiva_Logo Clear Background.png in Resources */,
 				686C75FE1B95EAC000483C1A /* Valence.jpg in Resources */,
 				68E978CF1C17724400EAD971 /* LaunchScreen.storyboard in Resources */,
 				686C75F11B95EAC000483C1A /* Joy.jpg in Resources */,

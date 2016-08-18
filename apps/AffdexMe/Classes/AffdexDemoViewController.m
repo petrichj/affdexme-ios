@@ -13,6 +13,8 @@
 #define MULTICAST_PORT 12345
 #endif
 
+#define YOUR_AFFDEX_LICENSE_STRING_GOES_HERE @"{\"token\":\"f1a329b52f77a99b7d081d7b0af794740125a07be8f6810e76f1ff40fab19890\",\"licensor\" : \"Affectiva Inc.\",\"expires\" : \"2099-01-01\",\"developerId\" : \"unittest\",\"software\" : \"Affdex SDK\"}"
+
 #ifndef YOUR_AFFDEX_LICENSE_STRING_GOES_HERE
 #error Please set the macro YOUR_AFFDEX_LICENSE_STRING_GOES_HERE to the contents of your Affectiva SDK license file.
 #endif
@@ -1155,7 +1157,7 @@
     // create our detector with our desired facial expresions, using the front facing camera
     self.detector = [[AFDXDetector alloc] initWithDelegate:self usingCamera:self.cameraToUse maximumFaces:maximumFaces];
 #endif
-    
+    [self.detector enableAnalytics];
 
     self.drawFacePoints = [[[NSUserDefaults standardUserDefaults] objectForKey:@"drawFacePoints"] boolValue];
     self.drawFaceRect = self.drawFacePoints;
@@ -1179,12 +1181,20 @@
     self.detector.licenseString = YOUR_AFFDEX_LICENSE_STRING_GOES_HERE;
     
     // tell the detector which facial expressions we want to measure
+#if 1  // Enable everything for firehose testing
+    [self.detector setDetectAllAppearances:YES];
+    [self.detector setDetectAllEmotions:YES];
+    [self.detector setDetectAllExpressions:YES];
+    [self.detector setDetectEmojis:YES];
+#else
+    [self.detector setDetectAllAppearances:NO];
     [self.detector setDetectAllEmotions:NO];
     [self.detector setDetectAllExpressions:NO];
     [self.detector setDetectEmojis:YES];
     self.detector.gender = TRUE;
     self.detector.glasses = TRUE;
-    
+#endif
+
     for (NSString *s in self.selectedClassifiers)
     {
         for (NSArray *a in self.availableClassifiers)

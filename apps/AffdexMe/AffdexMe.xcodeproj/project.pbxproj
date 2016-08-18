@@ -22,7 +22,6 @@
 		680348991C3C1413005CF454 /* female-glasses.png in Resources */ = {isa = PBXBuildFile; fileRef = 680348931C3C1413005CF454 /* female-glasses.png */; };
 		6803489D1C3C7C05005CF454 /* camera-lens-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6803489C1C3C7C05005CF454 /* camera-lens-icon.png */; };
 		68224A111B94E164000CE9BB /* Affdex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68224A101B94E164000CE9BB /* Affdex.framework */; };
-		68224A121B94E276000CE9BB /* Affdex.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 68224A101B94E164000CE9BB /* Affdex.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		682664D71766679C004E93E6 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 682664D61766679C004E93E6 /* CoreVideo.framework */; };
 		682664D9176667A7004E93E6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 682664D8176667A7004E93E6 /* AVFoundation.framework */; };
 		682664DB176667DC004E93E6 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 682664DA176667DC004E93E6 /* CoreMedia.framework */; };
@@ -81,6 +80,7 @@
 		68F626BD1B91E502004521CE /* HeaderCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F626BC1B91E502004521CE /* HeaderCollectionReusableView.m */; };
 		68F69CD01A7FEC37001A7DAB /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 68F69CCF1A7FEC37001A7DAB /* Settings.bundle */; };
 		68FA744C1B8E1659004045F3 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68FA744B1B8E1659004045F3 /* MediaPlayer.framework */; };
+		80C1FA373E7B06E146080315 /* Pods_AffdexMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6499AFBE99C1FAFEF316AE7F /* Pods_AffdexMe.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -90,7 +90,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				68224A121B94E276000CE9BB /* Affdex.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -98,6 +97,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		08A8DA8F2A6FC7B5834E0252 /* Pods-AffdexMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AffdexMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-AffdexMe/Pods-AffdexMe.release.xcconfig"; sourceTree = "<group>"; };
+		6499AFBE99C1FAFEF316AE7F /* Pods_AffdexMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AffdexMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		659140EF1727E23500DB4E10 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		659140F01727E23500DB4E10 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		659140F11727E23500DB4E10 /* AffdexDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AffdexDemoViewController.h; sourceTree = "<group>"; };
@@ -198,6 +199,7 @@
 		8B0E030F183B955B00436A0D /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
 		8B0E0311183B968400436A0D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		8B0E0313183B968F00436A0D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		F300705025A4FC32857AB7CC /* Pods-AffdexMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AffdexMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AffdexMe/Pods-AffdexMe.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +223,7 @@
 				65920A9816D7414700D89A4B /* CoreImage.framework in Frameworks */,
 				65920A7316D73F8700D89A4B /* UIKit.framework in Frameworks */,
 				65920A7516D73F8700D89A4B /* Foundation.framework in Frameworks */,
+				80C1FA373E7B06E146080315 /* Pods_AffdexMe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +268,7 @@
 				659140EE1727E23500DB4E10 /* Classes */,
 				65920A7116D73F8700D89A4B /* Frameworks */,
 				65920A7016D73F8700D89A4B /* Products */,
+				EB810181604A1D4A0E630218 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -307,6 +311,7 @@
 				68914F7F1A8FED6600A6C4D7 /* PhotosUI.framework */,
 				68914F811A8FED6600A6C4D7 /* Photos.framework */,
 				8B0E02BD183AA56C00436A0D /* Other Frameworks */,
+				6499AFBE99C1FAFEF316AE7F /* Pods_AffdexMe.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -406,6 +411,15 @@
 			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
+		EB810181604A1D4A0E630218 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F300705025A4FC32857AB7CC /* Pods-AffdexMe.debug.xcconfig */,
+				08A8DA8F2A6FC7B5834E0252 /* Pods-AffdexMe.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -413,11 +427,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 65920A9216D73F8700D89A4B /* Build configuration list for PBXNativeTarget "AffdexMe" */;
 			buildPhases = (
+				FB998553601E55418A8B1DF8 /* [CP] Check Pods Manifest.lock */,
 				65920A6B16D73F8700D89A4B /* Sources */,
 				65920A6C16D73F8700D89A4B /* Frameworks */,
 				65920A6D16D73F8700D89A4B /* Resources */,
 				68914F3B1A8F8F9500A6C4D7 /* Embed Frameworks */,
 				68F198BA18B642BF00621FBA /* ShellScript */,
+				75D7BAE34DE953E06CAAC60D /* [CP] Embed Pods Frameworks */,
+				D71A37B6153BEFD7F93B156C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -533,6 +550,51 @@
 			shellPath = /bin/sh;
 			shellScript = "set -x\nbuildPlist=${INFOPLIST_FILE}\nCFBundleVersion=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" $buildPlist)\nCFBundleVersionINCR=$((CFBundleVersion + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $CFBundleVersionINCR\" $buildPlist\nif [ \"$PLATFORM_NAME\" != \"iphonesimulator\" ]; then\n    rm $CODESIGNING_FOLDER_PATH/*.m4v\n    lipo -remove x86_64 ${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Affdex.framework/Affdex -output ${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Affdex.framework/Affdex || true\n    lipo -remove i386 ${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Affdex.framework/Affdex -output ${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Affdex.framework/Affdex || true\nfi\n";
 		};
+		75D7BAE34DE953E06CAAC60D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AffdexMe/Pods-AffdexMe-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D71A37B6153BEFD7F93B156C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AffdexMe/Pods-AffdexMe-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FB998553601E55418A8B1DF8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -615,6 +677,7 @@
 		};
 		65920A9316D73F8700D89A4B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F300705025A4FC32857AB7CC /* Pods-AffdexMe.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
@@ -642,6 +705,7 @@
 		};
 		65920A9416D73F8700D89A4B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 08A8DA8F2A6FC7B5834E0252 /* Pods-AffdexMe.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";

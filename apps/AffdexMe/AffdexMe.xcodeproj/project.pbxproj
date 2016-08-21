@@ -548,7 +548,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -x\nbuildPlist=${INFOPLIST_FILE}\nCFBundleVersion=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" $buildPlist)\nCFBundleVersionINCR=$((CFBundleVersion + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $CFBundleVersionINCR\" $buildPlist\nif [ \"$PLATFORM_NAME\" != \"iphonesimulator\" ]; then\n    rm $CODESIGNING_FOLDER_PATH/*.m4v\n#    lipo -remove x86_64 ${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Affdex.framework/Affdex -output ${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Affdex.framework/Affdex || true\n#    lipo -remove i386 ${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Affdex.framework/Affdex -output ${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Affdex.framework/Affdex || true\nfi\n";
+			shellScript = "set -x\nbuildPlist=${INFOPLIST_FILE}\nCFBundleVersion=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" $buildPlist)\nCFBundleVersionINCR=$((CFBundleVersion + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $CFBundleVersionINCR\" $buildPlist\nif [ \"$PLATFORM_NAME\" != \"iphonesimulator\" ]; then\n#    rm $CODESIGNING_FOLDER_PATH/*.m4v\n#    lipo -remove x86_64 ${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Affdex.framework/Affdex -output ${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Affdex.framework/Affdex || true\n#    lipo -remove i386 ${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Affdex.framework/Affdex -output ${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Affdex.framework/Affdex || true\nfi\n";
 		};
 		75D7BAE34DE953E06CAAC60D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

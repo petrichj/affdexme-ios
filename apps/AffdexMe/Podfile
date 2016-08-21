@@ -5,7 +5,7 @@ use_frameworks!
 
 target 'AffdexMe' do
     pod 'AffdexSDK-iOS', '3.1-493'
-    pod 'AWSKinesis'
+    pod 'AWSKinesis', '2.4.5'
 end
 
 post_install do |installer|

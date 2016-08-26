@@ -3,7 +3,7 @@ source 'https://github.com/Affectiva/cocoapods-specs.git'
 use_frameworks!
 
 target 'AffdexMe' do
-    pod 'AffdexSDK-iOS', '3.1-498'
+    pod 'AffdexSDK-iOS', '3.1-500'
     pod 'AWSKinesis'
 end
 

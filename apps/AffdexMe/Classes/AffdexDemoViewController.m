@@ -13,11 +13,7 @@
 #define MULTICAST_PORT 12345
 #endif
 
-#define YOUR_AFFDEX_LICENSE_STRING_GOES_HERE @"{\"token\":\"f1a329b52f77a99b7d081d7b0af794740125a07be8f6810e76f1ff40fab19890\",\"licensor\" : \"Affectiva Inc.\",\"expires\" : \"2099-01-01\",\"developerId\" : \"unittest\",\"software\" : \"Affdex SDK\"}"
-
-#ifndef YOUR_AFFDEX_LICENSE_STRING_GOES_HERE
-#error Please set the macro YOUR_AFFDEX_LICENSE_STRING_GOES_HERE to the contents of your Affectiva SDK license file.
-#endif
+// Please note: Affectiva licensing strings are no longer required to use the SDK.
 
 // If this is being compiled for the iOS simulator, a demo mode is used since the camera isn't supported.
 #if TARGET_IPHONE_SIMULATOR
@@ -1178,7 +1174,6 @@
     self.detector.maxProcessRate = maxProcessRate;
     self.dateOfLastFrame = nil;
     self.dateOfLastProcessedFrame = nil;
-    self.detector.licenseString = YOUR_AFFDEX_LICENSE_STRING_GOES_HERE;
     
     // tell the detector which facial expressions we want to measure
 #if 1  // Enable everything for firehose testing

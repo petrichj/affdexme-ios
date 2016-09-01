@@ -1176,7 +1176,8 @@
     self.dateOfLastProcessedFrame = nil;
     
     // tell the detector which facial expressions we want to measure
-#if 1  // Enable everything for firehose testing
+#define ENABLE_ALL_CLASSIFIERS    0  // 1 to enable all classifiers, 0 for minimum set
+#if ENABLE_ALL_CLASSIFIERS  // Enable everything for firehose testing
     [self.detector setDetectAllAppearances:YES];
     [self.detector setDetectAllEmotions:YES];
     [self.detector setDetectAllExpressions:YES];

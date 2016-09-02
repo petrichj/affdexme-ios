@@ -1183,12 +1183,11 @@
     [self.detector setDetectAllExpressions:YES];
     [self.detector setDetectEmojis:YES];
 #else
-    [self.detector setDetectAllAppearances:NO];
+    [self.detector setDetectAllAppearances:YES];
     [self.detector setDetectAllEmotions:NO];
     [self.detector setDetectAllExpressions:NO];
     [self.detector setDetectEmojis:YES];
-    self.detector.gender = TRUE;
-    self.detector.glasses = TRUE;
+    self.detector.valence = TRUE;
 #endif
 
     for (NSString *s in self.selectedClassifiers)

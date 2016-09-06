@@ -7,6 +7,8 @@ notifications:
     email: false
 
 before_install:
+  # cd into source directory
+  - cd apps/AffdexMe
+
   # Download and decompress the latest Affdex iOS SDK
   - pod install
-

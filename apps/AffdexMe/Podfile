@@ -1,5 +1,4 @@
 source 'https://github.com/CocoaPods/Specs.git'
-source 'https://github.com/Affectiva/cocoapods-specs.git'
 use_frameworks!
 
 target 'AffdexMe' do

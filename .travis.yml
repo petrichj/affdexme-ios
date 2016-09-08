@@ -1,22 +1,14 @@
 language: objective-c
-
 osx_image: xcode7
-
-xcode_project: apps/AffdexMe/AffdexMe.xcodeproj
-
+xcode_workspace: AffdexMe.xcworkspace
 xcode_scheme: AffdexMe
-
 xcode_sdk: iphonesimulator9.0
-
 notifications:
     email: false
 
 before_install:
-  # Download and decompress the latest Affdex iOS SDK
-  - wget http://affdex-sdk-dist.s3-website-us-east-1.amazonaws.com/ios/affdex-sdk_iOS_3_1_320.zip
-  - unzip affdex-sdk_iOS_3_1_320.zip
-  # Copy the Affdex.framework directory into the frameworks directory
-  - cp -R affdex-sdk/Framework_Universal/Affdex.framework frameworks/
-  # Add mock license to the top of AffdexDemoViewController.m
-  - echo '#define YOUR_AFFDEX_LICENSE_STRING_GOES_HERE @"{}"' | cat - apps/AffdexMe/Classes/AffdexDemoViewController.m > temp && mv temp apps/AffdexMe/Classes/AffdexDemoViewController.m
+  # cd into source directory
+  - cd apps/AffdexMe
 
+  # Download and decompress the latest Affdex iOS SDK
+  - pod install

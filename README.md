@@ -13,10 +13,13 @@ In order to use this project, you will need to:
 - Have a valid CocoaPods installation on your machine
 - Install the Affdex SDK on your machine using the Podfile:
 ```
-rm -rf Pods ; pod install
+pod install
 ```
 
-- Build the project
+- Open the Xcode workspace file AffdexMe-iOS.xcworkspace -- not the .xcodeproj file.
+- Build the project for your simulator or device.  The simulator supports video
+  file processing since it cannot access the Mac camera.  Build and run on a
+  iPad or iPhone to capture your own video.
 - Run the app and smile!
 
 [![Build Status](https://travis-ci.org/Affectiva/affdexme-ios.svg?branch=master)](https://travis-ci.org/Affectiva/affdexme-ios)

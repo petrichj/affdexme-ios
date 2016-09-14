@@ -21,13 +21,10 @@
 		680348981C3C1413005CF454 /* female-noglasses.png in Resources */ = {isa = PBXBuildFile; fileRef = 680348921C3C1413005CF454 /* female-noglasses.png */; };
 		680348991C3C1413005CF454 /* female-glasses.png in Resources */ = {isa = PBXBuildFile; fileRef = 680348931C3C1413005CF454 /* female-glasses.png */; };
 		6803489D1C3C7C05005CF454 /* camera-lens-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6803489C1C3C7C05005CF454 /* camera-lens-icon.png */; };
-		68224A111B94E164000CE9BB /* Affdex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68224A101B94E164000CE9BB /* Affdex.framework */; };
 		682664D71766679C004E93E6 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 682664D61766679C004E93E6 /* CoreVideo.framework */; };
 		682664D9176667A7004E93E6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 682664D8176667A7004E93E6 /* AVFoundation.framework */; };
 		682664DB176667DC004E93E6 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 682664DA176667DC004E93E6 /* CoreMedia.framework */; };
 		682B8B73185F6D4F00DB10DE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 682B8B72185F6D4F00DB10DE /* main.m */; };
-		683400F417B0389800A63823 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 683400F317B0389800A63823 /* libc++.dylib */; };
-		683400F617B0389F00A63823 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 683400F517B0389F00A63823 /* libstdc++.dylib */; };
 		686C75E31B95EAC000483C1A /* Square.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 686C75C01B95EAC000483C1A /* Square.ttf */; };
 		686C75E41B95EAC000483C1A /* Affectiva_Logo Clear Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 686C75C21B95EAC000483C1A /* Affectiva_Logo Clear Background.png */; };
 		686C75E51B95EAC000483C1A /* Anger.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 686C75C31B95EAC000483C1A /* Anger.jpg */; };
@@ -120,13 +117,10 @@
 		680348931C3C1413005CF454 /* female-glasses.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "female-glasses.png"; sourceTree = "<group>"; };
 		6803489A1C3C531C005CF454 /* license.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license.txt; sourceTree = "<group>"; };
 		6803489C1C3C7C05005CF454 /* camera-lens-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-lens-icon.png"; sourceTree = "<group>"; };
-		68224A101B94E164000CE9BB /* Affdex.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Affdex.framework; path = ../../frameworks/Affdex.framework; sourceTree = "<group>"; };
 		682664D61766679C004E93E6 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		682664D8176667A7004E93E6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		682664DA176667DC004E93E6 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		682B8B72185F6D4F00DB10DE /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Classes/main.m; sourceTree = "<group>"; };
-		683400F317B0389800A63823 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
-		683400F517B0389F00A63823 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		6851F7611C1882E9009BEDB0 /* four_steves.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = four_steves.mp4; path = "../../../../../../Volumes/Affectiva/affdex-ios/affdex-media/testvideos/four_steves.mp4"; sourceTree = "<group>"; };
 		686C75C01B95EAC000483C1A /* Square.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Square.ttf; sourceTree = "<group>"; };
 		686C75C21B95EAC000483C1A /* Affectiva_Logo Clear Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Affectiva_Logo Clear Background.png"; sourceTree = "<group>"; };
@@ -187,18 +181,6 @@
 		68F626BC1B91E502004521CE /* HeaderCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderCollectionReusableView.m; sourceTree = "<group>"; };
 		68F69CCF1A7FEC37001A7DAB /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		68FA744B1B8E1659004045F3 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		8B0E02BB183AA56B00436A0D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
-		8B0E02BE183AA56C00436A0D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		8B0E02BF183AA56C00436A0D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		8B0E02C0183AA56C00436A0D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		8B0E02DA183AA56C00436A0D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		8B0E0303183B8D8C00436A0D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
-		8B0E0308183B903000436A0D /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/QTKit.framework; sourceTree = DEVELOPER_DIR; };
-		8B0E030B183B952300436A0D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		8B0E030D183B952A00436A0D /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/CoreVideo.framework; sourceTree = DEVELOPER_DIR; };
-		8B0E030F183B955B00436A0D /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
-		8B0E0311183B968400436A0D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
-		8B0E0313183B968F00436A0D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		F300705025A4FC32857AB7CC /* Pods-AffdexMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AffdexMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AffdexMe/Pods-AffdexMe.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -212,12 +194,9 @@
 				689DB56217DA32BD00751050 /* SystemConfiguration.framework in Frameworks */,
 				689DB56017DA329E00751050 /* CFNetwork.framework in Frameworks */,
 				689DB55E17DA2CAA00751050 /* Security.framework in Frameworks */,
-				683400F617B0389F00A63823 /* libstdc++.dylib in Frameworks */,
-				683400F417B0389800A63823 /* libc++.dylib in Frameworks */,
 				68DCE53D1767642C000DE093 /* AudioToolbox.framework in Frameworks */,
 				682664DB176667DC004E93E6 /* CoreMedia.framework in Frameworks */,
 				682664D9176667A7004E93E6 /* AVFoundation.framework in Frameworks */,
-				68224A111B94E164000CE9BB /* Affdex.framework in Frameworks */,
 				682664D71766679C004E93E6 /* CoreVideo.framework in Frameworks */,
 				65920A9A16D7415200D89A4B /* QuartzCore.framework in Frameworks */,
 				65920A9816D7414700D89A4B /* CoreImage.framework in Frameworks */,
@@ -283,20 +262,10 @@
 		65920A7116D73F8700D89A4B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				68224A101B94E164000CE9BB /* Affdex.framework */,
 				68FA744B1B8E1659004045F3 /* MediaPlayer.framework */,
-				8B0E0313183B968F00436A0D /* QuartzCore.framework */,
-				8B0E0311183B968400436A0D /* CoreGraphics.framework */,
-				8B0E030F183B955B00436A0D /* CoreMedia.framework */,
-				8B0E030D183B952A00436A0D /* CoreVideo.framework */,
-				8B0E030B183B952300436A0D /* Foundation.framework */,
-				8B0E0308183B903000436A0D /* QTKit.framework */,
-				8B0E0303183B8D8C00436A0D /* AVFoundation.framework */,
 				689DB56117DA32BD00751050 /* SystemConfiguration.framework */,
 				689DB55F17DA329E00751050 /* CFNetwork.framework */,
 				689DB55D17DA2CAA00751050 /* Security.framework */,
-				683400F517B0389F00A63823 /* libstdc++.dylib */,
-				683400F317B0389800A63823 /* libc++.dylib */,
 				68DCE53C1767642C000DE093 /* AudioToolbox.framework */,
 				682664DA176667DC004E93E6 /* CoreMedia.framework */,
 				682664D8176667A7004E93E6 /* AVFoundation.framework */,
@@ -306,11 +275,8 @@
 				65920A7216D73F8700D89A4B /* UIKit.framework */,
 				65920A7416D73F8700D89A4B /* Foundation.framework */,
 				65920A7616D73F8700D89A4B /* CoreGraphics.framework */,
-				8B0E02BB183AA56B00436A0D /* Cocoa.framework */,
-				8B0E02DA183AA56C00436A0D /* XCTest.framework */,
 				68914F7F1A8FED6600A6C4D7 /* PhotosUI.framework */,
 				68914F811A8FED6600A6C4D7 /* Photos.framework */,
-				8B0E02BD183AA56C00436A0D /* Other Frameworks */,
 				6499AFBE99C1FAFEF316AE7F /* Pods_AffdexMe.framework */,
 			);
 			name = Frameworks;
@@ -399,16 +365,6 @@
 				686C75E21B95EAC000483C1A /* face1.m4v */,
 			);
 			path = videos;
-			sourceTree = "<group>";
-		};
-		8B0E02BD183AA56C00436A0D /* Other Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				8B0E02BE183AA56C00436A0D /* AppKit.framework */,
-				8B0E02BF183AA56C00436A0D /* CoreData.framework */,
-				8B0E02C0183AA56C00436A0D /* Foundation.framework */,
-			);
-			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
 		EB810181604A1D4A0E630218 /* Pods */ = {
@@ -685,10 +641,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "";
 				ENABLE_BITCODE = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/../../frameworks",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AffdexMe-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -720,10 +673,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_BITCODE = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/../../frameworks",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AffdexMe-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";

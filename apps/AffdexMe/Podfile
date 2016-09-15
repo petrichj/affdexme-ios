@@ -3,7 +3,6 @@ use_frameworks!
 
 target 'AffdexMe' do
     pod 'AffdexSDK-iOS'
-    pod 'AWSKinesis'
 end
 
 post_install do |installer|

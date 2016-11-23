@@ -115,7 +115,6 @@
 		680348911C3C1413005CF454 /* male-glasses.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "male-glasses.png"; sourceTree = "<group>"; };
 		680348921C3C1413005CF454 /* female-noglasses.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "female-noglasses.png"; sourceTree = "<group>"; };
 		680348931C3C1413005CF454 /* female-glasses.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "female-glasses.png"; sourceTree = "<group>"; };
-		6803489A1C3C531C005CF454 /* license.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license.txt; sourceTree = "<group>"; };
 		6803489C1C3C7C05005CF454 /* camera-lens-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-lens-icon.png"; sourceTree = "<group>"; };
 		682664D61766679C004E93E6 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		682664D8176667A7004E93E6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -237,7 +236,6 @@
 		65920A6616D73F8700D89A4B = {
 			isa = PBXGroup;
 			children = (
-				6803489A1C3C531C005CF454 /* license.txt */,
 				68F69CCF1A7FEC37001A7DAB /* Settings.bundle */,
 				68914FF11A9102CC00A6C4D7 /* Images.xcassets */,
 				686C75BE1B95EAC000483C1A /* media */,
